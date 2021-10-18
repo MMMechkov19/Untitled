@@ -112,12 +112,30 @@ void printMaze()
 	mazeBoard[9][9] = 'F';
 
 	cout << "Easy mode - 10 x 10" << endl;
-	cout << "Your current possition is [0][0]" << endl;
-	cout << "The final is located on position [9][9]" << endl << endl;
+	cout << "Your current possition is ";
 
 	for (int i = 0; i < 10; i++)
 	{
-		cout << "  ";
+		for (int j = 0; j < 10; j++) {
+			if (mazeBoard[i][j] == 'S')
+			{
+				cout << "[" << i << "][" << j << "]" << endl;
+			}
+		}
+	}
+
+	cout << "The final is located on position [9][9]" << endl << endl << "     ";
+
+	for (int i = 0; i < 10; i++)
+	{
+		cout << i << " ";
+	}
+
+	cout << endl << endl;
+
+	for (int i = 0; i < 10; i++)
+	{
+		cout << " " << i << "   ";
 		for (int j = 0; j < 10; j++)
 		{
 			cout << mazeBoard[i][j] << " ";
