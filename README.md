@@ -15,7 +15,7 @@
 ## 📖 Description <a name="description"></a>
 
 ## 💻 Built Using <a name="built_using"></a>
-- [Visual Studio](https://visualstudio.microsoft.com/) - Application
+- [Visual Studio](https://visualstudio.microsoft.com/) - 
 - [Word](https://www.microsoft.com/en-us/microsoft-365/word) - Documentation
 - [PowerPoint](https://www.microsoft.com/en-us/microsoft-365/powerpoint) - Presentation
 
