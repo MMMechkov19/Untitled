@@ -1,4 +1,5 @@
 #include <iostream>
+#include <conio.h>
 using namespace std;
 
 void declareMazeReference()
@@ -110,6 +111,34 @@ void declareMazeReference()
 	mazeReference[9][7] = 0;
 	mazeReference[9][8] = 1;
 	mazeReference[9][9] = 3;
+
+	char pressedKey;
+	do
+	{
+		pressedKey = _getch();
+
+		switch (pressedKey)
+		{
+		case 'W':
+		case 'w':
+			cout << "W was pressed \n";
+			break;
+		case 'A':
+		case 'a':
+			cout << "A was pressed \n";
+			break;
+		case 's':
+		case 'S':
+			cout << "S was pressed \n";
+			break;
+		case 'D':
+		case 'd':
+			cout << "D was pressed \n";
+			break;
+
+		}
+
+	} while (pressedKey != 'Q' && pressedKey != 'q');
 
 	for (int i = 0; i < 10; i++)
 	{
@@ -264,6 +293,7 @@ void printMaze()
 		delete[] mazeBoard[i];
 	}
 }
+
 
 int main()
 {
