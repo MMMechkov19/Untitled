@@ -16,7 +16,7 @@
 
 ## 💻 Built Using <a name="built_using"></a>
 - [Visual Studio](https://visualstudio.microsoft.com/) - 
-- [Word](https://www.microsoft.com/en-us/microsoft-365/word) - Documentation
+- [Word](https://www.microsoft.com/en-us/microsoft-365/word) - Documentatio
 - [PowerPoint](https://www.microsoft.com/en-us/microsoft-365/powerpoint) - Presentation
 
 
