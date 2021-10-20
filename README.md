@@ -4,7 +4,7 @@
   </a>
 </p>
 
-<h1 align="center">Untitiled</h1>
+<h1 align="center">Untitled</h1>
 
 ## 📝 Table of Contents
 - [Description](#description)
@@ -15,9 +15,10 @@
 ## 📖 Description <a name="description"></a>
 
 ## 💻 Built Using <a name="built_using"></a>
-- [Visual Studio](https://visualstudio.microsoft.com/) - 
-- [Word](https://www.microsoft.com/en-us/microsoft-365/word) - Documentatio
+- [Visual Studio](https://visualstudio.microsoft.com/) - Aplication
+- [Word](https://www.microsoft.com/en-us/microsoft-365/word) - Documentation
 - [PowerPoint](https://www.microsoft.com/en-us/microsoft-365/powerpoint) - Presentation
+- [Excel](https://www.microsoft.com/en-us/microsoft-365/excel) - QA Documentation
 
 
 
