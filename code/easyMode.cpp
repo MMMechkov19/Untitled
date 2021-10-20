@@ -2,13 +2,13 @@
 #include <conio.h>
 using namespace std;
 
-void declareMazeReference()
+const int declareMazeExample()
 {
-	int** mazeReference = new int* [10];
+	const int** mazeReference = new const int* [10];
 
 	for (int i = 0; i < 10; i++)
 	{
-		mazeReference[i] = new int[10];
+		mazeReference[i] = new const int[10];
 	}
 
 	mazeReference[0][0] = 2;
@@ -111,34 +111,78 @@ void declareMazeReference()
 	mazeReference[9][7] = 0;
 	mazeReference[9][8] = 1;
 	mazeReference[9][9] = 3;
+}
+void declareMazeReference()
+{
+	
 
 	char pressedKey;
-	do
+	for (int i = 0; i < 10; i++) 
 	{
-		pressedKey = _getch();
-
-		switch (pressedKey)
+		for (int j = 0; j < 10; j++) 
 		{
-		case 'W':
-		case 'w':
-			cout << "W was pressed \n";
-			break;
-		case 'A':
-		case 'a':
-			cout << "A was pressed \n";
-			break;
-		case 's':
-		case 'S':
-			cout << "S was pressed \n";
-			break;
-		case 'D':
-		case 'd':
-			cout << "D was pressed \n";
-			break;
+			do
+			{
+				pressedKey = _getch();
 
+				switch (pressedKey)
+				{
+				case 'W':
+				case 'w':
+					if (mazeReference[i - 1][j] != 0) 
+					{
+						mazeReference[i - 1][j] = 5;
+						mazeReference[i][j] = 1;
+						break;
+					}
+					else
+					{
+						cout << "There is a wall you can not walk through!";
+					}
+				case 'A':
+				case 'a':
+					if (mazeReference[i][j - 1] != 0)
+					{
+						mazeReference[i][j - 1] = 5;
+						mazeReference[i][j] = 1;
+						break;
+					}
+					else
+					{
+						cout << "There is a wall you can not walk through!";
+					}
+					
+				case 's':
+				case 'S':
+					if (mazeReference[i + 1][j] != 0)
+					{
+						mazeReference[i + 1][j] = 5;
+						mazeReference[i][j] = 1;
+						break;
+					}
+					else
+					{
+						cout << "There is a wall you can not walk through!";
+					}
+
+				case 'D':
+				case 'd':
+					if (mazeReference[i][j + 1] != 0)
+					{
+						mazeReference[i][j + 1] = 5;
+						mazeReference[i][j] = 1;
+						break;
+					}
+					else
+					{
+						cout << "There is a wall you can not walk through!";
+					}
+				}
+
+			} while (pressedKey != 'Q' && pressedKey != 'q');
 		}
-
-	} while (pressedKey != 'Q' && pressedKey != 'q');
+	}
+	
 
 	for (int i = 0; i < 10; i++)
 	{
@@ -277,6 +321,33 @@ void printMaze()
 	}
 
 	cout << endl << endl;
+
+	for (int i = 0; i < 10; i++)
+	{
+		for (int j = 0; j < 10; j++) 
+		{
+			if (mazeReference[i][j] == 0) 
+			{
+				mazeBoard[i][j] = '#';
+			}
+			else if (mazeReference[i][j] == 1) 
+			{
+				mazeBoard[i][j] = ' ';
+			}
+			else if (mazeReference[i][j] == 2) 
+			{
+				mazeBoard[i][j] == 'S';
+			}
+			else if (mazeReference[i][j] == 3) 
+			{
+				mazeBoard[i][j] == 'F';
+			}
+			else if (mazeReference[i][j] == 4) 
+			{
+				mazeBoard[i][j] == 'o';
+			}
+		}
+	}
 
 	for (int i = 0; i < 10; i++)
 	{
