@@ -1,10 +1,13 @@
 #include <iostream>
 #include <conio.h>
 #include <stdlib.h>
+
 using namespace std;
 
+// easy mode first board example
 void printMaze()
 {
+	// decllare 2D array dynamically
 	char** mazeBoard = new char* [10];
 
 	for (int i = 0; i < 10; i++)
@@ -12,6 +15,7 @@ void printMaze()
 		mazeBoard[i] = new char[10];
 	}
 
+	// initialise array's values
 	mazeBoard[0][0] = 'S';
 	mazeBoard[0][1] = ' ';
 	mazeBoard[0][2] = '#';
@@ -113,8 +117,9 @@ void printMaze()
 	mazeBoard[9][8] = ' ';
 	mazeBoard[9][9] = 'F';
 
+	// print game mode and current position
 	cout << "Easy mode - 10 x 10" << endl;
-	cout << "Your current possition is ";
+	cout << "Your current position is ";
 
 	for (int i = 0; i < 10; i++)
 	{
@@ -126,8 +131,10 @@ void printMaze()
 		}
 	}
 
+	// print final position
 	cout << "The final is located on position [9][9]" << endl << endl << "     ";
 
+	// print y coordinates
 	for (int i = 0; i < 10; i++)
 	{
 		cout << i << " ";
@@ -135,9 +142,12 @@ void printMaze()
 
 	cout << endl << endl;
 
+	// print maze board
 	for (int i = 0; i < 10; i++)
 	{
+		// print x coordinates
 		cout << " " << i << "   ";
+
 		for (int j = 0; j < 10; j++)
 		{
 			cout << mazeBoard[i][j] << " ";
@@ -145,9 +155,11 @@ void printMaze()
 		cout << endl;
 	}
 
+	// declare variable for the pressed key
 	char pressedKey;
 
-	while (mazeBoard[9][9] != 'S') {
+	// print maze board with changed values
+	do {
 
 		for (int i = 0; i < 10; i++)
 		{
@@ -159,13 +171,15 @@ void printMaze()
 
 					switch (pressedKey)
 					{
+
+					// moves character with one position up
 					case 'W':
 					case 'w':
 
-						system("CLS");
-
+						// checks wheter there is a wall or an empty space
 						if (mazeBoard[i - 1][j] != '#')
 						{
+							// changes character's position
 							mazeBoard[i - 1][j] = 'S';
 							mazeBoard[i][j] = ' ';
 						}
@@ -175,13 +189,14 @@ void printMaze()
 						}
 						break;
 
+					// moves character with one position left
 					case 'A':
 					case 'a':
 
-						system("CLS");
-
+						// checks wheter there is a wall or an empty space
 						if (mazeBoard[i][j - 1] != '#')
 						{
+							// changes character's position
 							mazeBoard[i][j - 1] = 'S';
 							mazeBoard[i][j] = ' ';
 						}
@@ -191,13 +206,14 @@ void printMaze()
 						}
 						break;
 
+					// moves character with one position down
 					case 's':
 					case 'S':
 
-						system("CLS");
-
+						// checks wheter there is a wall or an empty space
 						if (mazeBoard[i + 1][j] != '#')
 						{
+							// changes character's position
 							mazeBoard[i + 1][j] = 'S';
 							mazeBoard[i][j] = ' ';
 						}
@@ -207,13 +223,14 @@ void printMaze()
 						}
 						break;
 
+					// moves character with one position right
 					case 'D':
 					case 'd':
 
-						system("CLS");
-
+						// checks wheter there is a wall or an empty space
 						if (mazeBoard[i][j + 1] != '#')
 						{
+							// changes character's position
 							mazeBoard[i][j + 1] = 'S';
 							mazeBoard[i][j] = ' ';
 						}
@@ -224,10 +241,14 @@ void printMaze()
 						break;
 					}
 
-				} while (pressedKey != 'Q' && pressedKey != 'q');
+				} while (pressedKey == 'w' || pressedKey == 'W' || pressedKey == 's' || pressedKey == 'S' || pressedKey == 'a' || pressedKey == 'A' || pressedKey == 'd' || pressedKey == 'D');
 				
 			}
 			
+			// clear screen
+			system("CLS");
+
+			// print y coordinates
 			for (int s = 0; s < 10; s++)
 			{
 				cout << s << " ";
@@ -235,8 +256,12 @@ void printMaze()
 
 			cout << endl << endl;
 
+			// print maze board with changed positions
 			for (int row = 0; row < 10; row++)
 			{
+				// print x coordinates
+				cout << " " << row << "   ";
+
 				for (int col = 0; col < 10; col++)
 				{
 					cout << mazeBoard[row][col] << " ";
@@ -245,7 +270,7 @@ void printMaze()
 			}
 
 		}
-	}
+	} while (mazeBoard[9][9] != 'S');
 
 	for (int i = 0; i < 10; i++)
 	{
