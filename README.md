@@ -1,6 +1,6 @@
 <p align="center">
   <a href=" rel="noopener">
-    <img src="https://cdn.discordapp.com/attachments/898635048264269854/900441913428176920/logo2.png" alt="Logo" width="350" >
+    <img src="https://lh3.googleusercontent.com/FYapS2Q-41D_KfKG9t14rdmxpmGcVDxLXKwBlZz5F9w7Gx1z1OEBUsFkJ5yI-eo14dxvcg=s170" alt="Logo" width="350" >
   </a>
 </p>
 
