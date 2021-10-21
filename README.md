@@ -1,6 +1,6 @@
 <p align="center">
   <a href=" rel="noopener">
-    <img src="https://lh3.googleusercontent.com/FYapS2Q-41D_KfKG9t14rdmxpmGcVDxLXKwBlZz5F9w7Gx1z1OEBUsFkJ5yI-eo14dxvcg=s170" alt="Logo" width="350" >
+    <img src="https://drive.google.com/uc?id=1Jd9hhLZ2gqxQkA09jMbvMtBCS6kiMNZE" alt="Logo" width="350" >
   </a>
 </p>
 
