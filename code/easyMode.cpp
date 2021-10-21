@@ -4,10 +4,21 @@
 
 using namespace std;
 
+const int KEY_LEFT = 'a', KEY_RIGHT = 'd', KEY_UP = 'w', KEY_DOWN = 's';
+
+
+struct Player
+{
+	char symbol;
+	int x;
+	int y;
+};
+
 // easy mode first board example
 void printMaze()
 {
-	// decllare 2D array dynamically
+	bool notWin = true;
+	// declare 2D array dynamically
 	char** mazeBoard = new char* [10];
 
 	for (int i = 0; i < 10; i++)
@@ -26,7 +37,7 @@ void printMaze()
 	mazeBoard[0][7] = '#';
 	mazeBoard[0][8] = '#';
 	mazeBoard[0][9] = '#';
-	mazeBoard[1][0] = '#';
+	mazeBoard[1][0] = ' ';
 	mazeBoard[1][1] = ' ';
 	mazeBoard[1][2] = '#';
 	mazeBoard[1][3] = '#';
@@ -157,119 +168,68 @@ void printMaze()
 
 	// declare variable for the pressed key
 	char pressedKey;
+	Player player;
+	player.symbol = 'S';
+	player.x = 0;
+	player.y = 1;
 
 	// print maze board with changed values
-	do {
+	
+	while (notWin)
+	{
+		if (mazeBoard[player.y][player.x] == ' ')
+		{
+			mazeBoard[player.y][player.x] = player.symbol;
+		}
 
 		for (int i = 0; i < 10; i++)
 		{
+			cout << endl;
 			for (int j = 0; j < 10; j++)
 			{
-				do
-				{
-					pressedKey = _getch();
-
-					switch (pressedKey)
-					{
-
-						// moves character with one position up
-					case 'W':
-					case 'w':
-
-						// checks wheter there is a wall or an empty space
-						if (mazeBoard[i - 1][j] != '#')
-						{
-							// changes character's position
-							mazeBoard[i - 1][j] = 'S';
-							mazeBoard[i][j] = ' ';
-						}
-						else
-						{
-							cout << "There is a wall you can not walk through!";
-						}
-						break;
-
-						// moves character with one position left
-					case 'A':
-					case 'a':
-
-						// checks wheter there is a wall or an empty space
-						if (mazeBoard[i][j - 1] != '#')
-						{
-							// changes character's position
-							mazeBoard[i][j - 1] = 'S';
-							mazeBoard[i][j] = ' ';
-						}
-						else
-						{
-							cout << "There is a wall you can not walk through!";
-						}
-						break;
-
-						// moves character with one position down
-					case 's':
-					case 'S':
-
-						// checks wheter there is a wall or an empty space
-						if (mazeBoard[i + 1][j] != '#')
-						{
-							// changes character's position
-							mazeBoard[i + 1][j] = 'S';
-							mazeBoard[i][j] = ' ';
-						}
-						else
-						{
-							cout << "There is a wall you can not walk through!";
-						}
-						break;
-
-						// moves character with one position right
-					case 'D':
-					case 'd':
-
-						// checks wheter there is a wall or an empty space
-						if (mazeBoard[i][j + 1] != '#')
-						{
-							// changes character's position
-							mazeBoard[i][j + 1] = 'S';
-							mazeBoard[i][j] = ' ';
-						}
-						else
-						{
-							cout << "There is a wall you can not walk through!";
-						}
-						break;
-					}
-
-					// clear screen
-					system("CLS");
-
-					cout << "     ";
-
-					// print y coordinates
-					for (int s = 0; s < 10; s++)
-					{
-						cout << s << " ";
-					}
-
-					cout << endl << endl;
-
-					// print maze board with changed positions
-					for (int row = 0; row < 10; row++)
-					{
-						// print x coordinates
-						cout << " " << row << "   ";
-
-						for (int col = 0; col < 10; col++)
-						{
-							cout << mazeBoard[row][col] << " ";
-						}
-						cout << endl;
-					}
-				} while (pressedKey == 'w' || pressedKey == 'W' || pressedKey == 's' || pressedKey == 'S' || pressedKey == 'a' || pressedKey == 'A' || pressedKey == 'd' || pressedKey == 'D');
+				cout << mazeBoard[i][j];
 			}
 		}
-	} while (mazeBoard[9][9] != 'S');
+
+		pressedKey = _getch();
+
+		switch (pressedKey)
+		{
+		case KEY_LEFT:
+			if (mazeBoard[player.y][player.x - 1] == ' ')
+			{
+				mazeBoard[player.y][player.x] = ' ';
+				player.x--;
+			}
+			break;
+		case KEY_UP:
+			if (mazeBoard[player.y - 1][player.x] != '#')
+			{
+				mazeBoard[player.y][player.x] = ' ';
+				player.y--;
+			}
+			break;
+		case KEY_DOWN:
+			if (mazeBoard[player.y + 1][player.x] != '#')
+			{
+				mazeBoard[player.y][player.x] = ' ';
+				player.y++;
+			}
+			break;
+		case KEY_RIGHT:
+			if (mazeBoard[player.y][player.x + 1] != '#')
+			{
+				mazeBoard[player.y][player.x] = ' ';
+				player.x++;
+			}
+			break;
+		}
+	}
+
+	if (player.y == 9 && player.x == 9)
+	{
+		notWin = false;
+	}
 
 	for (int i = 0; i < 10; i++)
 	{
