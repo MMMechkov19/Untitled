@@ -172,7 +172,7 @@ void printMaze()
 					switch (pressedKey)
 					{
 
-					// moves character with one position up
+						// moves character with one position up
 					case 'W':
 					case 'w':
 
@@ -189,7 +189,7 @@ void printMaze()
 						}
 						break;
 
-					// moves character with one position left
+						// moves character with one position left
 					case 'A':
 					case 'a':
 
@@ -206,7 +206,7 @@ void printMaze()
 						}
 						break;
 
-					// moves character with one position down
+						// moves character with one position down
 					case 's':
 					case 'S':
 
@@ -223,7 +223,7 @@ void printMaze()
 						}
 						break;
 
-					// moves character with one position right
+						// moves character with one position right
 					case 'D':
 					case 'd':
 
@@ -241,34 +241,33 @@ void printMaze()
 						break;
 					}
 
+					// clear screen
+					system("CLS");
+
+					cout << "     ";
+
+					// print y coordinates
+					for (int s = 0; s < 10; s++)
+					{
+						cout << s << " ";
+					}
+
+					cout << endl << endl;
+
+					// print maze board with changed positions
+					for (int row = 0; row < 10; row++)
+					{
+						// print x coordinates
+						cout << " " << row << "   ";
+
+						for (int col = 0; col < 10; col++)
+						{
+							cout << mazeBoard[row][col] << " ";
+						}
+						cout << endl;
+					}
 				} while (pressedKey == 'w' || pressedKey == 'W' || pressedKey == 's' || pressedKey == 'S' || pressedKey == 'a' || pressedKey == 'A' || pressedKey == 'd' || pressedKey == 'D');
-				
 			}
-			
-			// clear screen
-			system("CLS");
-
-			// print y coordinates
-			for (int s = 0; s < 10; s++)
-			{
-				cout << s << " ";
-			}
-
-			cout << endl << endl;
-
-			// print maze board with changed positions
-			for (int row = 0; row < 10; row++)
-			{
-				// print x coordinates
-				cout << " " << row << "   ";
-
-				for (int col = 0; col < 10; col++)
-				{
-					cout << mazeBoard[row][col] << " ";
-				}
-				cout << endl;
-			}
-
 		}
 	} while (mazeBoard[9][9] != 'S');
 
