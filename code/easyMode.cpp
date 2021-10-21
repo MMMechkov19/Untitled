@@ -173,7 +173,7 @@ void printMaze()
 	Player player;
 	player.symbol = 'S';
 	player.x = 0;
-	player.y = 1;
+	player.y = 0;
 
 	int counter = 0;
 
@@ -187,7 +187,24 @@ void printMaze()
 		if (counter != 0)
 		{
 			mazeBoard[0][0] = ' ';
-			cout << endl << "     ";
+			cout << endl;
+
+			// print game mode and current position
+			cout << "Easy mode - 10 x 10" << endl;
+			cout << "Your current position is ";
+
+			for (int i = 0; i < 10; i++)
+			{
+				for (int j = 0; j < 10; j++) {
+					if (mazeBoard[i][j] == 'S')
+					{
+						cout << "[" << i << "][" << j << "]" << endl;
+					}
+				}
+			}
+
+			// print final position
+			cout << "The final is located on position [9][9]" << endl << endl << "     ";
 
 			// print y coordinates
 			for (int i = 0; i < 10; i++)
