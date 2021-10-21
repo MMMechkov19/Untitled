@@ -1,7 +1,8 @@
 #include <iostream>
 #include <windows.h>
 #include <conio.h>
-
+#include <stdlib.h>
+#include <iomanip>
 
 using namespace std;
 bool exitProgram = true;
@@ -22,9 +23,22 @@ void gotoxy(int x, int y)
 
 int main()
 {
+
     int Set[] = { 7,7,7 };
     int counter = 3;
     char key;
+    cout << endl;
+    cout << endl;
+    cout << "        _Main menu_" << endl;
+
+
+    cout << "       |           |" << endl;
+    cout << "       |           |" << endl;
+    cout << "       |           |" << endl;
+    cout << "       |           |" << endl;
+    cout << "       |           |" << endl;
+    cout << "       |           |" << endl;
+    cout << "       |___________|" << endl;
 
     do
     {
@@ -60,17 +74,17 @@ int main()
             {
 
                 exitProgram = false;
-                system("CLS");
+
             }
             if (counter == 2)
             {
                 exitProgram = false;
-                system("CLS");
+
             }
             if (counter == 3)
             {
                 exitProgram = false;
-              
+
             }
 
         }
@@ -97,7 +111,11 @@ int main()
 
 
     } while (exitProgram != false);
-    
-    system("CLS");
-   
+
+
+    system("cls");
+
+
+
+
 }
