@@ -17,7 +17,9 @@ struct Player
 // easy mode first board example
 void printMaze()
 {
+
 	bool notWin = true;
+
 	// declare 2D array dynamically
 	char** mazeBoard = new char* [10];
 
@@ -37,7 +39,7 @@ void printMaze()
 	mazeBoard[0][7] = '#';
 	mazeBoard[0][8] = '#';
 	mazeBoard[0][9] = '#';
-	mazeBoard[1][0] = ' ';
+	mazeBoard[1][0] = '#';
 	mazeBoard[1][1] = ' ';
 	mazeBoard[1][2] = '#';
 	mazeBoard[1][3] = '#';
@@ -173,24 +175,41 @@ void printMaze()
 	player.x = 0;
 	player.y = 1;
 
+	int counter = 0;
+
 	// print maze board with changed values
-	
 	while (notWin)
 	{
 		if (mazeBoard[player.y][player.x] == ' ')
 		{
 			mazeBoard[player.y][player.x] = player.symbol;
 		}
-
-		for (int i = 0; i < 10; i++)
+		if (counter != 0)
 		{
-			cout << endl;
-			for (int j = 0; j < 10; j++)
+			mazeBoard[0][0] = ' ';
+			cout << endl << "     ";
+
+			// print y coordinates
+			for (int i = 0; i < 10; i++)
 			{
-				cout << mazeBoard[i][j];
+				cout << i << " ";
+			}
+
+			cout << endl << endl;
+
+			// print maze board
+			for (int i = 0; i < 10; i++)
+			{
+				// print x coordinates
+				cout << " " << i << "   ";
+
+				for (int j = 0; j < 10; j++)
+				{
+					cout << mazeBoard[i][j] << " ";
+				}
+				cout << endl;
 			}
 		}
-
 		pressedKey = _getch();
 
 		switch (pressedKey)
@@ -224,11 +243,12 @@ void printMaze()
 			}
 			break;
 		}
-	}
-
-	if (player.y == 9 && player.x == 9)
-	{
-		notWin = false;
+		if (player.y == 9 && player.x == 9)
+		{
+			notWin = false;
+		}
+		system("CLS");
+		counter++;
 	}
 
 	for (int i = 0; i < 10; i++)
@@ -236,7 +256,6 @@ void printMaze()
 		delete[] mazeBoard[i];
 	}
 }
-
 
 int main()
 {
