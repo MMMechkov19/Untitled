@@ -32,11 +32,11 @@ int main()
     cout << "        _Main menu_" << endl;
 
 
-    cout << "       |           |" << endl;
-    cout << "       |           |" << endl;
-    cout << "       |           |" << endl;
-    cout << "       |           |" << endl;
-    cout << "       |           |" << endl;
+    cout << "       |           |               __  __" << endl;
+    cout << "       |           |              /\\ \\ \\ \\" << endl;
+    cout << "       |           |              \\ \\ \\_\\ \\" << endl;
+    cout << "       |           |               \\ \\_____\\" << endl;
+    cout << "       |           |                \\/_____/" << endl;
     cout << "       |           |" << endl;
     cout << "       |___________|" << endl;
 
@@ -92,6 +92,9 @@ int main()
         Set[0] = 7;
         Set[1] = 7;
         Set[2] = 7;
+
+
+
 
 
         if (counter == 1)
