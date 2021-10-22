@@ -4,10 +4,22 @@
 
 using namespace std;
 
+const int KEY_LEFT = 'a', KEY_RIGHT = 'd', KEY_UP = 'w', KEY_DOWN = 's';
+
+struct Player
+{
+	char symbol;
+	int x;
+	int y;
+};
+
 // easy mode first board example
 void printMaze()
 {
-	// decllare 2D array dynamically
+
+	bool notWin = true;
+
+	// declare 2D array dynamically
 	char** mazeBoard = new char* [10];
 
 	for (int i = 0; i < 10; i++)
@@ -74,7 +86,7 @@ void printMaze()
 	mazeBoard[5][5] = '#';
 	mazeBoard[5][6] = ' ';
 	mazeBoard[5][7] = '#';
-	mazeBoard[5][8] = ' ';
+	mazeBoard[5][8] = 'o';
 	mazeBoard[5][9] = '#';
 	mazeBoard[6][0] = '#';
 	mazeBoard[6][1] = '#';
@@ -98,7 +110,7 @@ void printMaze()
 	mazeBoard[7][9] = '#';
 	mazeBoard[8][0] = '#';
 	mazeBoard[8][1] = '#';
-	mazeBoard[8][2] = 'o';
+	mazeBoard[8][2] = ' ';
 	mazeBoard[8][3] = '#';
 	mazeBoard[8][4] = '#';
 	mazeBoard[8][5] = '#';
@@ -117,166 +129,123 @@ void printMaze()
 	mazeBoard[9][8] = ' ';
 	mazeBoard[9][9] = 'F';
 
-	// print game mode and current position
-	cout << "Easy mode - 10 x 10" << endl;
-	cout << "Your current position is ";
-
-	for (int i = 0; i < 10; i++)
-	{
-		for (int j = 0; j < 10; j++) {
-			if (mazeBoard[i][j] == 'S')
-			{
-				cout << "[" << i << "][" << j << "]" << endl;
-			}
-		}
-	}
-
-	// print final position
-	cout << "The final is located on position [9][9]" << endl << endl << "     ";
-
-	// print y coordinates
-	for (int i = 0; i < 10; i++)
-	{
-		cout << i << " ";
-	}
-
-	cout << endl << endl;
-
-	// print maze board
-	for (int i = 0; i < 10; i++)
-	{
-		// print x coordinates
-		cout << " " << i << "   ";
-
-		for (int j = 0; j < 10; j++)
-		{
-			cout << mazeBoard[i][j] << " ";
-		}
-		cout << endl;
-	}
-
 	// declare variable for the pressed key
 	char pressedKey;
+	Player player;
+	player.symbol = 'S';
+	player.x = 0;
+	player.y = 0;
+
+	int keysPressedCounter = 0;
 
 	// print maze board with changed values
-	do {
-
-		for (int i = 0; i < 10; i++)
+	while (notWin)
+	{
+		if (mazeBoard[player.y][player.x] == ' ')
 		{
-			for (int j = 0; j < 10; j++)
-			{
-				do
-				{
-					pressedKey = _getch();
-
-					switch (pressedKey)
-					{
-
-						// moves character with one position up
-					case 'W':
-					case 'w':
-
-						// checks wheter there is a wall or an empty space
-						if (mazeBoard[i - 1][j] != '#')
-						{
-							// changes character's position
-							mazeBoard[i - 1][j] = 'S';
-							mazeBoard[i][j] = ' ';
-						}
-						else
-						{
-							cout << "There is a wall you can not walk through!";
-						}
-						break;
-
-						// moves character with one position left
-					case 'A':
-					case 'a':
-
-						// checks wheter there is a wall or an empty space
-						if (mazeBoard[i][j - 1] != '#')
-						{
-							// changes character's position
-							mazeBoard[i][j - 1] = 'S';
-							mazeBoard[i][j] = ' ';
-						}
-						else
-						{
-							cout << "There is a wall you can not walk through!";
-						}
-						break;
-
-						// moves character with one position down
-					case 's':
-					case 'S':
-
-						// checks wheter there is a wall or an empty space
-						if (mazeBoard[i + 1][j] != '#')
-						{
-							// changes character's position
-							mazeBoard[i + 1][j] = 'S';
-							mazeBoard[i][j] = ' ';
-						}
-						else
-						{
-							cout << "There is a wall you can not walk through!";
-						}
-						break;
-
-						// moves character with one position right
-					case 'D':
-					case 'd':
-
-						// checks wheter there is a wall or an empty space
-						if (mazeBoard[i][j + 1] != '#')
-						{
-							// changes character's position
-							mazeBoard[i][j + 1] = 'S';
-							mazeBoard[i][j] = ' ';
-						}
-						else
-						{
-							cout << "There is a wall you can not walk through!";
-						}
-						break;
-					}
-
-					// clear screen
-					system("CLS");
-
-					cout << "     ";
-
-					// print y coordinates
-					for (int s = 0; s < 10; s++)
-					{
-						cout << s << " ";
-					}
-
-					cout << endl << endl;
-
-					// print maze board with changed positions
-					for (int row = 0; row < 10; row++)
-					{
-						// print x coordinates
-						cout << " " << row << "   ";
-
-						for (int col = 0; col < 10; col++)
-						{
-							cout << mazeBoard[row][col] << " ";
-						}
-						cout << endl;
-					}
-				} while (pressedKey == 'w' || pressedKey == 'W' || pressedKey == 's' || pressedKey == 'S' || pressedKey == 'a' || pressedKey == 'A' || pressedKey == 'd' || pressedKey == 'D');
-			}
+			mazeBoard[player.y][player.x] = player.symbol;
 		}
-	} while (mazeBoard[9][9] != 'S');
+
+			// print game mode and current position
+			cout << "Easy mode - 10 x 10" << endl;
+			cout << "Your current position is ";
+
+			for (int i = 0; i < 10; i++)
+			{
+				for (int j = 0; j < 10; j++) {
+					if (mazeBoard[i][j] == 'S')
+					{
+						cout << "[" << i << "][" << j << "]" << endl;
+					}
+				}
+			}
+
+			// print final position
+			cout << "The final is located on position [9][9]" << endl;
+
+			// print used moves
+			cout << "You've moved " << keysPressedCounter << " time/s" << endl << endl << "     ";
+
+			// print y coordinates
+			for (int i = 0; i < 10; i++)
+			{
+				cout << i << " ";
+			}
+
+			cout << endl << endl;
+
+			// print maze board
+			for (int i = 0; i < 10; i++)
+			{
+				// print x coordinates
+				cout << " " << i << "   ";
+
+				for (int j = 0; j < 10; j++)
+				{
+					cout << mazeBoard[i][j] << " ";
+				}
+				cout << endl;
+			}
+
+		pressedKey = _getch();
+
+		switch (pressedKey)
+		{
+		case KEY_LEFT:
+			if (mazeBoard[player.y][player.x - 1] != '#')
+			{
+				mazeBoard[player.y][player.x] = ' ';
+				player.x--;
+				keysPressedCounter++;
+			}
+			break;
+		case KEY_UP:
+			if (mazeBoard[player.y - 1][player.x] != '#' && player.y != 0)
+			{
+				mazeBoard[player.y][player.x] = ' ';
+				player.y--;
+				keysPressedCounter++;
+			}
+			break;
+		case KEY_DOWN:
+			if (mazeBoard[player.y + 1][player.x] != '#')
+			{
+				mazeBoard[player.y][player.x] = ' ';
+				mazeBoard[player.y + 1][player.x] = 'S';
+				player.y++;
+				keysPressedCounter++;
+			}
+			break;
+		case KEY_RIGHT:
+			if (mazeBoard[player.y][player.x + 1] != '#')
+			{
+				mazeBoard[player.y][player.x] = ' ';
+				player.x++;
+				keysPressedCounter++;
+			}
+			break;
+		}
+
+		if (player.y == 5 && player.x == 8)
+		{
+			mazeBoard[5][9] = 'F';
+		}
+
+		if (player.y == 9 && player.x == 9 || player.y == 5 && player.x == 9)
+		{
+			notWin = false;
+		}
+		system("CLS");
+	}
+
+	cout << "WIN!" << endl;
+	cout << "You've moved " << keysPressedCounter << " time/s" << endl;
 
 	for (int i = 0; i < 10; i++)
 	{
 		delete[] mazeBoard[i];
 	}
 }
-
 
 int main()
 {
