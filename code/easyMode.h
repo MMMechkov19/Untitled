@@ -18,7 +18,7 @@ struct Player
 // moves counter
 int keysPressedCounter = 0;
 
-void printMaze(char** mazeBoard, int keysPressedCounter)
+void printMaze(char** arr, int keysPressedCounter)
 {
 	// print game mode and current position
 	cout << "Easy mode - 10 x 10" << endl;
@@ -27,7 +27,7 @@ void printMaze(char** mazeBoard, int keysPressedCounter)
 	for (int i = 0; i < 10; i++)
 	{
 		for (int j = 0; j < 10; j++) {
-			if (mazeBoard[i][j] == 'S')
+			if (arr[i][j] == 'S')
 			{
 				cout << "[" << i << "][" << j << "]" << endl;
 			}
@@ -40,7 +40,7 @@ void printMaze(char** mazeBoard, int keysPressedCounter)
 	for (int i = 0; i < 10; i++)
 	{
 		for (int j = 0; j < 10; j++) {
-			if (mazeBoard[i][j] == 'F')
+			if (arr[i][j] == 'F')
 			{
 				finalCounter++;
 
@@ -75,64 +75,73 @@ void printMaze(char** mazeBoard, int keysPressedCounter)
 
 		for (int j = 0; j < 10; j++)
 		{
-			cout << mazeBoard[i][j] << " ";
+			cout << arr[i][j] << " ";
 		}
 		cout << endl;
 	}
 }
 
 // movement system
-void movementSystem(bool notWin, char** mazeBoard)
+void movementSystem(bool notWin, char** arr)
 {
 	// declare variable for the pressed key
 	char pressedKey;
 	Player player;
 	player.symbol = 'S';
-	player.x = 0;
-	player.y = 0;
+
+	for (int i = 0; i < 10; i++) 
+	{
+		for (int j = 0; j < 10; j++) 
+		{
+			if (arr[i][j] == 'S')
+			{
+				player.x = j;
+				player.y = i;
+			}
+		}
+	}
 
 	while (notWin)
 	{
-		if (mazeBoard[player.y][player.x] == ' ')
+		if (arr[player.y][player.x] == ' ' || arr[player.y][player.x] == 'o')
 		{
-			mazeBoard[player.y][player.x] = player.symbol;
+			arr[player.y][player.x] = player.symbol;
 		}
 
-		printMaze(mazeBoard, keysPressedCounter);
+		printMaze(arr, keysPressedCounter);
 
 		pressedKey = _getch();
 
 		switch (pressedKey)
 		{
 		case KEY_LEFT:
-			if (mazeBoard[player.y][player.x - 1] != '#')
+			if (arr[player.y][player.x - 1] != '#')
 			{
-				mazeBoard[player.y][player.x] = ' ';
+				arr[player.y][player.x] = ' ';
 				player.x--;
 				keysPressedCounter++;
 			}
 			break;
 		case KEY_UP:
-			if (mazeBoard[player.y - 1][player.x] != '#' && player.y != 0)
+			if (arr[player.y - 1][player.x] != '#')
 			{
-				mazeBoard[player.y][player.x] = ' ';
+				arr[player.y][player.x] = ' ';
 				player.y--;
 				keysPressedCounter++;
 			}
 			break;
 		case KEY_DOWN:
-			if (mazeBoard[player.y + 1][player.x] != '#')
+			if (arr[player.y + 1][player.x] != '#')
 			{
-				mazeBoard[player.y][player.x] = ' ';
-				mazeBoard[player.y + 1][player.x] = 'S';
+				arr[player.y][player.x] = ' ';
 				player.y++;
 				keysPressedCounter++;
 			}
 			break;
 		case KEY_RIGHT:
-			if (mazeBoard[player.y][player.x + 1] != '#')
+			if (arr[player.y][player.x + 1] != '#')
 			{
-				mazeBoard[player.y][player.x] = ' ';
+				arr[player.y][player.x] = ' ';
 				player.x++;
 				keysPressedCounter++;
 			}
@@ -141,7 +150,7 @@ void movementSystem(bool notWin, char** mazeBoard)
 
 		if (player.y == 5 && player.x == 8)
 		{
-			mazeBoard[5][9] = 'F';
+			arr[5][9] = 'F';
 		}
 
 		if (player.y == 9 && player.x == 9 || player.y == 5 && player.x == 9)
@@ -166,451 +175,490 @@ void mazeDeclaration()
 
 	bool notWin = true;
 
-	// declare 2D array dynamically 
-	char** mazeBoard = new char* [10];
-
-	for (int i = 0; i <= 10; i++)
+	srand(time(0));
+	int randomMaze = rand() % 4, guess = 0;
+	cout << randomMaze;
+	if (randomMaze == 0)
 	{
-		mazeBoard[i] = new char[10];
+		// declare 2D array dynamically 
+		char** mazeBoard = new char* [10];
+
+		for (int i = 0; i <= 10; i++)
+		{
+			mazeBoard[i] = new char[10];
+		}
+
+		// initialize array's values
+		mazeBoard[0][0] = 'S';
+		mazeBoard[0][1] = ' ';
+		mazeBoard[0][2] = '#';
+		mazeBoard[0][3] = '#';
+		mazeBoard[0][4] = '#';
+		mazeBoard[0][5] = '#';
+		mazeBoard[0][6] = '#';
+		mazeBoard[0][7] = '#';
+		mazeBoard[0][8] = '#';
+		mazeBoard[0][9] = '#';
+		mazeBoard[1][0] = '#';
+		mazeBoard[1][1] = ' ';
+		mazeBoard[1][2] = '#';
+		mazeBoard[1][3] = '#';
+		mazeBoard[1][4] = '#';
+		mazeBoard[1][5] = '#';
+		mazeBoard[1][6] = '#';
+		mazeBoard[1][7] = '#';
+		mazeBoard[1][8] = '#';
+		mazeBoard[1][9] = '#';
+		mazeBoard[2][0] = '#';
+		mazeBoard[2][1] = ' ';
+		mazeBoard[2][2] = '#';
+		mazeBoard[2][3] = '#';
+		mazeBoard[2][4] = ' ';
+		mazeBoard[2][5] = ' ';
+		mazeBoard[2][6] = ' ';
+		mazeBoard[2][7] = '#';
+		mazeBoard[2][8] = '#';
+		mazeBoard[2][9] = '#';
+		mazeBoard[3][0] = '#';
+		mazeBoard[3][1] = ' ';
+		mazeBoard[3][2] = ' ';
+		mazeBoard[3][3] = '#';
+		mazeBoard[3][4] = ' ';
+		mazeBoard[3][5] = '#';
+		mazeBoard[3][6] = ' ';
+		mazeBoard[3][7] = ' ';
+		mazeBoard[3][8] = ' ';
+		mazeBoard[3][9] = '#';
+		mazeBoard[4][0] = '#';
+		mazeBoard[4][1] = '#';
+		mazeBoard[4][2] = ' ';
+		mazeBoard[4][3] = '#';
+		mazeBoard[4][4] = ' ';
+		mazeBoard[4][5] = '#';
+		mazeBoard[4][6] = ' ';
+		mazeBoard[4][7] = '#';
+		mazeBoard[4][8] = ' ';
+		mazeBoard[4][9] = '#';
+		mazeBoard[5][0] = '#';
+		mazeBoard[5][1] = '#';
+		mazeBoard[5][2] = ' ';
+		mazeBoard[5][3] = ' ';
+		mazeBoard[5][4] = ' ';
+		mazeBoard[5][5] = '#';
+		mazeBoard[5][6] = ' ';
+		mazeBoard[5][7] = '#';
+		mazeBoard[5][8] = 'o';
+		mazeBoard[5][9] = '#';
+		mazeBoard[6][0] = '#';
+		mazeBoard[6][1] = '#';
+		mazeBoard[6][2] = '#';
+		mazeBoard[6][3] = '#';
+		mazeBoard[6][4] = '#';
+		mazeBoard[6][5] = '#';
+		mazeBoard[6][6] = ' ';
+		mazeBoard[6][7] = '#';
+		mazeBoard[6][8] = '#';
+		mazeBoard[6][9] = '#';
+		mazeBoard[7][0] = '#';
+		mazeBoard[7][1] = ' ';
+		mazeBoard[7][2] = ' ';
+		mazeBoard[7][3] = ' ';
+		mazeBoard[7][4] = ' ';
+		mazeBoard[7][5] = ' ';
+		mazeBoard[7][6] = ' ';
+		mazeBoard[7][7] = ' ';
+		mazeBoard[7][8] = ' ';
+		mazeBoard[7][9] = '#';
+		mazeBoard[8][0] = '#';
+		mazeBoard[8][1] = '#';
+		mazeBoard[8][2] = ' ';
+		mazeBoard[8][3] = '#';
+		mazeBoard[8][4] = '#';
+		mazeBoard[8][5] = '#';
+		mazeBoard[8][6] = ' ';
+		mazeBoard[8][7] = '#';
+		mazeBoard[8][8] = ' ';
+		mazeBoard[8][9] = '#';
+		mazeBoard[9][0] = '#';
+		mazeBoard[9][1] = '#';
+		mazeBoard[9][2] = '#';
+		mazeBoard[9][3] = '#';
+		mazeBoard[9][4] = '#';
+		mazeBoard[9][5] = '#';
+		mazeBoard[9][6] = '#';
+		mazeBoard[9][7] = '#';
+		mazeBoard[9][8] = ' ';
+		mazeBoard[9][9] = 'F';
+
+		movementSystem(notWin, mazeBoard);
+		winMessage();
+
+		for (int i = 0; i < 10; i++)
+		{
+			delete[] mazeBoard[i];
+		}
+	}
+	else if (randomMaze == 1)
+	{
+
+		// declare 2D array dynamically 
+		char** mazeBoard1 = new char* [10];
+
+		for (int i = 0; i <= 10; i++)
+		{
+			mazeBoard1[i] = new char[10];
+		}
+
+		// initialize array's values
+		mazeBoard1[0][0] = '#';
+		mazeBoard1[0][1] = '#';
+		mazeBoard1[0][2] = '#';
+		mazeBoard1[0][3] = 'S';
+		mazeBoard1[0][4] = '#';
+		mazeBoard1[0][5] = '#';
+		mazeBoard1[0][6] = '#';
+		mazeBoard1[0][7] = '#';
+		mazeBoard1[0][8] = '#';
+		mazeBoard1[0][9] = '#';
+		mazeBoard1[1][0] = '#';
+		mazeBoard1[1][1] = '#';
+		mazeBoard1[1][2] = '#';
+		mazeBoard1[1][3] = ' ';
+		mazeBoard1[1][4] = '#';
+		mazeBoard1[1][5] = '#';
+		mazeBoard1[1][6] = '#';
+		mazeBoard1[1][7] = '#';
+		mazeBoard1[1][8] = '#';
+		mazeBoard1[1][9] = '#';
+		mazeBoard1[2][0] = '#';
+		mazeBoard1[2][1] = ' ';
+		mazeBoard1[2][2] = ' ';
+		mazeBoard1[2][3] = ' ';
+		mazeBoard1[2][4] = ' ';
+		mazeBoard1[2][5] = ' ';
+		mazeBoard1[2][6] = ' ';
+		mazeBoard1[2][7] = ' ';
+		mazeBoard1[2][8] = '#';
+		mazeBoard1[2][9] = '#';
+		mazeBoard1[3][0] = '#';
+		mazeBoard1[3][1] = '#';
+		mazeBoard1[3][2] = '#';
+		mazeBoard1[3][3] = '#';
+		mazeBoard1[3][4] = '#';
+		mazeBoard1[3][5] = '#';
+		mazeBoard1[3][6] = '#';
+		mazeBoard1[3][7] = ' ';
+		mazeBoard1[3][8] = '#';
+		mazeBoard1[3][9] = '#';
+		mazeBoard1[4][0] = '#';
+		mazeBoard1[4][1] = ' ';
+		mazeBoard1[4][2] = ' ';
+		mazeBoard1[4][3] = ' ';
+		mazeBoard1[4][4] = ' ';
+		mazeBoard1[4][5] = ' ';
+		mazeBoard1[4][6] = ' ';
+		mazeBoard1[4][7] = ' ';
+		mazeBoard1[4][8] = '#';
+		mazeBoard1[4][9] = '#';
+		mazeBoard1[5][0] = '#';
+		mazeBoard1[5][1] = ' ';
+		mazeBoard1[5][2] = '#';
+		mazeBoard1[5][3] = '#';
+		mazeBoard1[5][4] = '#';
+		mazeBoard1[5][5] = '#';
+		mazeBoard1[5][6] = '#';
+		mazeBoard1[5][7] = ' ';
+		mazeBoard1[5][8] = 'o';
+		mazeBoard1[5][9] = '#';
+		mazeBoard1[6][0] = '#';
+		mazeBoard1[6][1] = ' ';
+		mazeBoard1[6][2] = ' ';
+		mazeBoard1[6][3] = ' ';
+		mazeBoard1[6][4] = ' ';
+		mazeBoard1[6][5] = ' ';
+		mazeBoard1[6][6] = '#';
+		mazeBoard1[6][7] = '#';
+		mazeBoard1[6][8] = '#';
+		mazeBoard1[6][9] = '#';
+		mazeBoard1[7][0] = '#';
+		mazeBoard1[7][1] = '#';
+		mazeBoard1[7][2] = ' ';
+		mazeBoard1[7][3] = '#';
+		mazeBoard1[7][4] = '#';
+		mazeBoard1[7][5] = ' ';
+		mazeBoard1[7][6] = ' ';
+		mazeBoard1[7][7] = ' ';
+		mazeBoard1[7][8] = ' ';
+		mazeBoard1[7][9] = '#';
+		mazeBoard1[8][0] = '#';
+		mazeBoard1[8][1] = '#';
+		mazeBoard1[8][2] = ' ';
+		mazeBoard1[8][3] = '#';
+		mazeBoard1[8][4] = '#';
+		mazeBoard1[8][5] = ' ';
+		mazeBoard1[8][6] = '#';
+		mazeBoard1[8][7] = '#';
+		mazeBoard1[8][8] = '#';
+		mazeBoard1[8][9] = '#';
+		mazeBoard1[9][0] = '#';
+		mazeBoard1[9][1] = '#';
+		mazeBoard1[9][2] = '#';
+		mazeBoard1[9][3] = '#';
+		mazeBoard1[9][4] = '#';
+		mazeBoard1[9][5] = 'F';
+		mazeBoard1[9][6] = '#';
+		mazeBoard1[9][7] = '#';
+		mazeBoard1[9][8] = '#';
+		mazeBoard1[9][9] = '#';
+
+		movementSystem(notWin, mazeBoard1);
+		winMessage();
+
+		for (int i = 0; i < 10; i++)
+		{
+			delete[] mazeBoard1[i];
+		}
 	}
 
-	// initialize array's values
-	mazeBoard[0][0] = 'S';
-	mazeBoard[0][1] = ' ';
-	mazeBoard[0][2] = '#';
-	mazeBoard[0][3] = '#';
-	mazeBoard[0][4] = '#';
-	mazeBoard[0][5] = '#';
-	mazeBoard[0][6] = '#';
-	mazeBoard[0][7] = '#';
-	mazeBoard[0][8] = '#';
-	mazeBoard[0][9] = '#';
-	mazeBoard[1][0] = '#';
-	mazeBoard[1][1] = ' ';
-	mazeBoard[1][2] = '#';
-	mazeBoard[1][3] = '#';
-	mazeBoard[1][4] = '#';
-	mazeBoard[1][5] = '#';
-	mazeBoard[1][6] = '#';
-	mazeBoard[1][7] = '#';
-	mazeBoard[1][8] = '#';
-	mazeBoard[1][9] = '#';
-	mazeBoard[2][0] = '#';
-	mazeBoard[2][1] = ' ';
-	mazeBoard[2][2] = '#';
-	mazeBoard[2][3] = '#';
-	mazeBoard[2][4] = ' ';
-	mazeBoard[2][5] = ' ';
-	mazeBoard[2][6] = ' ';
-	mazeBoard[2][7] = '#';
-	mazeBoard[2][8] = '#';
-	mazeBoard[2][9] = '#';
-	mazeBoard[3][0] = '#';
-	mazeBoard[3][1] = ' ';
-	mazeBoard[3][2] = ' ';
-	mazeBoard[3][3] = '#';
-	mazeBoard[3][4] = ' ';
-	mazeBoard[3][5] = '#';
-	mazeBoard[3][6] = ' ';
-	mazeBoard[3][7] = ' ';
-	mazeBoard[3][8] = ' ';
-	mazeBoard[3][9] = '#';
-	mazeBoard[4][0] = '#';
-	mazeBoard[4][1] = '#';
-	mazeBoard[4][2] = ' ';
-	mazeBoard[4][3] = '#';
-	mazeBoard[4][4] = ' ';
-	mazeBoard[4][5] = '#';
-	mazeBoard[4][6] = ' ';
-	mazeBoard[4][7] = '#';
-	mazeBoard[4][8] = ' ';
-	mazeBoard[4][9] = '#';
-	mazeBoard[5][0] = '#';
-	mazeBoard[5][1] = '#';
-	mazeBoard[5][2] = ' ';
-	mazeBoard[5][3] = ' ';
-	mazeBoard[5][4] = ' ';
-	mazeBoard[5][5] = '#';
-	mazeBoard[5][6] = ' ';
-	mazeBoard[5][7] = '#';
-	mazeBoard[5][8] = 'o';
-	mazeBoard[5][9] = '#';
-	mazeBoard[6][0] = '#';
-	mazeBoard[6][1] = '#';
-	mazeBoard[6][2] = '#';
-	mazeBoard[6][3] = '#';
-	mazeBoard[6][4] = '#';
-	mazeBoard[6][5] = '#';
-	mazeBoard[6][6] = ' ';
-	mazeBoard[6][7] = '#';
-	mazeBoard[6][8] = '#';
-	mazeBoard[6][9] = '#';
-	mazeBoard[7][0] = '#';
-	mazeBoard[7][1] = ' ';
-	mazeBoard[7][2] = ' ';
-	mazeBoard[7][3] = ' ';
-	mazeBoard[7][4] = ' ';
-	mazeBoard[7][5] = ' ';
-	mazeBoard[7][6] = ' ';
-	mazeBoard[7][7] = ' ';
-	mazeBoard[7][8] = ' ';
-	mazeBoard[7][9] = '#';
-	mazeBoard[8][0] = '#';
-	mazeBoard[8][1] = '#';
-	mazeBoard[8][2] = ' ';
-	mazeBoard[8][3] = '#';
-	mazeBoard[8][4] = '#';
-	mazeBoard[8][5] = '#';
-	mazeBoard[8][6] = ' ';
-	mazeBoard[8][7] = '#';
-	mazeBoard[8][8] = ' ';
-	mazeBoard[8][9] = '#';
-	mazeBoard[9][0] = '#';
-	mazeBoard[9][1] = '#';
-	mazeBoard[9][2] = '#';
-	mazeBoard[9][3] = '#';
-	mazeBoard[9][4] = '#';
-	mazeBoard[9][5] = '#';
-	mazeBoard[9][6] = '#';
-	mazeBoard[9][7] = '#';
-	mazeBoard[9][8] = ' ';
-	mazeBoard[9][9] = 'F';
-
-	// declare 2D array dynamically 
-	char** mazeBoard1 = new char* [10];
-
-	for (int i = 0; i <= 10; i++)
+	else if (randomMaze == 2)
 	{
-		mazeBoard1[i] = new char[10];
+		char** mazeBoard2 = new char* [10];
+
+		for (int i = 0; i <= 10; i++)
+		{
+			mazeBoard2[i] = new char[10];
+		}
+
+		// initialize array's values
+		mazeBoard2[0][0] = '#';
+		mazeBoard2[0][1] = '#';
+		mazeBoard2[0][2] = '#';
+		mazeBoard2[0][3] = '#';
+		mazeBoard2[0][4] = '#';
+		mazeBoard2[0][5] = '#';
+		mazeBoard2[0][6] = '#';
+		mazeBoard2[0][7] = '#';
+		mazeBoard2[0][8] = '#';
+		mazeBoard2[0][9] = '#';
+		mazeBoard2[1][0] = '#';
+		mazeBoard2[1][1] = '#';
+		mazeBoard2[1][2] = ' ';
+		mazeBoard2[1][3] = ' ';
+		mazeBoard2[1][4] = '#';
+		mazeBoard2[1][5] = ' ';
+		mazeBoard2[1][6] = ' ';
+		mazeBoard2[1][7] = ' ';
+		mazeBoard2[1][8] = ' ';
+		mazeBoard2[1][9] = '#';
+		mazeBoard2[2][0] = 'F';
+		mazeBoard2[2][1] = ' ';
+		mazeBoard2[2][2] = ' ';
+		mazeBoard2[2][3] = ' ';
+		mazeBoard2[2][4] = ' ';
+		mazeBoard2[2][5] = ' ';
+		mazeBoard2[2][6] = '#';
+		mazeBoard2[2][7] = '#';
+		mazeBoard2[2][8] = ' ';
+		mazeBoard2[2][9] = '#';
+		mazeBoard2[3][0] = '#';
+		mazeBoard2[3][1] = '#';
+		mazeBoard2[3][2] = '#';
+		mazeBoard2[3][3] = '#';
+		mazeBoard2[3][4] = '#';
+		mazeBoard2[3][5] = '#';
+		mazeBoard2[3][6] = ' ';
+		mazeBoard2[3][7] = ' ';
+		mazeBoard2[3][8] = ' ';
+		mazeBoard2[3][9] = '#';
+		mazeBoard2[4][0] = '#';
+		mazeBoard2[4][1] = 'o';
+		mazeBoard2[4][2] = ' ';
+		mazeBoard2[4][3] = ' ';
+		mazeBoard2[4][4] = '#';
+		mazeBoard2[4][5] = '#';
+		mazeBoard2[4][6] = ' ';
+		mazeBoard2[4][7] = '#';
+		mazeBoard2[4][8] = '#';
+		mazeBoard2[4][9] = '#';
+		mazeBoard2[5][0] = '#';
+		mazeBoard2[5][1] = '#';
+		mazeBoard2[5][2] = '#';
+		mazeBoard2[5][3] = ' ';
+		mazeBoard2[5][4] = '#';
+		mazeBoard2[5][5] = ' ';
+		mazeBoard2[5][6] = ' ';
+		mazeBoard2[5][7] = ' ';
+		mazeBoard2[5][8] = '#';
+		mazeBoard2[5][9] = '#';
+		mazeBoard2[6][0] = '#';
+		mazeBoard2[6][1] = '#';
+		mazeBoard2[6][2] = '#';
+		mazeBoard2[6][3] = ' ';
+		mazeBoard2[6][4] = ' ';
+		mazeBoard2[6][5] = ' ';
+		mazeBoard2[6][6] = '#';
+		mazeBoard2[6][7] = '#';
+		mazeBoard2[6][8] = ' ';
+		mazeBoard2[6][9] = '#';
+		mazeBoard2[7][0] = '#';
+		mazeBoard2[7][1] = ' ';
+		mazeBoard2[7][2] = ' ';
+		mazeBoard2[7][3] = ' ';
+		mazeBoard2[7][4] = '#';
+		mazeBoard2[7][5] = '#';
+		mazeBoard2[7][6] = '#';
+		mazeBoard2[7][7] = '#';
+		mazeBoard2[7][8] = ' ';
+		mazeBoard2[7][9] = '#';
+		mazeBoard2[8][0] = '#';
+		mazeBoard2[8][1] = '#';
+		mazeBoard2[8][2] = '#';
+		mazeBoard2[8][3] = ' ';
+		mazeBoard2[8][4] = ' ';
+		mazeBoard2[8][5] = ' ';
+		mazeBoard2[8][6] = ' ';
+		mazeBoard2[8][7] = ' ';
+		mazeBoard2[8][8] = ' ';
+		mazeBoard2[8][9] = 'S';
+		mazeBoard2[9][0] = '#';
+		mazeBoard2[9][1] = '#';
+		mazeBoard2[9][2] = '#';
+		mazeBoard2[9][3] = '#';
+		mazeBoard2[9][4] = '#';
+		mazeBoard2[9][5] = '#';
+		mazeBoard2[9][6] = '#';
+		mazeBoard2[9][7] = '#';
+		mazeBoard2[9][8] = '#';
+		mazeBoard2[9][9] = '#';
+
+		movementSystem(notWin, mazeBoard2);
+		winMessage();
+
+		for (int i = 0; i < 10; i++)
+		{
+			delete[] mazeBoard2[i];
+		}
 	}
 
-	// initialize array's values
-	mazeBoard1[0][0] = '#';
-	mazeBoard1[0][1] = '#';
-	mazeBoard1[0][2] = '#';
-	mazeBoard1[0][3] = 'S';
-	mazeBoard1[0][4] = '#';
-	mazeBoard1[0][5] = '#';
-	mazeBoard1[0][6] = '#';
-	mazeBoard1[0][7] = '#';
-	mazeBoard1[0][8] = '#';
-	mazeBoard1[0][9] = '#';
-	mazeBoard1[1][0] = '#';
-	mazeBoard1[1][1] = '#';
-	mazeBoard1[1][2] = '#';
-	mazeBoard1[1][3] = ' ';
-	mazeBoard1[1][4] = '#';
-	mazeBoard1[1][5] = '#';
-	mazeBoard1[1][6] = '#';
-	mazeBoard1[1][7] = '#';
-	mazeBoard1[1][8] = '#';
-	mazeBoard1[1][9] = '#';
-	mazeBoard1[2][0] = '#';
-	mazeBoard1[2][1] = ' ';
-	mazeBoard1[2][2] = ' ';
-	mazeBoard1[2][3] = ' ';
-	mazeBoard1[2][4] = ' ';
-	mazeBoard1[2][5] = ' ';
-	mazeBoard1[2][6] = ' ';
-	mazeBoard1[2][7] = ' ';
-	mazeBoard1[2][8] = '#';
-	mazeBoard1[2][9] = '#';
-	mazeBoard1[3][0] = '#';
-	mazeBoard1[3][1] = '#';
-	mazeBoard1[3][2] = '#';
-	mazeBoard1[3][3] = '#';
-	mazeBoard1[3][4] = '#';
-	mazeBoard1[3][5] = '#';
-	mazeBoard1[3][6] = '#';
-	mazeBoard1[3][7] = ' ';
-	mazeBoard1[3][8] = '#';
-	mazeBoard1[3][9] = '#';
-	mazeBoard1[4][0] = '#';
-	mazeBoard1[4][1] = ' ';
-	mazeBoard1[4][2] = ' ';
-	mazeBoard1[4][3] = ' ';
-	mazeBoard1[4][4] = ' ';
-	mazeBoard1[4][5] = ' ';
-	mazeBoard1[4][6] = ' ';
-	mazeBoard1[4][7] = ' ';
-	mazeBoard1[4][8] = '#';
-	mazeBoard1[4][9] = '#';
-	mazeBoard1[5][0] = '#';
-	mazeBoard1[5][1] = ' ';
-	mazeBoard1[5][2] = '#';
-	mazeBoard1[5][3] = '#';
-	mazeBoard1[5][4] = '#';
-	mazeBoard1[5][5] = '#';
-	mazeBoard1[5][6] = '#';
-	mazeBoard1[5][7] = ' ';
-	mazeBoard1[5][8] = 'o';
-	mazeBoard1[5][9] = '#';
-	mazeBoard1[6][0] = '#';
-	mazeBoard1[6][1] = ' ';
-	mazeBoard1[6][2] = ' ';
-	mazeBoard1[6][3] = ' ';
-	mazeBoard1[6][4] = ' ';
-	mazeBoard1[6][5] = ' ';
-	mazeBoard1[6][6] = '#';
-	mazeBoard1[6][7] = '#';
-	mazeBoard1[6][8] = '#';
-	mazeBoard1[6][9] = '#';
-	mazeBoard1[7][0] = '#';
-	mazeBoard1[7][1] = '#';
-	mazeBoard1[7][2] = ' ';
-	mazeBoard1[7][3] = '#';
-	mazeBoard1[7][4] = '#';
-	mazeBoard1[7][5] = ' ';
-	mazeBoard1[7][6] = ' ';
-	mazeBoard1[7][7] = ' ';
-	mazeBoard1[7][8] = ' ';
-	mazeBoard1[7][9] = '#';
-	mazeBoard1[8][0] = '#';
-	mazeBoard1[8][1] = '#';
-	mazeBoard1[8][2] = ' ';
-	mazeBoard1[8][3] = '#';
-	mazeBoard1[8][4] = '#';
-	mazeBoard1[8][5] = ' ';
-	mazeBoard1[8][6] = '#';
-	mazeBoard1[8][7] = '#';
-	mazeBoard1[8][8] = '#';
-	mazeBoard1[8][9] = '#';
-	mazeBoard1[9][0] = '#';
-	mazeBoard1[9][1] = '#';
-	mazeBoard1[9][2] = '#';
-	mazeBoard1[9][3] = '#';
-	mazeBoard1[9][4] = '#';
-	mazeBoard1[9][5] = 'F';
-	mazeBoard1[9][6] = '#';
-	mazeBoard1[9][7] = '#';
-	mazeBoard1[9][8] = '#';
-	mazeBoard1[9][9] = '#';
-
-	// declare 2D array dynamically 
-	char** mazeBoard2 = new char* [10];
-
-	for (int i = 0; i <= 10; i++)
+	else if (randomMaze == 3)
 	{
-		mazeBoard2[i] = new char[10];
-	}
+		// declare 2D array dynamically 
+		char** mazeBoard3 = new char* [10];
 
-	// initialize array's values
-	mazeBoard2[0][0] = '#';
-	mazeBoard2[0][1] = '#';
-	mazeBoard2[0][2] = '#';
-	mazeBoard2[0][3] = '#';
-	mazeBoard2[0][4] = '#';
-	mazeBoard2[0][5] = '#';
-	mazeBoard2[0][6] = '#';
-	mazeBoard2[0][7] = '#';
-	mazeBoard2[0][8] = '#';
-	mazeBoard2[0][9] = '#';
-	mazeBoard2[1][0] = '#';
-	mazeBoard2[1][1] = '#';
-	mazeBoard2[1][2] = ' ';
-	mazeBoard2[1][3] = ' ';
-	mazeBoard2[1][4] = '#';
-	mazeBoard2[1][5] = ' ';
-	mazeBoard2[1][6] = ' ';
-	mazeBoard2[1][7] = ' ';
-	mazeBoard2[1][8] = ' ';
-	mazeBoard2[1][9] = '#';
-	mazeBoard2[2][0] = 'F';
-	mazeBoard2[2][1] = ' ';
-	mazeBoard2[2][2] = ' ';
-	mazeBoard2[2][3] = ' ';
-	mazeBoard2[2][4] = ' ';
-	mazeBoard2[2][5] = ' ';
-	mazeBoard2[2][6] = '#';
-	mazeBoard2[2][7] = '#';
-	mazeBoard2[2][8] = ' ';
-	mazeBoard2[2][9] = '#';
-	mazeBoard2[3][0] = '#';
-	mazeBoard2[3][1] = '#';
-	mazeBoard2[3][2] = '#';
-	mazeBoard2[3][3] = '#';
-	mazeBoard2[3][4] = '#';
-	mazeBoard2[3][5] = '#';
-	mazeBoard2[3][6] = ' ';
-	mazeBoard2[3][7] = ' ';
-	mazeBoard2[3][8] = ' ';
-	mazeBoard2[3][9] = '#';
-	mazeBoard2[4][0] = '#';
-	mazeBoard2[4][1] = 'o';
-	mazeBoard2[4][2] = ' ';
-	mazeBoard2[4][3] = ' ';
-	mazeBoard2[4][4] = '#';
-	mazeBoard2[4][5] = '#';
-	mazeBoard2[4][6] = ' ';
-	mazeBoard2[4][7] = '#';
-	mazeBoard2[4][8] = '#';
-	mazeBoard2[4][9] = '#';
-	mazeBoard2[5][0] = '#';
-	mazeBoard2[5][1] = '#';
-	mazeBoard2[5][2] = '#';
-	mazeBoard2[5][3] = ' ';
-	mazeBoard2[5][4] = '#';
-	mazeBoard2[5][5] = ' ';
-	mazeBoard2[5][6] = ' ';
-	mazeBoard2[5][7] = ' ';
-	mazeBoard2[5][8] = '#';
-	mazeBoard2[5][9] = '#';
-	mazeBoard2[6][0] = '#';
-	mazeBoard2[6][1] = '#';
-	mazeBoard2[6][2] = '#';
-	mazeBoard2[6][3] = ' ';
-	mazeBoard2[6][4] = ' ';
-	mazeBoard2[6][5] = ' ';
-	mazeBoard2[6][6] = '#';
-	mazeBoard2[6][7] = '#';
-	mazeBoard2[6][8] = ' ';
-	mazeBoard2[6][9] = '#';
-	mazeBoard2[7][0] = '#';
-	mazeBoard2[7][1] = ' ';
-	mazeBoard2[7][2] = ' ';
-	mazeBoard2[7][3] = ' ';
-	mazeBoard2[7][4] = '#';
-	mazeBoard2[7][5] = '#';
-	mazeBoard2[7][6] = '#';
-	mazeBoard2[7][7] = '#';
-	mazeBoard2[7][8] = ' ';
-	mazeBoard2[7][9] = '#';
-	mazeBoard2[8][0] = '#';
-	mazeBoard2[8][1] = '#';
-	mazeBoard2[8][2] = '#';
-	mazeBoard2[8][3] = ' ';
-	mazeBoard2[8][4] = ' ';
-	mazeBoard2[8][5] = ' ';
-	mazeBoard2[8][6] = ' ';
-	mazeBoard2[8][7] = ' ';
-	mazeBoard2[8][8] = ' ';
-	mazeBoard2[8][9] = 'S';
-	mazeBoard2[9][0] = '#';
-	mazeBoard2[9][1] = '#';
-	mazeBoard2[9][2] = '#';
-	mazeBoard2[9][3] = '#';
-	mazeBoard2[9][4] = '#';
-	mazeBoard2[9][5] = 'F';
-	mazeBoard2[9][6] = '#';
-	mazeBoard2[9][7] = '#';
-	mazeBoard2[9][8] = '#';
-	mazeBoard2[9][9] = '#';
+		for (int i = 0; i <= 10; i++)
+		{
+			mazeBoard3[i] = new char[10];
+		}
 
-	// declare 2D array dynamically 
-	char** mazeBoard3 = new char* [10];
+		// initialize array's values
+		mazeBoard3[0][0] = '#';
+		mazeBoard3[0][1] = '#';
+		mazeBoard3[0][2] = '#';
+		mazeBoard3[0][3] = '#';
+		mazeBoard3[0][4] = '#';
+		mazeBoard3[0][5] = '#';
+		mazeBoard3[0][6] = '#';
+		mazeBoard3[0][7] = '#';
+		mazeBoard3[0][8] = 'F';
+		mazeBoard3[0][9] = '#';
+		mazeBoard3[1][0] = '#';
+		mazeBoard3[1][1] = ' ';
+		mazeBoard3[1][2] = ' ';
+		mazeBoard3[1][3] = ' ';
+		mazeBoard3[1][4] = '#';
+		mazeBoard3[1][5] = '#';
+		mazeBoard3[1][6] = ' ';
+		mazeBoard3[1][7] = ' ';
+		mazeBoard3[1][8] = ' ';
+		mazeBoard3[1][9] = '#';
+		mazeBoard3[2][0] = '#';
+		mazeBoard3[2][1] = ' ';
+		mazeBoard3[2][2] = '#';
+		mazeBoard3[2][3] = ' ';
+		mazeBoard3[2][4] = '#';
+		mazeBoard3[2][5] = ' ';
+		mazeBoard3[2][6] = ' ';
+		mazeBoard3[2][7] = '#';
+		mazeBoard3[2][8] = '#';
+		mazeBoard3[2][9] = '#';
+		mazeBoard3[3][0] = '#';
+		mazeBoard3[3][1] = ' ';
+		mazeBoard3[3][2] = '#';
+		mazeBoard3[3][3] = ' ';
+		mazeBoard3[3][4] = '#';
+		mazeBoard3[3][5] = ' ';
+		mazeBoard3[3][6] = '#';
+		mazeBoard3[3][7] = '#';
+		mazeBoard3[3][8] = '#';
+		mazeBoard3[3][9] = '#';
+		mazeBoard3[4][0] = '#';
+		mazeBoard3[4][1] = ' ';
+		mazeBoard3[4][2] = '#';
+		mazeBoard3[4][3] = ' ';
+		mazeBoard3[4][4] = '#';
+		mazeBoard3[4][5] = ' ';
+		mazeBoard3[4][6] = ' ';
+		mazeBoard3[4][7] = ' ';
+		mazeBoard3[4][8] = 'o';
+		mazeBoard3[4][9] = '#';
+		mazeBoard3[5][0] = '#';
+		mazeBoard3[5][1] = ' ';
+		mazeBoard3[5][2] = '#';
+		mazeBoard3[5][3] = ' ';
+		mazeBoard3[5][4] = '#';
+		mazeBoard3[5][5] = ' ';
+		mazeBoard3[5][6] = '#';
+		mazeBoard3[5][7] = '#';
+		mazeBoard3[5][8] = '#';
+		mazeBoard3[5][9] = '#';
+		mazeBoard3[6][0] = '#';
+		mazeBoard3[6][1] = ' ';
+		mazeBoard3[6][2] = '#';
+		mazeBoard3[6][3] = ' ';
+		mazeBoard3[6][4] = '#';
+		mazeBoard3[6][5] = ' ';
+		mazeBoard3[6][6] = ' ';
+		mazeBoard3[6][7] = ' ';
+		mazeBoard3[6][8] = ' ';
+		mazeBoard3[6][9] = '#';
+		mazeBoard3[7][0] = '#';
+		mazeBoard3[7][1] = ' ';
+		mazeBoard3[7][2] = '#';
+		mazeBoard3[7][3] = ' ';
+		mazeBoard3[7][4] = '#';
+		mazeBoard3[7][5] = '#';
+		mazeBoard3[7][6] = '#';
+		mazeBoard3[7][7] = '#';
+		mazeBoard3[7][8] = ' ';
+		mazeBoard3[7][9] = '#';
+		mazeBoard3[8][0] = '#';
+		mazeBoard3[8][1] = ' ';
+		mazeBoard3[8][2] = '#';
+		mazeBoard3[8][3] = ' ';
+		mazeBoard3[8][4] = ' ';
+		mazeBoard3[8][5] = ' ';
+		mazeBoard3[8][6] = ' ';
+		mazeBoard3[8][7] = ' ';
+		mazeBoard3[8][8] = ' ';
+		mazeBoard3[8][9] = '#';
+		mazeBoard3[9][0] = '#';
+		mazeBoard3[9][1] = 'S';
+		mazeBoard3[9][2] = '#';
+		mazeBoard3[9][3] = '#';
+		mazeBoard3[9][4] = '#';
+		mazeBoard3[9][5] = '#';
+		mazeBoard3[9][6] = '#';
+		mazeBoard3[9][7] = '#';
+		mazeBoard3[9][8] = '#';
+		mazeBoard3[9][9] = '#';
 
-	for (int i = 0; i <= 10; i++)
-	{
-		mazeBoard3[i] = new char[10];
-	}
 
-	// initialize array's values
-	mazeBoard3[0][0] = '#';
-	mazeBoard3[0][1] = '#';
-	mazeBoard3[0][2] = '#';
-	mazeBoard3[0][3] = '#';
-	mazeBoard3[0][4] = '#';
-	mazeBoard3[0][5] = '#';
-	mazeBoard3[0][6] = '#';
-	mazeBoard3[0][7] = '#';
-	mazeBoard3[0][8] = 'F';
-	mazeBoard3[0][9] = '#';
-	mazeBoard3[1][0] = '#';
-	mazeBoard3[1][1] = ' ';
-	mazeBoard3[1][2] = ' ';
-	mazeBoard3[1][3] = ' ';
-	mazeBoard3[1][4] = '#';
-	mazeBoard3[1][5] = '#';
-	mazeBoard3[1][6] = ' ';
-	mazeBoard3[1][7] = ' ';
-	mazeBoard3[1][8] = ' ';
-	mazeBoard3[1][9] = '#';
-	mazeBoard3[2][0] = '#';
-	mazeBoard3[2][1] = ' ';
-	mazeBoard3[2][2] = '#';
-	mazeBoard3[2][3] = ' ';
-	mazeBoard3[2][4] = '#';
-	mazeBoard3[2][5] = ' ';
-	mazeBoard3[2][6] = ' ';
-	mazeBoard3[2][7] = '#';
-	mazeBoard3[2][8] = '#';
-	mazeBoard3[2][9] = '#';
-	mazeBoard3[3][0] = '#';
-	mazeBoard3[3][1] = ' ';
-	mazeBoard3[3][2] = '#';
-	mazeBoard3[3][3] = ' ';
-	mazeBoard3[3][4] = '#';
-	mazeBoard3[3][5] = ' ';
-	mazeBoard3[3][6] = '#';
-	mazeBoard3[3][7] = '#';
-	mazeBoard3[3][8] = '#';
-	mazeBoard3[3][9] = '#';
-	mazeBoard3[4][0] = '#';
-	mazeBoard3[4][1] = ' ';
-	mazeBoard3[4][2] = '#';
-	mazeBoard3[4][3] = ' ';
-	mazeBoard3[4][4] = '#';
-	mazeBoard3[4][5] = ' ';
-	mazeBoard3[4][6] = ' ';
-	mazeBoard3[4][7] = ' ';
-	mazeBoard3[4][8] = 'o';
-	mazeBoard3[4][9] = '#';
-	mazeBoard3[5][0] = '#';
-	mazeBoard3[5][1] = ' ';
-	mazeBoard3[5][2] = '#';
-	mazeBoard3[5][3] = ' ';
-	mazeBoard3[5][4] = '#';
-	mazeBoard3[5][5] = ' ';
-	mazeBoard3[5][6] = '#';
-	mazeBoard3[5][7] = '#';
-	mazeBoard3[5][8] = '#';
-	mazeBoard3[5][9] = '#';
-	mazeBoard3[6][0] = '#';
-	mazeBoard3[6][1] = ' ';
-	mazeBoard3[6][2] = '#';
-	mazeBoard3[6][3] = ' ';
-	mazeBoard3[6][4] = '#';
-	mazeBoard3[6][5] = ' ';
-	mazeBoard3[6][6] = ' ';
-	mazeBoard3[6][7] = ' ';
-	mazeBoard3[6][8] = ' ';
-	mazeBoard3[6][9] = '#';
-	mazeBoard3[7][0] = '#';
-	mazeBoard3[7][1] = ' ';
-	mazeBoard3[7][2] = '#';
-	mazeBoard3[7][3] = ' ';
-	mazeBoard3[7][4] = '#';
-	mazeBoard3[7][5] = '#';
-	mazeBoard3[7][6] = '#';
-	mazeBoard3[7][7] = '#';
-	mazeBoard3[7][8] = ' ';
-	mazeBoard3[7][9] = '#';
-	mazeBoard3[8][0] = '#';
-	mazeBoard3[8][1] = ' ';
-	mazeBoard3[8][2] = '#';
-	mazeBoard3[8][3] = ' ';
-	mazeBoard3[8][4] = ' ';
-	mazeBoard3[8][5] = ' ';
-	mazeBoard3[8][6] = ' ';
-	mazeBoard3[8][7] = ' ';
-	mazeBoard3[8][8] = ' ';
-	mazeBoard3[8][9] = '#';
-	mazeBoard3[9][0] = '#';
-	mazeBoard3[9][1] = 'S';
-	mazeBoard3[9][2] = '#';
-	mazeBoard3[9][3] = '#';
-	mazeBoard3[9][4] = '#';
-	mazeBoard3[9][5] = '#';
-	mazeBoard3[9][6] = '#';
-	mazeBoard3[9][7] = '#';
-	mazeBoard3[9][8] = '#';
-	mazeBoard3[9][9] = '#';
+		movementSystem(notWin, mazeBoard3);
+		winMessage();
 
-	movementSystem(notWin, mazeBoard);
-	winMessage();
-
-	for (int i = 0; i < 10; i++)
-	{
-		delete[] mazeBoard[i];
+		for (int i = 0; i < 10; i++)
+		{
+			delete[] mazeBoard3[i];
+		}
 	}
 }
