@@ -8,7 +8,8 @@ using namespace std;
 bool exitProgram = true;
 void color(int color)
 {
-    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
+    if (SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color)) { return; }
+    else {}
 }
 
 void gotoxy(int x, int y)
@@ -16,9 +17,9 @@ void gotoxy(int x, int y)
     COORD c;
     c.X = x;
     c.Y = y;
-    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), c);
+    if (SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), c)) { return; }
+    else {}
 }
-
 
 int main()
 {
