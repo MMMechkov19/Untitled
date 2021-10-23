@@ -147,12 +147,34 @@ void movementSystem(bool notWin, char** arr)
 			break;
 		}
 
-		if (player.y == 5 && player.x == 8)
+		if (player.y == 5 && player.x == 8 && arr[player.y][player.x] == 'o')
 		{
 			arr[5][9] = 'F';
 		}
+		else if (player.y == 4 && player.x == 8 && arr[player.y][player.x] == 'o')
+		{
+			arr[4][9] = 'F';
+		}
+		else if (player.y == 4 && player.x == 1 && arr[player.y][player.x] == 'o')
+		{
+			arr[4][0] = 'F';
+		}
+
+		
 
 		if (player.y == 9 && player.x == 9 || player.y == 5 && player.x == 9)
+		{
+			notWin = false;
+		}
+		else if (player.y == 0 && player.x == 8 || player.y == 4 && player.x == 9)
+		{
+			notWin = false;
+		}
+		else if (player.y == 2 && player.x == 0 || player.y == 4 && player.x == 0)
+		{
+			notWin = false;
+		}
+		else if (player.y == 9 && player.x == 5 || player.y == 5 && player.x == 9)
 		{
 			notWin = false;
 		}

@@ -21,7 +21,7 @@ void gotoxy(int x, int y)
     else {}
 }
 
-int main()
+void mainMenu()
 {
 
     int Set[] = { 7,7,7 };
