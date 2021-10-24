@@ -6,7 +6,7 @@ using namespace std;
 
 const int KEY_LEFT = 'a', KEY_RIGHT = 'd', KEY_UP = 'w', KEY_DOWN = 's';
 
-// player's coordinates and symbol
+// Player's coordinates and symbol
 struct Player
 {
 	char symbol;
@@ -14,12 +14,12 @@ struct Player
 	int y;
 };
 
-// moves counter
+// Moves' counter
 int keysPressedCounter = 0;
 
 void printMaze(char** arr, int keysPressedCounter)
 {
-	// print game mode and current position
+	// Print game mode and current position
 	cout << "Easy mode - 10 x 10" << endl;
 	cout << "Your current position is ";
 
@@ -33,7 +33,7 @@ void printMaze(char** arr, int keysPressedCounter)
 		}
 	}
 
-	// print final position
+	// Print final position
 	int finalCounter = 0;
 	cout << "The final is located on position ";
 	for (int i = 0; i < 10; i++)
@@ -55,10 +55,10 @@ void printMaze(char** arr, int keysPressedCounter)
 		}
 	}
 
-	// print used moves
+	// Print used moves
 	cout << endl << "You've moved " << keysPressedCounter << " time/s" << endl << endl << "     ";
 
-	// print y coordinates
+	// Print y coordinates
 	for (int i = 0; i < 10; i++)
 	{
 		cout << i << " ";
@@ -66,10 +66,10 @@ void printMaze(char** arr, int keysPressedCounter)
 
 	cout << endl << endl;
 
-	// print maze board
+	// Print maze board
 	for (int i = 0; i < 10; i++)
 	{
-		// print x coordinates
+		// Print x coordinates
 		cout << " " << i << "   ";
 
 		for (int j = 0; j < 10; j++)
@@ -79,7 +79,7 @@ void printMaze(char** arr, int keysPressedCounter)
 		cout << endl;
 	}
 }
-
+// Find if the character's position is on the key and if so unlock the secret door
 void secretKey(int a, int b, char** arr)
 {
 	if (a == 5 && b == 8 && arr[a][b] == 'o')
@@ -97,10 +97,10 @@ void secretKey(int a, int b, char** arr)
 
 }
 
-// movement system
+// System for moving player's character
 void movementSystem(bool doesNotWin, char** arr)
 {
-	// declare variable for the pressed key
+	// Declare variable for the pressed key
 	char pressedKey;
 	Player player;
 	player.symbol = 'S';
@@ -165,7 +165,7 @@ void movementSystem(bool doesNotWin, char** arr)
 			break;
 		}
 		secretKey(player.y, player.x, arr);
-
+		// Checks character's position to end the program
 		if (player.y == 9 && player.x == 9 || player.y == 5 && player.x == 9)
 		{
 			doesNotWin = false;
@@ -187,7 +187,7 @@ void movementSystem(bool doesNotWin, char** arr)
 	}
 }
 
-// display win message
+// Display win message
 void winMessage()
 {
 	cout << "WIN!" << endl;
@@ -195,7 +195,7 @@ void winMessage()
 
 }
 
-// declare maze board
+// Declare maze board
 void mazeDeclaration()
 {
 
@@ -206,7 +206,7 @@ void mazeDeclaration()
 	cout << randomMaze;
 	if (randomMaze == 0)
 	{
-		// declare 2D array dynamically 
+		// Declare 2D array
 		char** mazeBoard = new char* [10];
 
 		for (int i = 0; i <= 10; i++)
@@ -214,7 +214,7 @@ void mazeDeclaration()
 			mazeBoard[i] = new char[10];
 		}
 
-		// initialize array's values
+		// Initialize array's values
 		mazeBoard[0][0] = 'S';
 		mazeBoard[0][1] = ' ';
 		mazeBoard[0][2] = '#';
@@ -327,7 +327,7 @@ void mazeDeclaration()
 	else if (randomMaze == 1)
 	{
 
-		// declare 2D array dynamically 
+		// Declare 2D array
 		char** mazeBoard1 = new char* [10];
 
 		for (int i = 0; i <= 10; i++)
@@ -335,7 +335,7 @@ void mazeDeclaration()
 			mazeBoard1[i] = new char[10];
 		}
 
-		// initialize array's values
+		// Initialize array's values
 		mazeBoard1[0][0] = '#';
 		mazeBoard1[0][1] = '#';
 		mazeBoard1[0][2] = '#';
@@ -445,7 +445,7 @@ void mazeDeclaration()
 			delete[] mazeBoard1[i];
 		}
 	}
-
+	// Declare 2D array
 	else if (randomMaze == 2)
 	{
 		char** mazeBoard2 = new char* [10];
@@ -455,7 +455,7 @@ void mazeDeclaration()
 			mazeBoard2[i] = new char[10];
 		}
 
-		// initialize array's values
+		// Initialize array's values
 		mazeBoard2[0][0] = '#';
 		mazeBoard2[0][1] = '#';
 		mazeBoard2[0][2] = '#';
@@ -568,7 +568,7 @@ void mazeDeclaration()
 
 	else if (randomMaze == 3)
 	{
-		// declare 2D array dynamically 
+		// Declare 2D array dynamically 
 		char** mazeBoard3 = new char* [10];
 
 		for (int i = 0; i <= 10; i++)
@@ -576,7 +576,7 @@ void mazeDeclaration()
 			mazeBoard3[i] = new char[10];
 		}
 
-		// initialize array's values
+		// Initialize array's values
 		mazeBoard3[0][0] = '#';
 		mazeBoard3[0][1] = '#';
 		mazeBoard3[0][2] = '#';
