@@ -80,13 +80,31 @@ void printMaze(char** arr, int keysPressedCounter)
 	}
 }
 
+void secretKey(int a, int b, char** arr)
+{
+	if (a == 5 && b == 8 && arr[a][b] == 'o')
+	{
+		arr[5][9] = 'F';
+	}
+	else if (a == 4 && b == 8 && arr[a][b] == 'o')
+	{
+		arr[4][9] = 'F';
+	}
+	else if (a == 4 && b == 1 && arr[a][b] == 'o')
+	{
+		arr[4][0] = 'F';
+	}
+
+}
+
 // movement system
-void movementSystem(bool notWin, char** arr)
+void movementSystem(bool doesNotWin, char** arr)
 {
 	// declare variable for the pressed key
 	char pressedKey;
 	Player player;
 	player.symbol = 'S';
+	doesNotWin = true;
 
 	for (int i = 0; i < 10; i++)
 	{
@@ -100,7 +118,7 @@ void movementSystem(bool notWin, char** arr)
 		}
 	}
 
-	while (notWin)
+	while (doesNotWin)
 	{
 		if (arr[player.y][player.x] == ' ' || arr[player.y][player.x] == 'o')
 		{
@@ -146,38 +164,25 @@ void movementSystem(bool notWin, char** arr)
 			}
 			break;
 		}
-
-		if (player.y == 5 && player.x == 8 && arr[player.y][player.x] == 'o')
-		{
-			arr[5][9] = 'F';
-		}
-		else if (player.y == 4 && player.x == 8 && arr[player.y][player.x] == 'o')
-		{
-			arr[4][9] = 'F';
-		}
-		else if (player.y == 4 && player.x == 1 && arr[player.y][player.x] == 'o')
-		{
-			arr[4][0] = 'F';
-		}
-
-		
+		secretKey(player.y, player.x, arr);
 
 		if (player.y == 9 && player.x == 9 || player.y == 5 && player.x == 9)
 		{
-			notWin = false;
+			doesNotWin = false;
 		}
 		else if (player.y == 0 && player.x == 8 || player.y == 4 && player.x == 9)
 		{
-			notWin = false;
+			doesNotWin = false;
 		}
 		else if (player.y == 2 && player.x == 0 || player.y == 4 && player.x == 0)
 		{
-			notWin = false;
+			doesNotWin = false;
 		}
 		else if (player.y == 9 && player.x == 5 || player.y == 5 && player.x == 9)
 		{
-			notWin = false;
+			doesNotWin = false;
 		}
+
 		system("CLS");
 	}
 }
@@ -194,7 +199,7 @@ void winMessage()
 void mazeDeclaration()
 {
 
-	bool notWin = true;
+	bool doesNotWin = true;
 
 	srand(time(0));
 	int randomMaze = rand() % 4, guess = 0;
@@ -311,7 +316,7 @@ void mazeDeclaration()
 		mazeBoard[9][8] = ' ';
 		mazeBoard[9][9] = 'F';
 
-		movementSystem(notWin, mazeBoard);
+		movementSystem(doesNotWin, mazeBoard);
 		winMessage();
 
 		for (int i = 0; i < 10; i++)
@@ -432,7 +437,7 @@ void mazeDeclaration()
 		mazeBoard1[9][8] = '#';
 		mazeBoard1[9][9] = '#';
 
-		movementSystem(notWin, mazeBoard1);
+		movementSystem(doesNotWin, mazeBoard1);
 		winMessage();
 
 		for (int i = 0; i < 10; i++)
@@ -552,7 +557,7 @@ void mazeDeclaration()
 		mazeBoard2[9][8] = '#';
 		mazeBoard2[9][9] = '#';
 
-		movementSystem(notWin, mazeBoard2);
+		movementSystem(doesNotWin, mazeBoard2);
 		winMessage();
 
 		for (int i = 0; i < 10; i++)
@@ -674,7 +679,7 @@ void mazeDeclaration()
 		mazeBoard3[9][9] = '#';
 
 
-		movementSystem(notWin, mazeBoard3);
+		movementSystem(doesNotWin, mazeBoard3);
 		winMessage();
 
 		for (int i = 0; i < 10; i++)
