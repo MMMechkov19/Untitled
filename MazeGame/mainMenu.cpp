@@ -6,27 +6,102 @@
 #include "easyMode.h"
 
 using namespace std;
+
 bool exitProgram = true;
+
 void color(int color)
 {
-	if (SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color)) { return; }
+	if (SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color)) 
+	{ 
+		return; 
+	}
 	else {}
 }
 
-void gotoxy(int x, int y)
+void outputPosition(int x, int y)
 {
-	COORD c;
-	c.X = x;
-	c.Y = y;
-	if (SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), c)) { return; }
+	COORD position;
+	position.X = x;
+	position.Y = y;
+	if (SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), position)) 
+	{ 
+		return; 
+	}
 	else {}
 }
+void easyMode()
+{
+	char key1;
+	int counter1 = 1;
+	bool exitStatement = true;
+	int colorNumber1[] = { 7,7,7 };
 
+	do {
+
+
+		outputPosition(5, 10);
+		color(colorNumber1[0]);
+		cout << "1. Easy Mode";
+
+		outputPosition(5, 11);
+		color(colorNumber1[1]);
+		cout << "2. Medium Mode";
+
+		outputPosition(5, 12);
+		color(colorNumber1[2]);
+		cout << "3. Hard Mode";
+
+		key1 = _getch();
+
+		if (key1 == 'w' && (counter1 >= 2 && counter1 <= 5))
+		{
+			counter1--;
+		}
+
+		if (key1 == 's' && (counter1 >= 1 && counter1 <= 4))
+		{
+			counter1++;
+		}
+		if (key1 == '\r') {
+
+			if (counter1 == 1)
+			{
+				system("CLS");
+				mazeDeclaration();
+			}
+			if (counter1 == 2)
+			{
+				exitProgram = true;
+			}
+			if (counter1 == 3)
+			{
+				exitProgram = true;
+			}
+		}
+		colorNumber1[0] = 7;
+		colorNumber1[1] = 7;
+		colorNumber1[2] = 7;
+
+		if (counter1 == 1)
+		{
+			colorNumber1[0] = 10;
+		}
+		if (counter1 == 2)
+		{
+			colorNumber1[1] = 3;
+		}
+		if (counter1 == 3)
+		{
+			colorNumber1[2] = 12;
+		}
+
+	} while (exitStatement != false);
+}
 void mainMenu()
 {
 
-	int Set[] = { 7,7,7 };
-	int counter = 3;
+	int colorNumber[] = {7, 7, 7, 7};
+	int counter = 1;
 	char key;
 	cout << endl;
 	cout << endl;
@@ -41,16 +116,16 @@ void mainMenu()
 	{
 
 
-		gotoxy(5, 10);
-		color(Set[0]);
+		outputPosition(5, 10);
+		color(colorNumber[0]);
 		cout << "1. Play";
 
-		gotoxy(5, 11);
-		color(Set[1]);
+		outputPosition(5, 11);
+		color(colorNumber[1]);
 		cout << "2. Rules";
 
-		gotoxy(5, 12);
-		color(Set[2]);
+		outputPosition(5, 12);
+		color(colorNumber[2]);
 		cout << "3. Exit";
 
 
@@ -69,9 +144,8 @@ void mainMenu()
 		{
 			if (counter == 1)
 			{
-				exitProgram = true;
-					system("CLS");
-					mazeDeclaration();
+				easyMode();
+				
 			}
 			if (counter == 2)
 			{
@@ -81,28 +155,29 @@ void mainMenu()
 			if (counter == 3)
 			{
 				exitProgram = false;
+				system("CLS");
 
 			}
 
 		}
 
-		Set[0] = 7;
-		Set[1] = 7;
-		Set[2] = 7;
+		colorNumber[0] = 7;
+		colorNumber[1] = 7;
+		colorNumber[2] = 7;
 
 		if (counter == 1)
 		{
-			Set[0] = 10;
+			colorNumber[0] = 10;
 
 		}
 		if (counter == 2)
 		{
-			Set[1] = 3;
+			colorNumber[1] = 3;
 		}
 		if (counter == 3)
 		{
-			Set[2] = 4;
-		}
+			colorNumber[2] = 4;
+		} 
 
 
 
