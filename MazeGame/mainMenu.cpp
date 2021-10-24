@@ -60,11 +60,11 @@ void mainMenu()
 
         key = _getch();
 
-        if (key == 72 && (counter >= 2 && counter <= 5))
+        if (key == 'w' && (counter >= 2 && counter <= 5))
         {
             counter--;
         }
-        if (key == 80 && (counter >= 1 && counter <= 4))
+        if (key == 's' && (counter >= 1 && counter <= 4))
         {
             counter++;
         }
