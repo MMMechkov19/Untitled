@@ -4,10 +4,11 @@
 #include <stdlib.h>
 #include <iomanip>
 #include "easyMode.h"
+#include "mainMenu.h"
 
 using namespace std;
 
-bool exitProgram = true;
+
 
 void color(int color)
 {
@@ -29,16 +30,27 @@ void outputPosition(int x, int y)
 	}
 	else {}
 }
-void easyMode()
+void printMainMenu()
+{
+	cout << endl;
+	cout << endl;
+
+	cout << "        __  __     __   __     ______   __     ______   __         ______     _____    " << endl;
+	cout << "       /\\ \\/\\ \\   /\\ "" -.\\ \\  / \\__  _\\ /\\ \\   /\\__  _\\ /\\ \\       /\\  ___\\   /\\  __-.  " << endl;
+	cout << "       \\ \\ \\_\\ \\  \\ \\ \\-.  \\ \\/_/\\ \\ / \\ \\ \\  \\/_/\\ \\/ \\ \\ \\____  \\ \\  __\\   \\ \\ \\/\\ \\ " << endl;
+	cout << "        \\ \\_____\\  \\ \\_\\ \\""\\_\\   \\ \\_\\   \\ \\_\\    \\ \\_\\  \\ \\_____\\  \\ \\_____\\  \\ \\____- " << endl;
+	cout << "         \\/_____/   \\/_/ \\/_/    \\/_/    \\/_/     \\/_/   \\/_____/   \\/_____/   \\/____/ " << endl;
+}
+void choosingModes()
 {
 	char key1;
 	int counter1 = 1;
+	int colorNumber1[] = {7,7,7,7};
 	bool exitStatement = true;
-	int colorNumber1[] = { 7,7,7 };
 
 	do {
 
-
+		
 		outputPosition(5, 10);
 		color(colorNumber1[0]);
 		cout << "1. Easy Mode";
@@ -50,6 +62,10 @@ void easyMode()
 		outputPosition(5, 12);
 		color(colorNumber1[2]);
 		cout << "3. Hard Mode";
+
+		outputPosition(5, 13);
+		color(colorNumber1[3]);
+		cout << "4. Back to Main Menu";
 
 		key1 = _getch();
 
@@ -71,16 +87,24 @@ void easyMode()
 			}
 			if (counter1 == 2)
 			{
-				exitProgram = true;
+				exitStatement = true;
 			}
 			if (counter1 == 3)
 			{
-				exitProgram = true;
+				exitStatement = true;
+			}
+			if (counter1 == 4)
+			{
+				system("CLS");
+				printMainMenu();
+				exitStatement = false;
 			}
 		}
+
 		colorNumber1[0] = 7;
 		colorNumber1[1] = 7;
 		colorNumber1[2] = 7;
+		colorNumber1[3] = 7;
 
 		if (counter1 == 1)
 		{
@@ -94,6 +118,10 @@ void easyMode()
 		{
 			colorNumber1[2] = 12;
 		}
+		if (counter1 == 4)
+		{
+			colorNumber1[3] = 4;
+		}
 
 	} while (exitStatement != false);
 }
@@ -103,19 +131,12 @@ void mainMenu()
 	int colorNumber[] = {7, 7, 7, 7};
 	int counter = 1;
 	char key;
-	cout << endl;
-	cout << endl;
-
-	cout << "        __  __     __   __     ______   __     ______   __         ______     _____    " << endl;
-	cout << "       /\\ \\/\\ \\   /\\ "" -.\\ \\  / \\__  _\\ /\\ \\   /\\__  _\\ /\\ \\       /\\  ___\\   /\\  __-.  " << endl;
-	cout << "       \\ \\ \\_\\ \\  \\ \\ \\-.  \\ \\/_/\\ \\ / \\ \\ \\  \\/_/\\ \\/ \\ \\ \\____  \\ \\  __\\   \\ \\ \\/\\ \\ " << endl;
-	cout << "        \\ \\_____\\  \\ \\_\\ \\""\\_\\   \\ \\_\\   \\ \\_\\    \\ \\_\\  \\ \\_____\\  \\ \\_____\\  \\ \\____- " << endl;
-	cout << "         \\/_____/   \\/_/ \\/_/    \\/_/    \\/_/     \\/_/   \\/_____/   \\/_____/   \\/____/ " << endl;
+	bool exitProgram = true;
+	
+	printMainMenu();
 
 	do
 	{
-
-
 		outputPosition(5, 10);
 		color(colorNumber[0]);
 		cout << "1. Play";
@@ -144,8 +165,7 @@ void mainMenu()
 		{
 			if (counter == 1)
 			{
-				easyMode();
-				
+				choosingModes();	
 			}
 			if (counter == 2)
 			{
@@ -178,8 +198,6 @@ void mainMenu()
 		{
 			colorNumber[2] = 4;
 		} 
-
-
 
 	} while (exitProgram != false);
 

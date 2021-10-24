@@ -2,6 +2,8 @@
 #include <conio.h>
 #include <stdlib.h>
 #include "easyMode.h"
+#include "mainMenu.h"
+
 using namespace std;
 
 const int KEY_LEFT = 'a', KEY_RIGHT = 'd', KEY_UP = 'w', KEY_DOWN = 's';
@@ -172,6 +174,7 @@ void movementSystem(bool doesNotWin, char** arr)
 			break;
 		}
 		secretKey(player.y, player.x, arr);
+
 		// Checks character's position to end the program
 		if (player.y == 9 && player.x == 9 || player.y == 5 && player.x == 9)
 		{
@@ -199,6 +202,7 @@ void winMessage()
 {
 	cout << "WIN!" << endl;
 	cout << "You've moved " << keysPressedCounter << " time/s" << endl;
+	keysPressedCounter = 0;
 	system("CLS");
 
 }
