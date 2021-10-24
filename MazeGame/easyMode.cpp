@@ -106,6 +106,8 @@ void movementSystem(bool doesNotWin, char** arr)
 	player.symbol = 'S';
 	doesNotWin = true;
 
+	bool isFound = false;
+
 	for (int i = 0; i < 10; i++)
 	{
 		for (int j = 0; j < 10; j++)
@@ -114,7 +116,12 @@ void movementSystem(bool doesNotWin, char** arr)
 			{
 				player.x = j;
 				player.y = i;
+				isFound = true;
+				break;
 			}
+		}
+		if (isFound) {
+			break;
 		}
 	}
 
