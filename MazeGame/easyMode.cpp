@@ -174,7 +174,6 @@ void movementSystem(bool doesNotWin, char** arr)
 			break;
 		}
 		secretKey(player.y, player.x, arr);
-
 		// Checks character's position to end the program
 		if (player.y == 9 && player.x == 9 || player.y == 5 && player.x == 9)
 		{

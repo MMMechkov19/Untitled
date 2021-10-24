@@ -84,6 +84,7 @@ void choosingModes()
 			{
 				system("CLS");
 				mazeDeclaration();
+				printMainMenu();
 			}
 			if (counter1 == 2)
 			{
@@ -96,6 +97,7 @@ void choosingModes()
 			if (counter1 == 4)
 			{
 				system("CLS");
+				system("color 7");
 				printMainMenu();
 				exitStatement = false;
 			}
