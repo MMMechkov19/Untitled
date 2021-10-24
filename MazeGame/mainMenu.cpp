@@ -3,6 +3,7 @@
 #include <conio.h>
 #include <stdlib.h>
 #include <iomanip>
+#include "easyMode.h"
 
 using namespace std;
 bool exitProgram = true;
@@ -46,7 +47,7 @@ void mainMenu()
 
         gotoxy(10, 5);
         color(Set[0]);
-        cout << "1. PLay";
+        cout << "1. Play";
 
         gotoxy(10, 6);
         color(Set[1]);
@@ -73,12 +74,25 @@ void mainMenu()
             if (counter == 1)
             {
 
-                exitProgram = false;
+                exitProgram = true;
+                if (key == 'w' && (counter >= 2 && counter <= 5))
+                {
+                    counter--;
+                }
+                if (key == 's' && (counter >= 1 && counter <= 4))
+                {
+                    counter++;
+                }
+                if (key == '\r')
+                {
+                    system("CLS");
+                    mazeDeclaration();
+                }
 
             }
             if (counter == 2)
             {
-                exitProgram = false;
+                exitProgram = true;
 
             }
             if (counter == 3)

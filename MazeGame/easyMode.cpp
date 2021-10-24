@@ -192,6 +192,7 @@ void winMessage()
 {
 	cout << "WIN!" << endl;
 	cout << "You've moved " << keysPressedCounter << " time/s" << endl;
+	system("CLS");
 
 }
 
@@ -203,7 +204,7 @@ void mazeDeclaration()
 
 	srand(time(0));
 	int randomMaze = rand() % 4, guess = 0;
-	cout << randomMaze;
+
 	if (randomMaze == 0)
 	{
 		// Declare 2D array
