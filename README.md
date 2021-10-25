@@ -1,6 +1,6 @@
 <p align="center">
   <a href=" rel="noopener">
-    <img src="https://cdn.discordapp.com/attachments/664897721039323162/902238619446673449/katinaragafajhfs.png" alt="Logo" width="650" >
+    <img src="Photos/mazeLogo.png" alt="Logo" width=700" >
   </a>
 </p>
 
