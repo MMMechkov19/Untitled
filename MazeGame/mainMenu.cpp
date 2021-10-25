@@ -12,9 +12,9 @@ using namespace std;
 
 void color(int color)
 {
-	if (SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color)) 
-	{ 
-		return; 
+	if (SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color))
+	{
+		return;
 	}
 	else {}
 }
@@ -24,9 +24,9 @@ void outputPosition(int x, int y)
 	COORD position;
 	position.X = x;
 	position.Y = y;
-	if (SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), position)) 
-	{ 
-		return; 
+	if (SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), position))
+	{
+		return;
 	}
 	else {}
 }
@@ -45,12 +45,12 @@ void choosingModes()
 {
 	char key1;
 	int counter1 = 1;
-	int colorNumber1[] = {7,7,7,7};
+	int colorNumber1[] = { 7,7,7,7 };
 	bool exitStatement = true;
 
 	do {
 
-		
+
 		outputPosition(5, 10);
 		color(colorNumber1[0]);
 		cout << "1. Easy Mode";
@@ -127,14 +127,54 @@ void choosingModes()
 
 	} while (exitStatement != false);
 }
+void printOutRules()
+{
+	cout << "                        Listen, there are rules.                       " << endl;
+	cout << "1." << endl;
+	cout << "2." << endl;
+	cout << "3." << endl;
+	cout << "4." << endl;
+	cout << "5." << endl;
+	cout << "6." << endl;
+	cout << "7." << endl;
+}
+void rules()
+{
+	char key;
+	int colorNumber[] = { 4 };
+	bool exitStatement = true;
+
+	do
+	{
+		printOutRules();
+
+		outputPosition(5, 10);
+		color(colorNumber[0]);
+		cout << "1. Back to Main Menu";
+		key = _getch();
+		if (key  == '\r')
+		{
+			exitStatement = false;
+			system("CLS");
+			system("color 7");
+			printMainMenu();
+		}
+		else {}
+
+
+
+
+	} while (exitStatement != false);
+
+}
 void mainMenu()
 {
 
-	int colorNumber[] = {7, 7, 7, 7};
+	int colorNumber[] = { 7, 7, 7, 7 };
 	int counter = 1;
 	char key;
 	bool exitProgram = true;
-	
+
 	printMainMenu();
 
 	do
@@ -167,17 +207,18 @@ void mainMenu()
 		{
 			if (counter == 1)
 			{
-				choosingModes();	
+				choosingModes();
 			}
 			if (counter == 2)
 			{
-				exitProgram = true;
-
+				system("CLS");
+				rules();
 			}
 			if (counter == 3)
 			{
 				exitProgram = false;
 				system("CLS");
+				system("color 7");
 
 			}
 
@@ -199,7 +240,7 @@ void mainMenu()
 		if (counter == 3)
 		{
 			colorNumber[2] = 4;
-		} 
+		}
 
 	} while (exitProgram != false);
 
