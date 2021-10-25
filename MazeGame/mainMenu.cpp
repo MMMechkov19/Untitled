@@ -30,6 +30,7 @@ void outputPosition(int x, int y)
 	}
 	else {}
 }
+
 void printMainMenu()
 {
 	outputPosition(18, 3);
@@ -43,6 +44,7 @@ void printMainMenu()
 	outputPosition(18, 7);
 	cout << "    \\/_____/   \\/_/ \\/_/    \\/_/    \\/_/     \\/_/   \\/_____/   \\/_____/   \\/____/ " << endl;
 }
+
 void choosingModes()
 {
 	char key1;
@@ -247,6 +249,7 @@ void mainMenu()
 			{
 				exitProgram = false;
 				system("CLS");
+				system("color 7");
 
 			}
 
