@@ -30,6 +30,7 @@ void outputPosition(int x, int y)
 	}
 	else {}
 }
+
 void printMainMenu()
 {
 	cout << endl;
@@ -41,6 +42,7 @@ void printMainMenu()
 	cout << "        \\ \\_____\\  \\ \\_\\ \\""\\_\\   \\ \\_\\   \\ \\_\\    \\ \\_\\  \\ \\_____\\  \\ \\_____\\  \\ \\____- " << endl;
 	cout << "         \\/_____/   \\/_/ \\/_/    \\/_/    \\/_/     \\/_/   \\/_____/   \\/_____/   \\/____/ " << endl;
 }
+
 void choosingModes()
 {
 	char key1;
@@ -129,30 +131,29 @@ void choosingModes()
 }
 void printOutRules()
 {
-	cout << "                        Listen, there are rules.                       " << endl;
-	cout << "1." << endl;
-	cout << "2." << endl;
-	cout << "3." << endl;
-	cout << "4." << endl;
-	cout << "5." << endl;
-	cout << "6." << endl;
-	cout << "7." << endl;
+	cout << "                                                 Listen, there are rules.                       " << endl;
+	cout << "1. The game functions with W,S,A,D keys" << endl;
+	cout << "2. There are 3 difficulties - easy(10x10),medium(20x20) and hard(30x30)" << endl;
+	cout << "3. Guide the 'S' towards the 'F' to exit the maze, or go to the 'O' to unlock a secret finish" << endl;
+	cout << "4. Enjoy the game!" << endl;
+
 }
+
 void rules()
 {
 	char key;
 	int colorNumber[] = { 4 };
 	bool exitStatement = true;
 
+	printOutRules();
+
 	do
 	{
-		printOutRules();
-
 		outputPosition(5, 10);
 		color(colorNumber[0]);
 		cout << "1. Back to Main Menu";
 		key = _getch();
-		if (key  == '\r')
+		if (key == '\r')
 		{
 			exitStatement = false;
 			system("CLS");
@@ -230,6 +231,7 @@ void mainMenu()
 
 		if (counter == 1)
 		{
+
 			colorNumber[0] = 10;
 
 		}
