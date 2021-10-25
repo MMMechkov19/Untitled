@@ -1,10 +1,8 @@
 <p align="center">
   <a href=" rel="noopener">
-    <img src="https://cdn.discordapp.com/attachments/898635048264269854/900817512470548500/logo5.png" alt="Logo" width="350" >
+    <img src="https://cdn.discordapp.com/attachments/664897721039323162/902238619446673449/katinaragafajhfs.png" alt="Logo" width="650" >
   </a>
 </p>
-
-<h1 align="center">Untitled</h1>
 
 ## 📝 Table of Contents
 - [Description](#description)
