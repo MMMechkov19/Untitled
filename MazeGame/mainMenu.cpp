@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 #include <windows.h>
 #include <conio.h>
 #include <stdlib.h>
@@ -31,18 +31,19 @@ void outputPosition(int x, int y)
 	else {}
 }
 
-void printMainMenu()
+void printLogo()
 {
-	outputPosition(18, 3);
-	cout << "   __  __     __   __     ______   __     ______   __         ______     _____    " << endl;
-	outputPosition(18, 4);
-	cout << "  /\\ \\/\\ \\   /\\ "" -.\\ \\  / \\__  _\\ /\\ \\   /\\__  _\\ /\\ \\       /\\  ___\\   /\\  __-.  " << endl;
-	outputPosition(18, 5);
-	cout << "  \\ \\ \\_\\ \\  \\ \\ \\-.  \\ \\/_/\\ \\ / \\ \\ \\  \\/_/\\ \\/ \\ \\ \\____  \\ \\  __\\   \\ \\ \\/\\ \\ " << endl;
-	outputPosition(18, 6);
-	cout << "   \\ \\_____\\  \\ \\_\\ \\""\\_\\   \\ \\_\\   \\ \\_\\    \\ \\_\\  \\ \\_____\\  \\ \\_____\\  \\ \\____- " << endl;
-	outputPosition(18, 7);
-	cout << "    \\/_____/   \\/_/ \\/_/    \\/_/    \\/_/     \\/_/   \\/_____/   \\/_____/   \\/____/ " << endl;
+	color(14);
+	outputPosition(28, 2);
+	cout << "   __  __      __  _ __  __         __";
+	outputPosition(28, 3);
+	cout << "  / / / /___  / /_(_) /_/ /__  ____/ /" << endl;
+	outputPosition(28, 4);
+	cout << " / / / / __ \\/ __/ / __/ / _ \\/ __  / " << endl;
+	outputPosition(28, 5);
+	cout << "/ /_/ / / / / /_/ / /_/ /  __/ /_/ /  " << endl;
+	outputPosition(28, 6);
+	cout << "\\____/_/ /_/\\__/_/\\__/_/\\___/\\__,_/   " << endl;
 }
 
 void choosingModes()
@@ -88,7 +89,7 @@ void choosingModes()
 			{
 				system("CLS");
 				mazeDeclaration();
-				printMainMenu();
+				printLogo();
 			}
 			if (counter1 == 2)
 			{
@@ -102,7 +103,7 @@ void choosingModes()
 			{
 				system("CLS");
 				system("color 7");
-				printMainMenu();
+				printLogo();
 				exitStatement = false;
 			}
 		}
@@ -161,7 +162,7 @@ void rules()
 			exitStatement = false;
 			system("CLS");
 			system("color 7");
-			printMainMenu();
+			printLogo();
 		}
 		else {}
 
@@ -171,6 +172,55 @@ void rules()
 	} while (exitStatement != false);
 
 }
+
+void printBackground()
+{
+	outputPosition(1, 1);
+	color(11);
+	cout << "         +         *             .         '         *               '            *                " << endl;
+	cout << "                                                                                                 " << endl;
+	cout << "   *            *          .                                +                          *         " << endl;
+	cout << "                                             +                            *                      " << endl;
+	cout << "    .                 .         *                             .                   +           +  " << endl;
+	cout << "           +                                                                                     " << endl;
+	cout << "                         *        '                     *                     +            .      " << endl;
+	cout << "    *                                    *                          *                            " << endl;
+	cout << "         +         *             .                  *                           *                " << endl;
+	cout << "                                                                                                 " << endl;
+	cout << "   *            *          .                                +                          *         " << endl;
+	cout << "                                             +                            *                      " << endl;
+	cout << "    .                 .         *                             .                   +           +  " << endl;
+	cout << "           +    '                                                                                " << endl;
+	cout << "                         *        '                '     *                     +            .      " << endl;
+	cout << "    *                                    *                          *                            " << endl;
+	cout << "      .          +                                                                  *            " << endl;
+	cout << "                              +      '           .           *               .                +  " << endl;
+	cout << "           +                                                                                     " << endl;
+	cout << "                         *                             *                     +            .      " << endl;
+	cout << "    *           '                         *                          *                            " << endl;
+	cout << "         +         *             .                  *                           *                " << endl;
+}
+
+void printMainMenu()
+{
+	outputPosition(39, 9);
+	color(14);
+	cout << "G A M E   M E N U" << endl;
+
+	outputPosition(39, 13);
+	color(14);
+	cout << "Team Untitled";
+
+	outputPosition(10, 17);
+	color(14);
+	cout << "Maze Game Sprint";
+
+	outputPosition(66, 17);
+	color(14);
+	cout << "Move using the WASD";
+
+}
+
 void mainMenu()
 {
 
@@ -179,56 +229,35 @@ void mainMenu()
 	char key;
 	bool exitProgram = true;
 
-	outputPosition(1, 1);
-	color(5);
-	cout << " *     * *     *    *       *       *     *      *     *      *            *        *   *        *        *     *   *" << endl;
-	cout << "   *      *    *        *        *             *           *         *     *      *        *      *      *       *    *" << endl << endl;
-	cout << " *    *   *    *    *    *         *      *            *       *          *       *    *    *     *   *    *    *    *      " << endl;
-	cout << "    *       *        *      *      *           *                *         *                *           *          " << endl << endl;
-	cout << " *    *    *   *        *                *                         *        *             *           *     *    *  * " << endl;
-	cout << " *            *      *             *       *                         *                     *    *            *    *    " << endl;
-	cout << " *     * *         *       *       *     *      *     *      *            *        *   *        *        *        *" << endl;
-	cout << "   *          *         *       *             *           *         *     *      *              *      *       *    *" << endl << endl;
-	cout << " *       *            *               *            *       *          *         *      *            *        *      " << endl << endl;
-	cout << "    *       *        *      *      *           *                *         *                *           *          " << endl << endl;
-	cout << " *    *    *   *        *       *        *          *       *        *        *      *      *     *     *     *    *  * " << endl;
-	cout << " *            *      *             *       *           *              *                     *    *            *    *    " << endl;
-
-	color(11);
-	cout << "_-_____--____-^--________--^-____________-^---___________--^-^-__________--^-____-^-______________--^-_______-^---_____" << endl;
+	printBackground();
 
 	outputPosition(1, 2);
 	color(7);
+	printLogo();
+
 	printMainMenu();
-
-	outputPosition(48, 11);
-	color(11);
-	cout << "G A M E   M O D E" << endl;
-
+	
 	do
 	{
-
-		outputPosition(50, 13);
+		outputPosition(39, 10);
 		color(colorNumber[0]);
-		cout << "1.  P l a y";
+		cout << "P l a y";
 
-		outputPosition(50, 14);
+		outputPosition(39, 11);
 		color(colorNumber[1]);
-		cout << "2.  R u l e s";
+		cout << "R u l e s";
 
-		outputPosition(50, 15);
+		outputPosition(39, 12);
 		color(colorNumber[2]);
-		cout << "3.  E x i t";
-
-
+		cout << "E x i t";
 
 		key = _getch();
 
-		if (key == 'w' && (counter >= 2 && counter <= 5))
+		if (key == 'w' && (counter >= 2 && counter <= 5))	
 		{
-			counter--;
+				counter--;
 		}
-		if (key == 's' && (counter >= 1 && counter <= 4))
+		if (key == 's' && (counter >= 1 && counter <= 2))
 		{
 			counter++;
 		}
@@ -261,20 +290,19 @@ void mainMenu()
 
 		if (counter == 1)
 		{
-			colorNumber[0] = 11;
+			colorNumber[0] = 12;
 
 		}
 		if (counter == 2)
 		{
-			colorNumber[1] = 11;
+			colorNumber[1] = 12;
 		}
 		if (counter == 3)
 		{
-			colorNumber[2] = 11;
+			colorNumber[2] = 12;
 		}
 
 	} while (exitProgram != false);
-
 
 	system("cls");
 
