@@ -46,6 +46,62 @@ void printLogo()
 	cout << "\\____/_/ /_/\\__/_/\\__/_/\\___/\\__,_/   " << endl;
 }
 
+void printBackground()
+{
+	outputPosition(1, 1);
+	color(11);
+	cout << "         +         *             .         '         *               '            *                " << endl;
+	cout << "                                                                                                 " << endl;
+	cout << "   *            *          .                                +                          *         " << endl;
+	cout << "                                             +                            *                      " << endl;
+	cout << "    .                 .         *                             .                   +           +  " << endl;
+	cout << "           +                                                                                     " << endl;
+	cout << "                         *        '                     *                     +            .      " << endl;
+	cout << "    *                                    *                          *                            " << endl;
+	cout << "         +         *             .                  *                           *                " << endl;
+	cout << "                                                                                                 " << endl;
+	cout << "   *            *          .                                +                          *         " << endl;
+	cout << "                                             +                            *                      " << endl;
+	cout << "    .                 .         *                             .                   +           +  " << endl;
+	cout << "           +    '                                                                                " << endl;
+	cout << "                         *        '                '     *                     +            .      " << endl;
+	cout << "    *                                    *                          *                            " << endl;
+	cout << "      .          +                                                                  *            " << endl;
+	cout << "                              +      '           .           *               .                +  " << endl;
+	cout << "           +                                                                                     " << endl;
+	cout << "                         *                             *                     +            .      " << endl;
+}
+
+void printGround()
+{
+
+	outputPosition(1, 16);
+	color(11);
+	cout << "_____--^-__/\\----___________-^--__^--/\\--_________--^--^-/\\-__________--^---_______--/\\^-______--^--_____" << endl;
+	cout << " --^--        /\\---  __-^-___/\\__                      ---^--/\\^___  --^--__               --^-   __/\\__ " << endl;
+	cout << "       ---_     __-                   __-       --__                _-          ---_____        -_--     ";
+}
+
+void printMainMenu()
+{
+	outputPosition(39, 9);
+	color(14);
+	cout << "G A M E   M E N U" << endl;
+
+	outputPosition(39, 13);
+	color(14);
+	cout << "Team Untitled";
+
+	outputPosition(10, 17);
+	color(14);
+	cout << "Maze Game Sprint";
+
+	outputPosition(66, 17);
+	color(14);
+	cout << "Move using the WASD";
+
+}
+
 void choosingModes()
 {
 	char key1;
@@ -53,24 +109,36 @@ void choosingModes()
 	int colorNumber1[] = { 7,7,7,7 };
 	bool exitStatement = true;
 
+	outputPosition(1, 2);
+	color(7);
+	printLogo();
+
+	outputPosition(39, 9);
+	color(14);
+	cout << "G A M E   M O D E" << endl;
+
+	outputPosition(39, 14);
+	color(14);
+	cout << "Team Untitled";
+
+	printGround();
+
 	do {
-
-
-		outputPosition(56, 10);
+		outputPosition(39, 10);
 		color(colorNumber1[0]);
-		cout << "1. Easy Mode";
+		cout << "Easy Mode";
 
-		outputPosition(56, 11);
+		outputPosition(39, 11);
 		color(colorNumber1[1]);
-		cout << "2. Medium Mode";
+		cout << "Medium Mode";
 
-		outputPosition(56, 12);
+		outputPosition(39, 12);
 		color(colorNumber1[2]);
-		cout << "3. Hard Mode";
+		cout << "Hard Mode";
 
-		outputPosition(56, 13);
+		outputPosition(39, 13);
 		color(colorNumber1[3]);
-		cout << "4. Back to Main Menu";
+		cout << "Back to Main Menu";
 
 		key1 = _getch();
 
@@ -89,13 +157,12 @@ void choosingModes()
 			{
 				system("CLS");
 				mazeDeclaration();
-				printLogo();
 			}
-			if (counter1 == 2)
+			if (counter1 == 7)
 			{
 				exitStatement = true;
 			}
-			if (counter1 == 3)
+			if (counter1 == 7)
 			{
 				exitStatement = true;
 			}
@@ -103,7 +170,7 @@ void choosingModes()
 			{
 				system("CLS");
 				system("color 7");
-				printLogo();
+				mainMenu();
 				exitStatement = false;
 			}
 		}
@@ -115,11 +182,11 @@ void choosingModes()
 
 		if (counter1 == 1)
 		{
-			colorNumber1[0] = 10;
+			colorNumber1[0] = 12;
 		}
 		if (counter1 == 2)
 		{
-			colorNumber1[1] = 3;
+			colorNumber1[1] = 12;
 		}
 		if (counter1 == 3)
 		{
@@ -127,7 +194,7 @@ void choosingModes()
 		}
 		if (counter1 == 4)
 		{
-			colorNumber1[3] = 4;
+			colorNumber1[3] = 12;
 		}
 
 	} while (exitStatement != false);
@@ -170,54 +237,6 @@ void rules()
 
 
 	} while (exitStatement != false);
-
-}
-
-void printBackground()
-{
-	outputPosition(1, 1);
-	color(11);
-	cout << "         +         *             .         '         *               '            *                " << endl;
-	cout << "                                                                                                 " << endl;
-	cout << "   *            *          .                                +                          *         " << endl;
-	cout << "                                             +                            *                      " << endl;
-	cout << "    .                 .         *                             .                   +           +  " << endl;
-	cout << "           +                                                                                     " << endl;
-	cout << "                         *        '                     *                     +            .      " << endl;
-	cout << "    *                                    *                          *                            " << endl;
-	cout << "         +         *             .                  *                           *                " << endl;
-	cout << "                                                                                                 " << endl;
-	cout << "   *            *          .                                +                          *         " << endl;
-	cout << "                                             +                            *                      " << endl;
-	cout << "    .                 .         *                             .                   +           +  " << endl;
-	cout << "           +    '                                                                                " << endl;
-	cout << "                         *        '                '     *                     +            .      " << endl;
-	cout << "    *                                    *                          *                            " << endl;
-	cout << "      .          +                                                                  *            " << endl;
-	cout << "                              +      '           .           *               .                +  " << endl;
-	cout << "           +                                                                                     " << endl;
-	cout << "                         *                             *                     +            .      " << endl;
-	cout << "    *           '                         *                          *                            " << endl;
-	cout << "         +         *             .                  *                           *                " << endl;
-}
-
-void printMainMenu()
-{
-	outputPosition(39, 9);
-	color(14);
-	cout << "G A M E   M E N U" << endl;
-
-	outputPosition(39, 13);
-	color(14);
-	cout << "Team Untitled";
-
-	outputPosition(10, 17);
-	color(14);
-	cout << "Maze Game Sprint";
-
-	outputPosition(66, 17);
-	color(14);
-	cout << "Move using the WASD";
 
 }
 
