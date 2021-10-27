@@ -31,6 +31,21 @@ void outputPosition(int x, int y)
 	else {}
 }
 
+void printWinMessage()
+{
+	color(14);
+	outputPosition(27, 2);
+	cout << "__  ______  __  __   _       _______   ____";
+	outputPosition(27, 3);
+	cout << "\\ \\/ / __ \\/ / / /  | |     / /  _/ | / / /" << endl;
+	outputPosition(27, 4);
+	cout << " \\  / / / / / / /   | | /| / // //  |/ / / " << endl;
+	outputPosition(27, 5);
+	cout << " / / /_/ / /_/ /    | |/ |/ // // /|  /_/  " << endl;
+	outputPosition(27, 6);
+	cout << "/_/\\____/\\____/     |__/|__/___/_/ |_(_)   " << endl;
+}
+
 void printLogo()
 {
 	color(14);
@@ -74,32 +89,11 @@ void printBackground()
 
 void printGround()
 {
-
 	outputPosition(1, 16);
 	color(11);
 	cout << "_____--^-__/\\----___________-^--__^--/\\--_________--^--^-/\\-__________--^---_______--/\\^-______--^--_____" << endl;
 	cout << " --^--        /\\---  __-^-___/\\__                      ---^--/\\^___  --^--__               --^-   __/\\__ " << endl;
 	cout << "       ---_     __-                   __-       --__                _-          ---_____        -_--     ";
-}
-
-void printMainMenu()
-{
-	outputPosition(39, 9);
-	color(14);
-	cout << "G A M E   M E N U" << endl;
-
-	outputPosition(39, 13);
-	color(14);
-	cout << "Team Untitled";
-
-	outputPosition(10, 17);
-	color(14);
-	cout << "Maze Game Sprint";
-
-	outputPosition(66, 17);
-	color(14);
-	cout << "Move using the WASD";
-
 }
 
 void choosingModes()
@@ -109,21 +103,32 @@ void choosingModes()
 	int colorNumber1[] = { 7,7,7,7 };
 	bool exitStatement = true;
 
-	outputPosition(1, 2);
-	color(7);
-	printLogo();
-
-	outputPosition(39, 9);
-	color(14);
-	cout << "G A M E   M O D E" << endl;
-
-	outputPosition(39, 14);
-	color(14);
-	cout << "Team Untitled";
-
-	printGround();
+	bool alredayPlayed = false;
 
 	do {
+		if (alredayPlayed == false)
+		{
+			outputPosition(1, 2);
+			color(7);
+			printLogo();
+		}
+		else
+		{
+			outputPosition(1, 2);
+			color(7);
+			printWinMessage();
+		}
+
+		outputPosition(39, 9);
+		color(14);
+		cout << "G A M E   M O D E" << endl;
+
+		outputPosition(39, 14);
+		color(14);
+		cout << "Team Untitled";
+
+		printGround();
+
 		outputPosition(39, 10);
 		color(colorNumber1[0]);
 		cout << "Easy Mode";
@@ -147,7 +152,7 @@ void choosingModes()
 			counter1--;
 		}
 
-		if (key1 == 's' && (counter1 >= 1 && counter1 <= 4))
+		if (key1 == 's' && (counter1 >= 1 && counter1 <= 3))
 		{
 			counter1++;
 		}
@@ -157,6 +162,7 @@ void choosingModes()
 			{
 				system("CLS");
 				mazeDeclaration();
+				alredayPlayed = true;
 			}
 			if (counter1 == 7)
 			{
@@ -170,6 +176,7 @@ void choosingModes()
 			{
 				system("CLS");
 				system("color 7");
+				printLogo();
 				mainMenu();
 				exitStatement = false;
 			}
@@ -198,45 +205,89 @@ void choosingModes()
 		}
 
 	} while (exitStatement != false);
+
 }
+
 
 void printOutRules()
 {
-	cout << "                                                 Listen, there are rules.                       " << endl;
-	cout << "1. The game functions with W,S,A,D keys" << endl;
-	cout << "2. There are 3 difficulties - easy(10x10),medium(20x20) and hard(30x30)" << endl;
-	cout << "3. Guide the 'S' towards the 'F' to exit the maze, or go to the 'O' to unlock a secret finish" << endl;
-	cout << "4. Enjoy the game!" << endl;
+	color(14);
+	outputPosition(34, 1);
+	cout << "    ____        __              ";
+	outputPosition(34, 2);
+	cout << "   / __ \\__  __/ /__  _____   _ " << endl;
+	outputPosition(34, 3);
+	cout << "  / /_/ / / / / / _ \\/ ___/  (_)" << endl;
+	outputPosition(34, 4);
+	cout << " / _, _/ /_/ / /  __(__  )  _   " << endl;
+	outputPosition(34, 5);
+	cout << "/_/ |_|\\__,_/_/\\___/____/  (_)  " << endl;
+
+	outputPosition(39, 7);
+	color(14);
+	cout << "G A M E   R U L E S" << endl;
+
+	outputPosition(33, 9);
+	color(7);
+	cout << "The game functions with WSAD keys" << endl;
+	outputPosition(17, 10);
+	color(7);
+	cout << "There are 3 difficulties - Easy(10x10), Medium(20x20) and Hard(30x30)" << endl;
+	outputPosition(4, 11);
+	color(7);
+	cout << "Guide the 'S' towards the 'F' to exit the maze, or go to the 'o' to unlock a secret finish" << endl;
+	outputPosition(41, 12);
+	color(7);
+	cout << "Enjoy the game!" << endl;
+
+	printGround();
 }
 void rules()
 {
 	char key;
-	int colorNumber[] = { 4 };
+	int colorNumber[] = { 14 };
 	bool exitStatement = true;
-
-	printOutRules();
 
 	do
 	{
 		printOutRules();
 
-		outputPosition(5, 10);
+		outputPosition(40, 14);
 		color(colorNumber[0]);
-		cout << "1. Back to Main Menu";
+		cout << "Back To Main Menu";
 		key = _getch();
 		if (key == '\r')
 		{
 			exitStatement = false;
 			system("CLS");
-			system("color 7");
+			color(14);
+			printBackground();
 			printLogo();
+			printMainMenu();
 		}
 		else {}
 
-
-
-
 	} while (exitStatement != false);
+
+}
+
+void printMainMenu()
+{
+	outputPosition(39, 9);
+	color(14);
+	cout << "G A M E   M E N U" << endl;
+
+	outputPosition(39, 13);
+	color(14);
+	cout << "Team Untitled";
+
+	outputPosition(10, 17);
+	color(14);
+	cout << "Maze Game Sprint";
+
+	outputPosition(66, 17);
+	color(14);
+	cout << "Move using the WASD";
 
 }
 
@@ -255,7 +306,7 @@ void mainMenu()
 	printLogo();
 
 	printMainMenu();
-	
+
 	do
 	{
 		outputPosition(39, 10);
@@ -272,9 +323,9 @@ void mainMenu()
 
 		key = _getch();
 
-		if (key == 'w' && (counter >= 2 && counter <= 5))	
+		if (key == 'w' && (counter >= 2 && counter <= 5))
 		{
-				counter--;
+			counter--;
 		}
 		if (key == 's' && (counter >= 1 && counter <= 2))
 		{
@@ -298,7 +349,6 @@ void mainMenu()
 				exitProgram = false;
 				system("CLS");
 				system("color 7");
-
 			}
 
 		}
