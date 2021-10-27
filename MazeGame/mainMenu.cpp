@@ -89,12 +89,13 @@ void printBackground()
 
 void printGround()
 {
-	outputPosition(1, 16);
+	outputPosition(1, 18);
 	color(11);
 	cout << "_____--^-__/\\----___________-^--__^--/\\--_________--^--^-/\\-__________--^---_______--/\\^-______--^--_____" << endl;
 	cout << " --^--        /\\---  __-^-___/\\__                      ---^--/\\^___  --^--__               --^-   __/\\__ " << endl;
 	cout << "       ---_     __-                   __-       --__                _-          ---_____        -_--     ";
 }
+
 
 void choosingModes()
 {
@@ -106,6 +107,7 @@ void choosingModes()
 	bool alredayPlayed = false;
 
 	do {
+		
 		if (alredayPlayed == false)
 		{
 			outputPosition(1, 2);
@@ -119,29 +121,31 @@ void choosingModes()
 			printWinMessage();
 		}
 
+		
+
 		outputPosition(39, 9);
 		color(14);
 		cout << "G A M E   M O D E" << endl;
 
-		outputPosition(39, 14);
+		outputPosition(39, 16);
 		color(14);
 		cout << "Team Untitled";
 
 		printGround();
 
-		outputPosition(39, 10);
+		outputPosition(39, 11);
 		color(colorNumber1[0]);
 		cout << "Easy Mode";
 
-		outputPosition(39, 11);
+		outputPosition(39, 12);
 		color(colorNumber1[1]);
 		cout << "Medium Mode";
 
-		outputPosition(39, 12);
+		outputPosition(39, 13);
 		color(colorNumber1[2]);
 		cout << "Hard Mode";
 
-		outputPosition(39, 13);
+		outputPosition(39, 14);
 		color(colorNumber1[3]);
 		cout << "Back to Main Menu";
 
@@ -277,7 +281,7 @@ void printMainMenu()
 	color(14);
 	cout << "G A M E   M E N U" << endl;
 
-	outputPosition(39, 13);
+	outputPosition(39, 15);
 	color(14);
 	cout << "Team Untitled";
 
@@ -300,6 +304,7 @@ void mainMenu()
 	bool exitProgram = true;
 
 	printBackground();
+	
 
 	outputPosition(1, 2);
 	color(7);
@@ -309,15 +314,15 @@ void mainMenu()
 
 	do
 	{
-		outputPosition(39, 10);
+		outputPosition(39, 11);
 		color(colorNumber[0]);
 		cout << "P l a y";
 
-		outputPosition(39, 11);
+		outputPosition(39, 12);
 		color(colorNumber[1]);
 		cout << "R u l e s";
 
-		outputPosition(39, 12);
+		outputPosition(39, 13);
 		color(colorNumber[2]);
 		cout << "E x i t";
 
