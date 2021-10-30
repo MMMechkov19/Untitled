@@ -16,6 +16,20 @@ struct Player
 	int y;
 };
 
+enum size
+{
+	width = 11,
+	height = 11
+};
+
+enum directions
+{
+	north = 0,
+	east = 1,
+	south = 2,
+	west = 3
+};
+
 // Moves' counter
 int keysPressedCounter = 0;
 
@@ -204,6 +218,111 @@ void winMessage()
 	keysPressedCounter = 0;
 	system("CLS");
 
+}
+
+void resetArray(char** arr)
+{
+	// Fills the 2D array with walls
+	for (int i = 0; i < width; i++)
+	{
+		for (int j = 0; j < height; j++) {
+			arr[i][j] = char(254);
+		}
+	}
+}
+
+int isInBounds(int x, int y)
+{
+	// Returns "true" if x and y are both in-bounds.
+	if (x < 0 || x >= width)
+	{
+		return false;
+	}
+	if (y < 0 || y >= height)
+	{
+		return false;
+	}
+	return true;
+}
+
+void cleanTunels(int x, int y, char** arr)
+{
+	arr[x][y] = ' ';
+
+	int directions[4];
+	directions[0] = north;
+	directions[1] = east;
+	directions[2] = south;
+	directions[3] = west;
+	// Set random direction to try to clean space
+	for (int i = 0; i < 4; ++i)
+	{
+		int randomDirection = rand() & 3;
+		int temp = directions[randomDirection];
+		directions[randomDirection] = directions[i];
+		directions[i] = temp;
+	}
+	// Loop through every direction and attempt to clean space in that direction
+	for (int i = 0; i < 4; ++i)
+	{
+		int rows = 0, columns = 0;
+		switch (directions[i])
+		{
+		case north: columns = -1;
+			break;
+		case south: columns = 1;
+			break;
+		case east: rows = 1;
+			break;
+		case west: rows = -1;
+			break;
+		}
+		// Find the coordinates of the 2D array cell 2 positions away in the given direction
+		int x2 = x + (rows * 2);
+		int y2 = y + (columns * 2);
+		if (isInBounds(x2, y2))
+		{
+			if (arr[x2][y2] == char(254))
+			{
+				// Clean space
+				arr[x2 - rows][y2 - columns] = ' ';
+				cleanTunels(x2, y2, arr);
+			}
+		}
+	}
+}
+void printMaze(char** arr)
+{
+	// Display the maze to the screen
+	for (int y = 0; y < height; y++)
+	{
+		for (int x = 0; x < width; x++)
+		{
+			if (x == 1 && y == 0)
+			{
+				arr[x][y] = 'o';
+			}
+			if (x == 9 && y == 10)
+			{
+				arr[x][y] = 'F';
+			}
+			cout << arr[x][y] << " ";
+		}
+		cout << endl;
+	}
+}
+void easyMode()
+{
+	char** arr = new char* [height];
+	for (int i = 0; i < width; i++)
+	{
+		arr[i] = new char[width];
+	}
+
+	srand(time(0));
+	resetArray(arr);
+	cleanTunels(1, 1, arr);
+	printMaze(arr);
 }
 
 // Declare maze board
