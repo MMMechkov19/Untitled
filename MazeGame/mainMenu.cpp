@@ -107,7 +107,7 @@ void choosingModes()
 	bool alredayPlayed = false;
 
 	do {
-		
+
 		if (alredayPlayed == false)
 		{
 			outputPosition(1, 2);
@@ -121,7 +121,7 @@ void choosingModes()
 			printWinMessage();
 		}
 
-		
+
 
 		outputPosition(39, 9);
 		color(14);
@@ -165,7 +165,7 @@ void choosingModes()
 			if (counter1 == 1)
 			{
 				system("CLS");
-				mazeDeclaration();
+				easyMode();
 				alredayPlayed = true;
 			}
 			if (counter1 == 7)
@@ -304,7 +304,7 @@ void mainMenu()
 	bool exitProgram = true;
 
 	printBackground();
-	
+
 
 	outputPosition(1, 2);
 	color(7);
