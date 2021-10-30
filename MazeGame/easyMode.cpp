@@ -245,7 +245,7 @@ int isInBounds(int x, int y)
 	return true;
 }
 
-void cleanTunels(int x, int y, char** arr)
+void cleanTunnels(int x, int y, char** arr)
 {
 	arr[x][y] = ' ';
 
@@ -321,7 +321,7 @@ void easyMode()
 
 	srand(time(0));
 	resetArray(arr);
-	cleanTunels(1, 1, arr);
+	cleanTunnels(1, 1, arr);
 	printMaze(arr);
 }
 
