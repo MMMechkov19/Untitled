@@ -3,13 +3,13 @@
 #include <stdlib.h>
 #include "enums.h"
 #include "structs.h"
-#include "easyMode.h"
+#include "mediumMode.h"
 #include "mainMenu.h"
 #include "mazeFunctions.h"
 
 using namespace std;
 
-SIZE easyModeMazeSize = { 11, 11 };
+SIZE mediumModeMazeSize = { 21, 21 };
 
 //// Find if the character's position is on the key and if so unlock the secret door
 //void secretKey(int a, int b, char** arr)
@@ -50,25 +50,25 @@ SIZE easyModeMazeSize = { 11, 11 };
 //	}
 //}
 
-void mediumMode()
+void easyMode()
 {
 	bool doesNotWin = true;
-	char** arr = new char* [easyModeMazeSize.HEIGHT];
-	for (int i = 0; i < easyModeMazeSize.WIDTH; i++)
+	char** arr = new char* [mediumModeMazeSize.HEIGHT];
+	for (int i = 0; i < mediumModeMazeSize.WIDTH; i++)
 	{
-		arr[i] = new char[easyModeMazeSize.WIDTH];
+		arr[i] = new char[mediumModeMazeSize.WIDTH];
 	}
 
 	srand(time(0));
-	resetArray(arr, easyModeMazeSize.WIDTH, easyModeMazeSize.HEIGHT);
-	cleanTunnels(1, 1, arr, easyModeMazeSize.WIDTH, easyModeMazeSize.HEIGHT);
-	printMaze(arr, easyModeMazeSize.WIDTH, easyModeMazeSize.HEIGHT);
+	resetArray(arr, mediumModeMazeSize.WIDTH, mediumModeMazeSize.HEIGHT);
+	cleanTunnels(1, 1, arr, mediumModeMazeSize.WIDTH, mediumModeMazeSize.HEIGHT);
+	printMaze(arr, mediumModeMazeSize.WIDTH, mediumModeMazeSize.HEIGHT);
 	system("CLS");
-	movementSystem(doesNotWin, arr, easyModeMazeSize.WIDTH, easyModeMazeSize.HEIGHT);
+	movementSystem(doesNotWin, arr, mediumModeMazeSize.WIDTH, mediumModeMazeSize.HEIGHT);
 	winMessage();
 	system("CLS");
 
-	for (int i = 0; i < easyModeMazeSize.WIDTH; i++)
+	for (int i = 0; i < mediumModeMazeSize.WIDTH; i++)
 	{
 		delete[] arr[i];
 	}

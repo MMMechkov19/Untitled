@@ -1,10 +1,11 @@
 #pragma once
 
-void currentPossition(char** arr);
+void currentPossition(char** arr, int width, int height);
 void checkInitialMove(PLAYER& player);
-void finalPossition(char** arr);
-void movementSystem(bool doesNotWin, char** arr);
+void finalPossition(char** arr, int width, int height);
+void printMaze(char** arr, int width, int height);
+void movementSystem(bool doesNotWin, char** arr, int width, int height);
 void winMessage();
-void resetArray(char** arr);
-int isInBounds(int x, int y);
-void cleanTunnels(int x, int y, char** arr);
+void resetArray(char** arr, int width, int height);
+int isInBounds(int x, int y, int width, int height);
+void cleanTunnels(int x, int y, char** arr, int width, int height);

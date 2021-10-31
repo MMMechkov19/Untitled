@@ -4,11 +4,10 @@
 #include <stdlib.h>
 #include <iomanip>
 #include "easyMode.h"
+#include "mediumMode.h"
 #include "mainMenu.h"
 
 using namespace std;
-
-
 
 void color(int color)
 {
@@ -167,10 +166,14 @@ void choosingModes()
 				system("CLS");
 				easyMode();
 				alredayPlayed = true;
+				break;
 			}
-			if (counter1 == 7)
+			if (counter1 == 2)
 			{
-				exitStatement = true;
+				system("CLS");
+				mediumMode();
+				alredayPlayed = true;
+				break;
 			}
 			if (counter1 == 7)
 			{
@@ -379,8 +382,4 @@ void mainMenu()
 	} while (exitProgram != false);
 
 	system("cls");
-
-
-
-
 }

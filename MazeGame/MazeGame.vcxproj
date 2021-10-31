@@ -143,12 +143,14 @@
     <ClCompile Include="mainMenu.cpp" />
     <ClCompile Include="mazeFunctions.cpp" />
     <ClCompile Include="MazeGame.cpp" />
+    <ClCompile Include="mediumMode.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="easyMode.h" />
     <ClInclude Include="enums.h" />
     <ClInclude Include="mainMenu.h" />
     <ClInclude Include="mazeFunctions.h" />
+    <ClInclude Include="mediumMode.h" />
     <ClInclude Include="structs.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

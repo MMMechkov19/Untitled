@@ -8,3 +8,9 @@ struct PLAYER
 	int x;
 	int y;
 };
+
+struct SIZE
+{
+	int WIDTH;
+	int HEIGHT;
+};

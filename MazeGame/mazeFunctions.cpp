@@ -8,12 +8,12 @@
 
 using namespace std;
 
-void currentPossition(char** arr)
+void currentPossition(char** arr, int width, int height)
 {
 	cout << "Your current position is ";
-	for (int i = 0; i < WIDTH; i++)
+	for (int i = 0; i < width; i++)
 	{
-		for (int j = 0; j < HEIGHT; j++) {
+		for (int j = 0; j < height; j++) {
 			if (arr[i][j] == 'o')
 			{
 				cout << "[" << i << "][" << j << "]" << endl;
@@ -33,13 +33,13 @@ void checkInitialMove(PLAYER& player)
 	}
 }
 
-void finalPossition(char** arr)
+void finalPossition(char** arr, int width, int height)
 {
 	/*int finalCounter = 0;*/
 	cout << "The final is located on position ";
-	for (int i = 0; i < WIDTH; i++)
+	for (int i = 0; i < width; i++)
 	{
-		for (int j = 0; j < HEIGHT; j++) {
+		for (int j = 0; j < height; j++) {
 			if (arr[i][j] == 'F')
 			{
 				/*finalcounter++;
@@ -57,8 +57,58 @@ void finalPossition(char** arr)
 	}
 }
 
+void printMaze(char** arr, int width, int height)
+{
+	// Print game mode
+	cout << width << " x " << height << endl;
+
+	if (keysPressedCounter == 0)
+	{
+		arr[1][0] = 'o';
+	}
+	arr[width-2][width-1] = 'F';
+
+	// Print current possition
+	currentPossition(arr, width, height);
+
+	// Print final position
+	finalPossition(arr, width, height);
+
+	// Print used moves
+	cout << endl << "You've moved " << keysPressedCounter << " time/s" << endl << endl << "     ";
+
+	// Print y coordinates
+	for (int i = 0; i < width; i++)
+	{
+		cout << i << " ";
+	}
+
+	cout << endl << endl;
+
+	// Print maze
+	for (int i = 0; i < width; i++)
+	{
+		// Print x coordinates
+		if (i >= 10) {
+			cout << " " << i << "  ";
+		}
+		else
+		{
+			cout << " " << i << "   ";
+		}
+
+		// Display the maze to the screen
+		for (int j = 0; j < height; j++)
+		{
+			cout << arr[i][j] << " ";
+		}
+		cout << endl;
+	}
+}
+
+
 // System for moving player's character
-void movementSystem(bool doesNotWin, char** arr)
+void movementSystem(bool doesNotWin, char** arr, int width, int height)
 {
 	char pressedKey;
 	PLAYER player;
@@ -78,7 +128,7 @@ void movementSystem(bool doesNotWin, char** arr)
 			arr[player.y][player.x] = player.symbol;
 		}
 
-		printMaze(arr);
+		printMaze(arr, width, height);
 
 		pressedKey = _getch();
 
@@ -136,32 +186,32 @@ void winMessage()
 	system("CLS");
 }
 
-void resetArray(char** arr)
+void resetArray(char** arr, int width, int height)
 {
 	// Fills the 2D array with walls
-	for (int i = 0; i < WIDTH; i++)
+	for (int i = 0; i < width; i++)
 	{
-		for (int j = 0; j < HEIGHT; j++) {
+		for (int j = 0; j < height; j++) {
 			arr[i][j] = char(254);
 		}
 	}
 }
 
-int isInBounds(int x, int y)
+int isInBounds(int x, int y, int width, int height)
 {
 	// Returns "true" if x and y are both in-bounds.
-	if (x < 0 || x >= WIDTH)
+	if (x < 0 || x >= width)
 	{
 		return false;
 	}
-	if (y < 0 || y >= HEIGHT)
+	if (y < 0 || y >= height)
 	{
 		return false;
 	}
 	return true;
 }
 
-void cleanTunnels(int x, int y, char** arr)
+void cleanTunnels(int x, int y, char** arr, int width, int height)
 {
 	arr[x][y] = ' ';
 
@@ -196,13 +246,13 @@ void cleanTunnels(int x, int y, char** arr)
 		// Find the coordinates of the 2D array cell 2 positions away in the given direction
 		int x2 = x + (rows * 2);
 		int y2 = y + (columns * 2);
-		if (isInBounds(x2, y2))
+		if (isInBounds(x2, y2, width, height))
 		{
 			if (arr[x2][y2] == char(254))
 			{
 				// Clean space
 				arr[x2 - rows][y2 - columns] = ' ';
-				cleanTunnels(x2, y2, arr);
+				cleanTunnels(x2, y2, arr, width, height);
 			}
 		}
 	}

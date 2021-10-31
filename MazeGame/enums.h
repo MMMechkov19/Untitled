@@ -7,12 +7,6 @@ enum class KEY : char
 	DOWN = 's'
 };
 
-enum SIZE
-{
-	WIDTH = 11,
-	HEIGHT = 11
-};
-
 enum DIRECTIONS
 {
 	NORTH = 0,
