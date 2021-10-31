@@ -1,7 +1,8 @@
 #include <iostream>
 #include <conio.h>
 #include <stdlib.h>
-#include "globalVariables.h"
+#include "enums.h"
+#include "structs.h"
 #include "easyMode.h"
 #include "mainMenu.h"
 #include "mazeFunctions.h"
@@ -12,7 +13,13 @@ void printMaze(char** arr)
 {
 	// Print game mode
 	cout << "Easy mode - 11 x 11" << endl;
-	
+
+	if (keysPressedCounter == 0)
+	{
+		arr[1][0] = 'o';
+	}
+	arr[9][10] = 'F';
+
 	// Print current possition
 	currentPossition(arr);
 
@@ -45,17 +52,6 @@ void printMaze(char** arr)
 		// Display the maze to the screen
 		for (int j = 0; j < 11; j++)
 		{
-			if (i == 1 && j == 0)
-			{
-				if (keysPressedCounter == 0)
-				{
-					arr[i][j] = 'o';
-				}
-			}
-			if (i == 9 && j == 10)
-			{
-				arr[i][j] = 'F';
-			}
 			cout << arr[i][j] << " ";
 		}
 		cout << endl;
@@ -113,12 +109,14 @@ void easyMode()
 	srand(time(0));
 	resetArray(arr);
 	cleanTunnels(1, 1, arr);
+	printMaze(arr);
+	system("CLS");
 	movementSystem(doesNotWin, arr);
+	winMessage();
+	system("CLS");
 
 	for (int i = 0; i < 11; i++)
 	{
 		delete[] arr[i];
 	}
-	printMaze(arr);
-	winMessage();
 }

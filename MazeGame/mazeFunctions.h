@@ -1,6 +1,7 @@
 #pragma once
 
 void currentPossition(char** arr);
+void checkInitialMove(PLAYER& player);
 void finalPossition(char** arr);
 void movementSystem(bool doesNotWin, char** arr);
 void winMessage();

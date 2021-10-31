@@ -146,9 +146,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="easyMode.h" />
-    <ClInclude Include="globalVariables.h" />
+    <ClInclude Include="enums.h" />
     <ClInclude Include="mainMenu.h" />
     <ClInclude Include="mazeFunctions.h" />
+    <ClInclude Include="structs.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

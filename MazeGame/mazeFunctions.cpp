@@ -3,7 +3,8 @@
 #include <stdlib.h>
 #include "easyMode.h"
 #include "mainMenu.h"
-#include "globalVariables.h"
+#include "enums.h"
+#include "structs.h"
 
 using namespace std;
 
@@ -12,21 +13,24 @@ void currentPossition(char** arr)
 	cout << "Your current position is ";
 	for (int i = 0; i < WIDTH; i++)
 	{
-		for (int j = 1; j < HEIGHT; j++) {
+		for (int j = 0; j < HEIGHT; j++) {
 			if (arr[i][j] == 'o')
 			{
-				if (keysPressedCounter == 0)
-				{
-					cout << "[1][0]";
-				}
-				else
-				{
-					cout << "[" << i << "][" << j << "]" << endl;
-				}
+				cout << "[" << i << "][" << j << "]" << endl;
 			}
 		}
 	}
 
+}
+
+void checkInitialMove(PLAYER& player)
+{
+	if (player.x < 0)
+	{
+		system("cls");
+		player.x = 0;
+		keysPressedCounter = 0;
+	}
 }
 
 void finalPossition(char** arr)
@@ -57,7 +61,7 @@ void finalPossition(char** arr)
 void movementSystem(bool doesNotWin, char** arr)
 {
 	char pressedKey;
-	Player player;
+	PLAYER player;
 	player.symbol = 'o';
 	doesNotWin = true;
 
@@ -68,6 +72,7 @@ void movementSystem(bool doesNotWin, char** arr)
 
 	while (doesNotWin)
 	{
+		checkInitialMove(player);
 		if (arr[player.y][player.x] == ' ')
 		{
 			arr[player.y][player.x] = player.symbol;
@@ -77,9 +82,9 @@ void movementSystem(bool doesNotWin, char** arr)
 
 		pressedKey = _getch();
 
-		switch (pressedKey)
+		switch ((KEY)pressedKey)
 		{
-		case KEY_LEFT:
+		case KEY::LEFT:
 			if (arr[player.y][player.x - 1] != char(254))
 			{
 				arr[player.y][player.x] = ' ';
@@ -87,7 +92,7 @@ void movementSystem(bool doesNotWin, char** arr)
 				keysPressedCounter++;
 			}
 			break;
-		case KEY_UP:
+		case KEY::UP:
 			if (arr[player.y - 1][player.x] != char(254))
 			{
 				arr[player.y][player.x] = ' ';
@@ -95,7 +100,7 @@ void movementSystem(bool doesNotWin, char** arr)
 				keysPressedCounter++;
 			}
 			break;
-		case KEY_DOWN:
+		case KEY::DOWN:
 			if (arr[player.y + 1][player.x] != char(254))
 			{
 				arr[player.y][player.x] = ' ';
@@ -103,7 +108,7 @@ void movementSystem(bool doesNotWin, char** arr)
 				keysPressedCounter++;
 			}
 			break;
-		case KEY_RIGHT:
+		case KEY::RIGHT:
 			if (arr[player.y][player.x + 1] != char(254))
 			{
 				arr[player.y][player.x] = ' ';
@@ -160,24 +165,24 @@ void cleanTunnels(int x, int y, char** arr)
 {
 	arr[x][y] = ' ';
 
-	int directions[4];
-	directions[0] = NORTH;
-	directions[1] = EAST;
-	directions[2] = SOUTH;
-	directions[3] = WEST;
+	int DIRECTIONS[4];
+	DIRECTIONS[0] = NORTH;
+	DIRECTIONS[1] = EAST;
+	DIRECTIONS[2] = SOUTH;
+	DIRECTIONS[3] = WEST;
 	// Set random direction to try to clean space
 	for (int i = 0; i < 4; ++i)
 	{
 		int randomDirection = rand() & 3;
-		int temp = directions[randomDirection];
-		directions[randomDirection] = directions[i];
-		directions[i] = temp;
+		int temp = DIRECTIONS[randomDirection];
+		DIRECTIONS[randomDirection] = DIRECTIONS[i];
+		DIRECTIONS[i] = temp;
 	}
 	// Loop through every direction and attempt to clean space in that direction
 	for (int i = 0; i < 4; ++i)
 	{
 		int rows = 0, columns = 0;
-		switch (directions[i])
+		switch (DIRECTIONS[i])
 		{
 		case NORTH: columns = -1;
 			break;
