@@ -1,4 +1,5 @@
 #pragma once
+#include "structs.h"
 
 void currentPossition(char** arr, int width, int height);
 void checkInitialMove(PLAYER& player);
@@ -9,3 +10,4 @@ void winMessage();
 void resetArray(char** arr, int width, int height);
 int isInBounds(int x, int y, int width, int height);
 void cleanTunnels(int x, int y, char** arr, int width, int height);
+void gameMode(SIZES size);

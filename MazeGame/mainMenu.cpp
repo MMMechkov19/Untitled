@@ -3,11 +3,14 @@
 #include <conio.h>
 #include <stdlib.h>
 #include <iomanip>
-#include "easyMode.h"
-#include "mediumMode.h"
 #include "mainMenu.h"
+#include "mazeFunctions.h"
 
 using namespace std;
+
+SIZES easyMode = { 11,11 };
+SIZES mediumMode = { 21,21 };
+SIZES hardMode = { 29,29 };
 
 void color(int color)
 {
@@ -120,8 +123,6 @@ void choosingModes()
 			printWinMessage();
 		}
 
-
-
 		outputPosition(39, 9);
 		color(14);
 		cout << "G A M E   M O D E" << endl;
@@ -164,20 +165,21 @@ void choosingModes()
 			if (counter1 == 1)
 			{
 				system("CLS");
-				easyMode();
+				gameMode(easyMode);
 				alredayPlayed = true;
 				break;
 			}
 			if (counter1 == 2)
 			{
 				system("CLS");
-				mediumMode();
-				alredayPlayed = true;
+				gameMode(mediumMode);
 				break;
 			}
-			if (counter1 == 7)
+			if (counter1 == 3)
 			{
-				exitStatement = true;
+				system("CLS");
+				gameMode(hardMode);
+				break;
 			}
 			if (counter1 == 4)
 			{

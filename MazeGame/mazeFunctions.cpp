@@ -1,7 +1,6 @@
 #include <iostream>
 #include <conio.h>
 #include <stdlib.h>
-#include "easyMode.h"
 #include "mainMenu.h"
 #include "enums.h"
 #include "structs.h"
@@ -105,7 +104,6 @@ void printMaze(char** arr, int width, int height)
 		cout << endl;
 	}
 }
-
 
 // System for moving player's character
 void movementSystem(bool doesNotWin, char** arr, int width, int height)
@@ -255,5 +253,29 @@ void cleanTunnels(int x, int y, char** arr, int width, int height)
 				cleanTunnels(x2, y2, arr, width, height);
 			}
 		}
+	}
+}
+
+void gameMode(SIZES size)
+{
+	bool doesNotWin = true;
+	char** arr = new char* [size.HEIGHT];
+	for (int i = 0; i < size.WIDTH; i++)
+	{
+		arr[i] = new char[size.WIDTH];
+	}
+
+	srand(time(0));
+	resetArray(arr, size.WIDTH, size.HEIGHT);
+	cleanTunnels(1, 1, arr, size.WIDTH, size.HEIGHT);
+	printMaze(arr, size.WIDTH, size.HEIGHT);
+	system("CLS");
+	movementSystem(doesNotWin, arr, size.WIDTH, size.HEIGHT);
+	winMessage();
+	system("CLS");
+
+	for (int i = 0; i < size.WIDTH; i++)
+	{
+		delete[] arr[i];
 	}
 }

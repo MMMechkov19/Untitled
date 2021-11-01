@@ -9,7 +9,7 @@ struct PLAYER
 	int y;
 };
 
-struct SIZE
+struct SIZES
 {
 	int WIDTH;
 	int HEIGHT;
