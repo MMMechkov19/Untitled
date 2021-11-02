@@ -1,7 +1,7 @@
 #pragma once
 #include "structs.h"
 
-void currentPossition(char** arr, int width, int height);
+void currentPosition(char** arr, int width, int height);
 void checkInitialMove(PLAYER& player);
 void finalPossition(char** arr, int width, int height);
 void printMaze(char** arr, int width, int height);

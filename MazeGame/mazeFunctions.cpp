@@ -7,7 +7,7 @@
 
 using namespace std;
 
-void currentPossition(char** arr, int width, int height)
+void currentPosition(char** arr, int width, int height)
 {
 	cout << "Your current position is ";
 	for (int i = 0; i < width; i++)
@@ -68,7 +68,7 @@ void printMaze(char** arr, int width, int height)
 	arr[width-2][width-1] = 'F';
 
 	// Print current possition
-	currentPossition(arr, width, height);
+	currentPosition(arr, width, height);
 
 	// Print final position
 	finalPossition(arr, width, height);
