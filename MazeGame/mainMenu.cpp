@@ -36,31 +36,50 @@ void outputPosition(int x, int y)
 void printWinMessage()
 {
 	color(14);
-	outputPosition(27, 2);
-	cout << "__  ______  __  __   _       _______   ____";
-	outputPosition(27, 3);
-	cout << "\\ \\/ / __ \\/ / / /  | |     / /  _/ | / / /" << endl;
-	outputPosition(27, 4);
-	cout << " \\  / / / / / / /   | | /| / // //  |/ / / " << endl;
-	outputPosition(27, 5);
-	cout << " / / /_/ / /_/ /    | |/ |/ // // /|  /_/  " << endl;
-	outputPosition(27, 6);
-	cout << "/_/\\____/\\____/     |__/|__/___/_/ |_(_)   " << endl;
+	outputPosition(19, 2);
+	cout << "       ______                             __       __";
+	outputPosition(19, 3);
+	cout << "      / ____/___  ____  ____ __________ _/ /______/ /" << endl;
+	outputPosition(19, 4);
+	cout << "     / /   / __ \\/ __ \\/ __ `/ ___/ __ `/ __/ ___/ / " << endl;
+	outputPosition(19, 5);
+	cout << "    / /___/ /_/ / / / / /_/ / /  / /_/ / /_(__  )_/  " << endl;
+	outputPosition(19, 6);
+	cout << "    \\____/\\____/_/ /_/\\__, /_/   \\__,_/\\__/____(_)   " << endl;
+	outputPosition(19, 7);
+	cout << "       __  __        /____/ _       ___       __     " << endl;
+	outputPosition(19, 8);
+	cout << "       \\ \\/ /___  __  __   | |     / (_)___  / /     " << endl;
+	outputPosition(19, 9);
+	cout << "        \\  / __ \\/ / / /   | | /| / / / __ \\/ /      " << endl;
+	outputPosition(19, 10);
+	cout << "        / / /_/ / /_/ /    | |/ |/ / / / / /_/       " << endl;
+	outputPosition(19, 11);
+	cout << "       /_/\\____/\__,_/     |__/|__/_/_/ /_(_)        " << endl;
+	
 }
 
 void printLogo()
 {
 	color(14);
-	outputPosition(28, 2);
-	cout << "   __  __      __  _ __  __         __";
-	outputPosition(28, 3);
-	cout << "  / / / /___  / /_(_) /_/ /__  ____/ /" << endl;
-	outputPosition(28, 4);
-	cout << " / / / / __ \\/ __/ / __/ / _ \\/ __  / " << endl;
-	outputPosition(28, 5);
-	cout << "/ /_/ / / / / /_/ / /_/ /  __/ /_/ /  " << endl;
-	outputPosition(28, 6);
-	cout << "\\____/_/ /_/\\__/_/\\__/_/\\___/\\__,_/   " << endl;
+	outputPosition(22, 2);
+	cout << "   __  ___   ____________________    __________ ";
+	outputPosition(22, 3);
+	cout << "  / / / / | / /_  __/  _/_  __/ /   / ____/ __ \\" << endl;
+	outputPosition(22, 4);
+	cout << " / / / /  |/ / / /  / /  / / / /   / __/ / / / /" << endl;
+	outputPosition(22, 5);
+	cout << "/ /_/ / /|  / / / _/ /  / / / /___/ /___/ /_/ / " << endl;
+	outputPosition(22, 6);
+	cout << "\\____/_/ |_/ /_/ /___/ /_/ /_____/_____/_____/  " << endl;
+	outputPosition(21, 8);
+	cout << "  __  __   _    _______    ___   _   __  __ ___ " << endl;
+	outputPosition(15, 9);
+	cout << char(254) << char(254) << char(254) << char(254) << char(254) << char(254) << " |  \\/  | /_\\  |_  / __|  / __| /_\\ |  \\/  | __| " << char(254) << char(254) << char(254) << char(254) << char(254) << char(254) << endl;
+	outputPosition(15, 10);
+	cout << char(254) << char(254) << char(254) << char(254) << char(254) << char(254) << " | |\\/| |/ _ \\  / /| _|  | (_ |/ _ \\| |\\/| | _|  " << char(254) << char(254) << char(254) << char(254) << char(254) << char(254) << endl;
+	outputPosition(15, 11);
+	cout << char(254) << char(254) << char(254) << char(254) << char(254) << char(254) << " |_|  |_/_/ \\_\\/___|___|  \\___/_/ \\_\\_|  |_|___| " << char(254) << char(254) << char(254) << char(254) << char(254) << char(254) << endl;
 }
 
 void printBackground()
@@ -87,6 +106,44 @@ void printBackground()
 	cout << "                              +      '           .           *               .                +  " << endl;
 	cout << "           +                                                                                     " << endl;
 	cout << "                         *                             *                     +            .      " << endl;
+	cout << "         +         *             .         '         *               '            *                " << endl;
+	cout << "                                                                                                 " << endl;
+	cout << "   *            *          .                                +                          *         " << endl;
+	cout << "                                             +                            *                      " << endl;
+	cout << "    .                 .         *                             .                   +           +  " << endl;
+	cout << "           +                                                                                     " << endl;
+	cout << "                         *        '                     *                     +            .      " << endl;
+	cout << "    *                                    *                          *                            " << endl;
+	cout << "         +         *             .                  *                           *                " << endl;
+	cout << "                                                                                                 " << endl;
+	cout << "   *            *          .                                +                          *         " << endl;
+	cout << "                                             +                            *                      " << endl;
+	cout << "    .                 .         *                             .                   +           +  " << endl;
+	cout << "           +    '                                                                                " << endl;
+	cout << "                         *        '                '     *                     +            .      " << endl;
+}
+
+void printButtonbox()
+{
+	color(14);
+	outputPosition(37, 18);
+	cout << " _______________ " << endl;
+	outputPosition(37, 19);
+	cout << "|               |" << endl;
+	outputPosition(37, 20);
+	cout << "|_______________|" << endl;
+	outputPosition(37, 21);
+	cout << " _______________ " << endl;
+	outputPosition(37, 22);
+	cout << "|               |" << endl;
+	outputPosition(37, 23);
+	cout << "|_______________|" << endl;
+	outputPosition(37, 24);
+	cout << " _______________ " << endl;
+	outputPosition(37, 25);
+	cout << "|               |" << endl;
+	outputPosition(37, 26);
+	cout << "|_______________|" << endl;
 }
 
 void printGround()
@@ -127,7 +184,7 @@ void choosingModes()
 		color(14);
 		cout << "G A M E   M O D E" << endl;
 
-		outputPosition(39, 16);
+		outputPosition(39, 19);
 		color(14);
 		cout << "Team Untitled";
 
@@ -167,19 +224,16 @@ void choosingModes()
 				system("CLS");
 				gameMode(easyMode);
 				alredayPlayed = true;
-				break;
 			}
 			if (counter1 == 2)
 			{
 				system("CLS");
 				gameMode(mediumMode);
-				break;
 			}
 			if (counter1 == 3)
 			{
 				system("CLS");
 				gameMode(hardMode);
-				break;
 			}
 			if (counter1 == 4)
 			{
@@ -282,19 +336,19 @@ void rules()
 
 void printMainMenu()
 {
-	outputPosition(39, 9);
+	outputPosition(37, 16);
 	color(14);
 	cout << "G A M E   M E N U" << endl;
 
-	outputPosition(39, 15);
+	outputPosition(39, 28);
 	color(14);
 	cout << "Team Untitled";
 
-	outputPosition(10, 17);
+	outputPosition(10, 32);
 	color(14);
 	cout << "Maze Game Sprint";
 
-	outputPosition(66, 17);
+	outputPosition(66, 32);
 	color(14);
 	cout << "Move using the WASD";
 
@@ -309,6 +363,7 @@ void mainMenu()
 	bool exitProgram = true;
 
 	printBackground();
+	printButtonbox();
 
 
 	outputPosition(1, 2);
@@ -319,15 +374,15 @@ void mainMenu()
 
 	do
 	{
-		outputPosition(39, 11);
+		outputPosition(42, 19);
 		color(colorNumber[0]);
 		cout << "P l a y";
 
-		outputPosition(39, 12);
+		outputPosition(41, 22);
 		color(colorNumber[1]);
 		cout << "R u l e s";
 
-		outputPosition(39, 13);
+		outputPosition(42, 25);
 		color(colorNumber[2]);
 		cout << "E x i t";
 
