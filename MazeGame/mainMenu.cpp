@@ -36,26 +36,26 @@ void outputPosition(int x, int y)
 void printWinMessage()
 {
 	color(14);
-	outputPosition(19, 2);
-	cout << "       ______                             __       __";
 	outputPosition(19, 3);
-	cout << "      / ____/___  ____  ____ __________ _/ /______/ /" << endl;
+	cout << "       ______                             __       __";
 	outputPosition(19, 4);
-	cout << "     / /   / __ \\/ __ \\/ __ `/ ___/ __ `/ __/ ___/ / " << endl;
+	cout << "      / ____/___  ____  ____ __________ _/ /______/ /" << endl;
 	outputPosition(19, 5);
-	cout << "    / /___/ /_/ / / / / /_/ / /  / /_/ / /_(__  )_/  " << endl;
+	cout << "     / /   / __ \\/ __ \\/ __ `/ ___/ __ `/ __/ ___/ / " << endl;
 	outputPosition(19, 6);
-	cout << "    \\____/\\____/_/ /_/\\__, /_/   \\__,_/\\__/____(_)   " << endl;
+	cout << "    / /___/ /_/ / / / / /_/ / /  / /_/ / /_(__  )_/  " << endl;
 	outputPosition(19, 7);
-	cout << "       __  __        /____/ _       ___       __     " << endl;
+	cout << "    \\____/\\____/_/ /_/\\__, /_/   \\__,_/\\__/____(_)   " << endl;
 	outputPosition(19, 8);
-	cout << "       \\ \\/ /___  __  __   | |     / (_)___  / /     " << endl;
+	cout << "       __  __        /____/ _       ___       __     " << endl;
 	outputPosition(19, 9);
-	cout << "        \\  / __ \\/ / / /   | | /| / / / __ \\/ /      " << endl;
+	cout << "       \\ \\/ /___  __  __   | |     / (_)___  / /     " << endl;
 	outputPosition(19, 10);
-	cout << "        / / /_/ / /_/ /    | |/ |/ / / / / /_/       " << endl;
+	cout << "        \\  / __ \\/ / / /   | | /| / / / __ \\/ /      " << endl;
 	outputPosition(19, 11);
-	cout << "       /_/\\____/\__,_/     |__/|__/_/_/ /_(_)        " << endl;
+	cout << "        / / /_/ / /_/ /    | |/ |/ / / / / /_/       " << endl;
+	outputPosition(19, 12);
+	cout << "       /_/\\____/\__,_/      |__/|__/_/_/ /_(_)        " << endl;
 
 }
 
@@ -341,42 +341,44 @@ void choosingModes()
 
 		if (alredayPlayed == false)
 		{
+			printGameMachine();
 			outputPosition(1, 2);
 			color(7);
 			printLogo();
 		}
 		else
 		{
+			printGameMachine();
 			outputPosition(1, 2);
 			color(7);
 			printWinMessage();
 		}
 
-		outputPosition(39, 9);
+		outputPosition(37, 15);
 		color(14);
 		cout << "G A M E   M O D E" << endl;
 
-		outputPosition(39, 16);
+		outputPosition(37, 22);
 		color(14);
-		cout << "Team Untitled";
+		cout << "TEAM  UNTITLED";
 
 		printGround();
 
-		outputPosition(39, 11);
+		outputPosition(37, 17);
 		color(colorNumber1[0]);
-		cout << "Easy Mode";
+		cout << "EASY MODE";
 
-		outputPosition(39, 12);
+		outputPosition(37, 18);
 		color(colorNumber1[1]);
-		cout << "Medium Mode";
+		cout << "MEDIUM MODE";
 
-		outputPosition(39, 13);
+		outputPosition(37, 19);
 		color(colorNumber1[2]);
-		cout << "Hard Mode";
+		cout << "HARD MODE";
 
-		outputPosition(39, 14);
+		outputPosition(37, 20);
 		color(colorNumber1[3]);
-		cout << "Back to Main Menu";
+		cout << "BACK TO MAIN MENU";
 
 		key1 = _getch();
 
