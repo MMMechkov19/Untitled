@@ -76,9 +76,69 @@ namespace UnitTesting
 		TEST_METHOD(expectToReturnFalseWhenCoordinatesAreEqualMediumMode)
 		{
 			int x = 21;
-			int y = 11;
-			int width = 11;
-			int height = 11;
+			int y = 21;
+			int width = 21;
+			int height = 21;
+
+			bool result = isInBounds(x, y, width, height);
+
+			Assert::AreEqual(false, result);
+		}
+		BEGIN_TEST_METHOD_ATTRIBUTE(expectToReturnFalseWhenCoordinatesAreNotInRangeMediumMode)
+		TEST_OWNER(L"VNTeneve19")
+		TEST_PRIORITY("Low")
+		END_TEST_METHOD_ATTRIBUTE()
+		TEST_METHOD(expectToReturnFalseWhenCoordinatesAreNotInRangeMediumMode)
+		{
+			int x = -1;
+			int y = -1;
+			int width = 21;
+			int height = 21;
+
+			bool result = isInBounds(x, y, width, height);
+
+			Assert::AreEqual(false, result);
+		}
+		BEGIN_TEST_METHOD_ATTRIBUTE(expectToReturnTrueWhenCoordinatesAreValidHardMode)
+		TEST_OWNER(L"VNTeneve19")
+		TEST_PRIORITY("Low")
+		END_TEST_METHOD_ATTRIBUTE()
+		TEST_METHOD(expectToReturnTrueWhenCoordinatesAreValidHardMode)
+		{
+			int x = 5;
+			int y = 5;
+			int width = 21;
+			int height = 31;
+
+			bool result = isInBounds(x, y, width, height);
+
+			Assert::AreEqual(true, result);
+		}
+		BEGIN_TEST_METHOD_ATTRIBUTE(expectToReturnFalseWhenCoordinatesAreEqualHardMode)
+		TEST_OWNER(L"VNTeneve19")
+		TEST_PRIORITY("Low")
+		END_TEST_METHOD_ATTRIBUTE()
+		TEST_METHOD(expectToReturnFalseWhenCoordinatesAreEqualHardMode)
+		{
+			int x = 21;
+			int y = 31;
+			int width = 21;
+			int height = 31;
+
+			bool result = isInBounds(x, y, width, height);
+
+			Assert::AreEqual(false, result);
+		}
+		BEGIN_TEST_METHOD_ATTRIBUTE(expectToReturnFalseWhenCoordinatesAreNotInRangeHardMode)
+		TEST_OWNER(L"VNTeneve19")
+		TEST_PRIORITY("Low")
+		END_TEST_METHOD_ATTRIBUTE()
+		TEST_METHOD(expectToReturnFalseWhenCoordinatesAreNotInRangeHardMode)
+		{
+			int x = -1;
+			int y = -1;
+			int width = 21;
+			int height = 31;
 
 			bool result = isInBounds(x, y, width, height);
 

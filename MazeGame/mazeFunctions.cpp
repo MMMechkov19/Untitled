@@ -318,11 +318,11 @@ void cleanTunnels(int x, int y, char** arr, int width, int height)
 void gameMode(SIZES size)
 {
 	bool doesNotWin = true;
-	char** arr = new char* [size.HEIGHT];
+	char** arr = new char* [size.WIDTH];
 
 	for (int i = 0; i < size.WIDTH; i++)
 	{
-		arr[i] = new char[size.WIDTH];
+		arr[i] = new char[size.HEIGHT];
 	}
 
 	srand(time(0));

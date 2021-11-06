@@ -10,7 +10,7 @@ using namespace std;
 
 SIZES easyMode = { 11,11 };
 SIZES mediumMode = { 21,21 };
-SIZES hardMode = { 31,31 };
+SIZES hardMode = { 21,31 };
 
 void color(int color)
 {
