@@ -10,7 +10,7 @@ using namespace std;
 
 SIZES easyMode = { 11,11 };
 SIZES mediumMode = { 21,21 };
-SIZES hardMode = { 21,31 };
+SIZES hardMode = { 31,31 };
 
 void color(int color)
 {
@@ -310,11 +310,11 @@ void choosingModes()
 	int colorNumber1[] = { 7,7,7,7 };
 	bool exitStatement = true;
 
-	bool alredayPlayed = false;
+	bool alreadyPlayed = false;
 
 	do {
 
-		if (alredayPlayed == false)
+		if (alreadyPlayed == false)
 		{
 			printGameMachine();
 			printLogo();
@@ -325,7 +325,7 @@ void choosingModes()
 			printWinMessage();
 		}
 
-		if (alredayPlayed == true) 
+		if (alreadyPlayed == true) 
 		{
 			outputPosition(38, 16);
 		}
@@ -337,7 +337,7 @@ void choosingModes()
 		color(14);
 		cout << "G A M E   M O D E" << endl;
 
-		if (alredayPlayed == true)
+		if (alreadyPlayed == true)
 		{
 			outputPosition(38, 23);
 		}
@@ -351,7 +351,7 @@ void choosingModes()
 
 		printGround();
 
-		if (alredayPlayed == true)
+		if (alreadyPlayed == true)
 		{
 			outputPosition(38, 18);
 		}
@@ -363,7 +363,7 @@ void choosingModes()
 		color(colorNumber1[0]);
 		cout << "EASY MODE";
 
-		if (alredayPlayed == true)
+		if (alreadyPlayed == true)
 		{
 			outputPosition(38, 19);
 		}
@@ -375,7 +375,7 @@ void choosingModes()
 		color(colorNumber1[1]);
 		cout << "MEDIUM MODE";
 
-		if (alredayPlayed == true)
+		if (alreadyPlayed == true)
 		{
 			outputPosition(38, 20);
 		}
@@ -387,7 +387,7 @@ void choosingModes()
 		color(colorNumber1[2]);
 		cout << "HARD MODE";
 
-		if (alredayPlayed == true)
+		if (alreadyPlayed == true)
 		{
 			outputPosition(38, 21);
 		}
@@ -417,19 +417,19 @@ void choosingModes()
 			{
 				system("CLS");
 				gameMode(easyMode);
-				alredayPlayed = true;
+				alreadyPlayed = true;
 			}
 			if (counter1 == 2)
 			{
 				system("CLS");
 				gameMode(mediumMode);
-				alredayPlayed = true;
+				alreadyPlayed = true;
 			}
 			if (counter1 == 3)
 			{
 				system("CLS");
 				gameMode(hardMode);
-				alredayPlayed = true;
+				alreadyPlayed = true;
 			}
 			if (counter1 == 4)
 			{
@@ -609,13 +609,12 @@ void mainMenu()
 				rules();
 			}
 
-			// Exit iption
+			// Exit option
 			if (counter == 3)
 			{
-				exitProgram = false;
 				system("CLS");
 				color(7);
-				break;
+				exit(-1);
 			}
 		}
 
