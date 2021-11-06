@@ -57,7 +57,7 @@ void printWinMessage()
 	outputPosition(19, 12);
 	cout << "       /_/\\____/\__,_/      |__/|__/_/_/ /_(_)        " << endl;
 
-	outputPosition(36, 14);
+	outputPosition(37, 14);
 	color(7);
 	cout << "USED MOVEMENTS: " << keysPressedCounter << endl;
 }
@@ -327,11 +327,11 @@ void choosingModes()
 
 		if (alredayPlayed == true) 
 		{
-			outputPosition(37, 16);
+			outputPosition(38, 16);
 		}
 		else
 		{
-			outputPosition(37, 15);
+			outputPosition(38, 15);
 		}
 		
 		color(14);
@@ -339,11 +339,11 @@ void choosingModes()
 
 		if (alredayPlayed == true)
 		{
-			outputPosition(37, 23);
+			outputPosition(38, 23);
 		}
 		else
 		{
-			outputPosition(37, 22);
+			outputPosition(38, 22);
 		}
 
 		color(14);
@@ -353,11 +353,11 @@ void choosingModes()
 
 		if (alredayPlayed == true)
 		{
-			outputPosition(37, 18);
+			outputPosition(38, 18);
 		}
 		else
 		{
-			outputPosition(37, 17);
+			outputPosition(38, 17);
 		}
 
 		color(colorNumber1[0]);
@@ -365,11 +365,11 @@ void choosingModes()
 
 		if (alredayPlayed == true)
 		{
-			outputPosition(37, 19);
+			outputPosition(38, 19);
 		}
 		else
 		{
-			outputPosition(37, 18);
+			outputPosition(38, 18);
 		}
 
 		color(colorNumber1[1]);
@@ -377,11 +377,11 @@ void choosingModes()
 
 		if (alredayPlayed == true)
 		{
-			outputPosition(37, 20);
+			outputPosition(38, 20);
 		}
 		else
 		{
-			outputPosition(37, 19);
+			outputPosition(38, 19);
 		}
 
 		color(colorNumber1[2]);
@@ -389,11 +389,11 @@ void choosingModes()
 
 		if (alredayPlayed == true)
 		{
-			outputPosition(37, 21);
+			outputPosition(38, 21);
 		}
 		else
 		{
-			outputPosition(37, 20);
+			outputPosition(38, 20);
 		}
 
 		color(colorNumber1[3]);

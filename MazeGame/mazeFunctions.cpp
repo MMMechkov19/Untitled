@@ -9,29 +9,14 @@ using namespace std;
 
 void currentPosition(char** arr, int width, int height)
 {
-	outputPosition(30, 5);
-	cout << "YOUR CURRENT POSSITION IS ";
+	outputPosition(10, 3);
+	cout << "CURRENT POSITION ";
 	for (int i = 0; i < width; i++)
 	{
 		for (int j = 0; j < height; j++) {
 			if (arr[i][j] == 'o')
 			{
-				if (i < 10 && j < 10)
-				{
-					cout << "[" << i << "][" << j << "]";
-				}
-				else if (i >= 10 && j < 10)
-				{
-					cout << "[" << char(55 + i) << "][" << j << "]";
-				}
-				else if (i < 10 && j >= 10)
-				{
-					cout << "[" << i << "][" << char(55 + j) << "]";
-				}
-				else if (i >= 10 && j >= 10)
-				{
-					cout << "[" << char(55 + i) << "][" << char(55 + j) << "]";
-				}
+				cout << "[" << i + 1 << "][" << j + 1 << "]";
 			}
 		}
 	}
@@ -48,32 +33,17 @@ void checkInitialMove(PLAYER& player)
 	}
 }
 
-void finalPossition(char** arr, int width, int height)
+void finalPosition(char** arr, int width, int height)
 {
 	/*int finalCounter = 0;*/
-	outputPosition(25, 6);
-	cout << "THE FINAL IS LOCATED ON POSSITION ";
+	outputPosition(10, 4);
+	cout << "FINAL'S POSITION ";
 	for (int i = 0; i < width; i++)
 	{
 		for (int j = 0; j < height; j++) {
 			if (arr[i][j] == 'F')
 			{
-				if (i < 10 && j < 10)
-				{
-					cout << "[" << i << "][" << j << "]";
-				}
-				else if (i >= 10 && j < 10)
-				{
-					cout << "[" << char(55 + i) << "][" << j << "]";
-				}
-				else if (i < 10 && j >= 10)
-				{
-					cout << "[" << i << "][" << char(55 + j) << "]";
-				}
-				else if (i >= 10 && j >= 10)
-				{
-					cout << "[" << char(55 + i) << "][" << char(55 + j) << "]";
-				}
+				cout << "[" << i + 1 << "][" << j + 1 << "]";
 			}
 		}
 	}
@@ -96,53 +66,35 @@ void printMaze(char** arr, int width, int height)
 	{
 		arr[1][0] = 'o';
 	}
-	arr[width - 2][width - 1] = 'F';
-
+	if (height == 11 || height == 21)
+	{
+		arr[width - 2][width - 1] = 'F';
+	}
+	else
+	{
+		arr[width - 2][30] = 'F';
+	}
+	
 	// Print current possition
 	currentPosition(arr, width, height);
 
 	// Print final position
-	finalPossition(arr, width, height);
+	finalPosition(arr, width, height);
 
 	// Print used moves
-	outputPosition(34, 7);
+	outputPosition(61, 4);
 	cout << "YOU'VE MOVED " << keysPressedCounter << " TIME/S";
+
+	outputPosition(8, 5);
+	cout << "____________________________________________________________________________";
 
 	// Print maze
 	if (width == 11 && height == 11)
 	{
-		// Print y coordinates
-		color(11);
 		for (int i = 0; i < width; i++)
 		{
-			if (i < 10)
-			{
-				outputPosition(34 + 2 * i, 10);
-				cout << i << " ";
-			}
-			else
-			{
-				outputPosition(34 + 2 * i, 10);
-				cout << char(55 + i) << " ";
-			}
-		}
-
-		for (int i = 0; i < width; i++)
-		{
-			// Print y coordinates
-			outputPosition(32, i + 12);
-			if (i < 10)
-			{
-				color(11);
-				outputPosition(29, 12 + i);
-				cout << " " << i << "   ";
-			}
-			else
-			{
-				color(11);
-				outputPosition(29, 12 + i);
-				cout << " " << char(55 + i) << "   ";
-			}
+			outputPosition(34, 11 + i);
+			cout << " ";
 
 			for (int j = 0; j < height; j++)
 			{
@@ -162,31 +114,13 @@ void printMaze(char** arr, int width, int height)
 					cout << arr[i][j] << " ";
 				}
 			}
-
-			// Print y coordinates
-			if (i < 10)
-			{
-				color(11);
-				outputPosition(57, 12 + i);
-				cout << " " << i << "   ";
-			}
-			else
-			{
-				color(11);
-				outputPosition(57, 12 + i);
-				cout << " " << char(55 + i) << "   ";
-			}
-
-			cout << endl;
 		}
-
-		
 	}
 	else if (width == 21 && height == 21)
 	{
 		for (int i = 0; i < width; i++)
 		{
-			outputPosition(24, i + 9);
+			outputPosition(24, i + 8);
 			cout << "  ";
 			for (int j = 0; j < height; j++)
 			{
@@ -213,7 +147,7 @@ void printMaze(char** arr, int width, int height)
 	{
 		for (int i = 0; i < width; i++)
 		{
-			outputPosition(14, i + 9);
+			outputPosition(14, i + 8);
 			cout << "  ";
 			for (int j = 0; j < height; j++)
 			{
@@ -234,22 +168,6 @@ void printMaze(char** arr, int width, int height)
 				}
 			}
 			cout << endl;
-		}
-	}
-
-	// Print y coordinates
-	for (int i = 0; i < width; i++)
-	{
-		color(11);
-		if (i < 10)
-		{
-			outputPosition(34 + 2 * i, 24);
-			cout << i << " ";
-		}
-		else
-		{
-			outputPosition(34 + 2 * i, 24);
-			cout << char(55 + i) << " ";
 		}
 	}
 }
