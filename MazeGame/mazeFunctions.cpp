@@ -9,13 +9,29 @@ using namespace std;
 
 void currentPosition(char** arr, int width, int height)
 {
-	cout << "Your current position is ";
+	outputPosition(30, 5);
+	cout << "YOUR CURRENT POSSITION IS ";
 	for (int i = 0; i < width; i++)
 	{
 		for (int j = 0; j < height; j++) {
 			if (arr[i][j] == 'o')
 			{
-				cout << "[" << i << "][" << j << "]" << endl;
+				if (i < 10 && j < 10)
+				{
+					cout << "[" << i << "][" << j << "]";
+				}
+				else if (i >= 10 && j < 10)
+				{
+					cout << "[" << char(55 + i) << "][" << j << "]";
+				}
+				else if (i < 10 && j >= 10)
+				{
+					cout << "[" << i << "][" << char(55 + j) << "]";
+				}
+				else if (i >= 10 && j >= 10)
+				{
+					cout << "[" << char(55 + i) << "][" << char(55 + j) << "]";
+				}
 			}
 		}
 	}
@@ -35,22 +51,29 @@ void checkInitialMove(PLAYER& player)
 void finalPossition(char** arr, int width, int height)
 {
 	/*int finalCounter = 0;*/
-	cout << "The final is located on position ";
+	outputPosition(25, 6);
+	cout << "THE FINAL IS LOCATED ON POSSITION ";
 	for (int i = 0; i < width; i++)
 	{
 		for (int j = 0; j < height; j++) {
 			if (arr[i][j] == 'F')
 			{
-				/*finalcounter++;
-
-				if (finalcounter == 2)
+				if (i < 10 && j < 10)
 				{
-					cout << " / [" << i << "][" << j << "]";
+					cout << "[" << i << "][" << j << "]";
 				}
-				else
-				{*/
-				cout << "[" << i << "][" << j << "]";
-				/*}*/
+				else if (i >= 10 && j < 10)
+				{
+					cout << "[" << char(55 + i) << "][" << j << "]";
+				}
+				else if (i < 10 && j >= 10)
+				{
+					cout << "[" << i << "][" << char(55 + j) << "]";
+				}
+				else if (i >= 10 && j >= 10)
+				{
+					cout << "[" << char(55 + i) << "][" << char(55 + j) << "]";
+				}
 			}
 		}
 	}
@@ -58,14 +81,22 @@ void finalPossition(char** arr, int width, int height)
 
 void printMaze(char** arr, int width, int height)
 {
+	printGameMachine();
+	if (height == 11)
+	{
+		printGround();
+	}
+
 	// Print game mode
+	outputPosition(42, 4);
+	color(11);
 	cout << width << " x " << height << endl;
 
 	if (keysPressedCounter == 0)
 	{
 		arr[1][0] = 'o';
 	}
-	arr[width-2][width-1] = 'F';
+	arr[width - 2][width - 1] = 'F';
 
 	// Print current possition
 	currentPosition(arr, width, height);
@@ -74,34 +105,152 @@ void printMaze(char** arr, int width, int height)
 	finalPossition(arr, width, height);
 
 	// Print used moves
-	cout << endl << "You've moved " << keysPressedCounter << " time/s" << endl << endl << "     ";
+	outputPosition(34, 7);
+	cout << "YOU'VE MOVED " << keysPressedCounter << " TIME/S";
+
+	// Print maze
+	if (width == 11 && height == 11)
+	{
+		// Print y coordinates
+		color(11);
+		for (int i = 0; i < width; i++)
+		{
+			if (i < 10)
+			{
+				outputPosition(34 + 2 * i, 10);
+				cout << i << " ";
+			}
+			else
+			{
+				outputPosition(34 + 2 * i, 10);
+				cout << char(55 + i) << " ";
+			}
+		}
+
+		for (int i = 0; i < width; i++)
+		{
+			// Print y coordinates
+			outputPosition(32, i + 12);
+			if (i < 10)
+			{
+				color(11);
+				outputPosition(29, 12 + i);
+				cout << " " << i << "   ";
+			}
+			else
+			{
+				color(11);
+				outputPosition(29, 12 + i);
+				cout << " " << char(55 + i) << "   ";
+			}
+
+			for (int j = 0; j < height; j++)
+			{
+				if (arr[i][j] == 'o')
+				{
+					color(15);
+					cout << arr[i][j] << " ";
+				}
+				else if (arr[i][j] == 'F')
+				{
+					color(9);
+					cout << arr[i][j] << " ";
+				}
+				else
+				{
+					color(14);
+					cout << arr[i][j] << " ";
+				}
+			}
+
+			// Print y coordinates
+			if (i < 10)
+			{
+				color(11);
+				outputPosition(57, 12 + i);
+				cout << " " << i << "   ";
+			}
+			else
+			{
+				color(11);
+				outputPosition(57, 12 + i);
+				cout << " " << char(55 + i) << "   ";
+			}
+
+			cout << endl;
+		}
+
+		
+	}
+	else if (width == 21 && height == 21)
+	{
+		for (int i = 0; i < width; i++)
+		{
+			outputPosition(24, i + 9);
+			cout << "  ";
+			for (int j = 0; j < height; j++)
+			{
+				if (arr[i][j] == 'o')
+				{
+					color(15);
+					cout << arr[i][j] << " ";
+				}
+				else if (arr[i][j] == 'F')
+				{
+					color(9);
+					cout << arr[i][j] << " ";
+				}
+				else
+				{
+					color(14);
+					cout << arr[i][j] << " ";
+				}
+			}
+			cout << endl;
+		}
+	}
+	else if (height == 31)
+	{
+		for (int i = 0; i < width; i++)
+		{
+			outputPosition(14, i + 9);
+			cout << "  ";
+			for (int j = 0; j < height; j++)
+			{
+				if (arr[i][j] == 'o')
+				{
+					color(15);
+					cout << arr[i][j] << " ";
+				}
+				else if (arr[i][j] == 'F')
+				{
+					color(9);
+					cout << arr[i][j] << " ";
+				}
+				else
+				{
+					color(14);
+					cout << arr[i][j] << " ";
+				}
+			}
+			cout << endl;
+		}
+	}
 
 	// Print y coordinates
 	for (int i = 0; i < width; i++)
 	{
-		cout << i << " ";
-	}
-
-	cout << endl << endl;
-
-	// Print maze
-	for (int i = 0; i < width; i++)
-	{
-		// Print x coordinates
-		if (i >= 10) {
-			cout << " " << i << "  ";
+		color(11);
+		if (i < 10)
+		{
+			outputPosition(34 + 2 * i, 24);
+			cout << i << " ";
 		}
 		else
 		{
-			cout << " " << i << "   ";
+			outputPosition(34 + 2 * i, 24);
+			cout << char(55 + i) << " ";
 		}
-
-		// Display the maze to the screen
-		for (int j = 0; j < height; j++)
-		{
-			cout << arr[i][j] << " ";
-		}
-		cout << endl;
 	}
 }
 
@@ -121,6 +270,7 @@ void movementSystem(bool doesNotWin, char** arr, int width, int height)
 	while (doesNotWin)
 	{
 		checkInitialMove(player);
+
 		if (arr[player.y][player.x] == ' ')
 		{
 			arr[player.y][player.x] = player.symbol;
@@ -165,7 +315,7 @@ void movementSystem(bool doesNotWin, char** arr, int width, int height)
 			}
 			break;
 		}
-		/*secretKey(player.y, player.x, arr);*/
+
 		// Checks character's position to end the program
 		if (arr[player.y][player.x] == 'F')
 		{
@@ -175,18 +325,9 @@ void movementSystem(bool doesNotWin, char** arr, int width, int height)
 	}
 }
 
-// Display win message
-void winMessage()
-{
-	cout << "WIN!" << endl;
-	cout << "You've moved " << keysPressedCounter << " time/s" << endl;
-	keysPressedCounter = 0;
-	system("CLS");
-}
-
 void resetArray(char** arr, int width, int height)
 {
-	// Fills the 2D array with walls
+	// Fill the 2D array with walls
 	for (int i = 0; i < width; i++)
 	{
 		for (int j = 0; j < height; j++) {
@@ -197,7 +338,7 @@ void resetArray(char** arr, int width, int height)
 
 int isInBounds(int x, int y, int width, int height)
 {
-	// Returns "true" if x and y are both in-bounds.
+	// Return "true" if x and y are both in-bounds
 	if (x < 0 || x >= width)
 	{
 		return false;
@@ -260,18 +401,21 @@ void gameMode(SIZES size)
 {
 	bool doesNotWin = true;
 	char** arr = new char* [size.HEIGHT];
+
 	for (int i = 0; i < size.WIDTH; i++)
 	{
 		arr[i] = new char[size.WIDTH];
 	}
 
 	srand(time(0));
+
 	resetArray(arr, size.WIDTH, size.HEIGHT);
 	cleanTunnels(1, 1, arr, size.WIDTH, size.HEIGHT);
 	printMaze(arr, size.WIDTH, size.HEIGHT);
+
 	system("CLS");
+
 	movementSystem(doesNotWin, arr, size.WIDTH, size.HEIGHT);
-	winMessage();
 	system("CLS");
 
 	for (int i = 0; i < size.WIDTH; i++)

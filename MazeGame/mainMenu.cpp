@@ -10,7 +10,7 @@ using namespace std;
 
 SIZES easyMode = { 11,11 };
 SIZES mediumMode = { 21,21 };
-SIZES hardMode = { 29,29 };
+SIZES hardMode = { 21,31 };
 
 void color(int color)
 {
@@ -57,6 +57,9 @@ void printWinMessage()
 	outputPosition(19, 12);
 	cout << "       /_/\\____/\__,_/      |__/|__/_/_/ /_(_)        " << endl;
 
+	outputPosition(36, 14);
+	color(7);
+	cout << "USED MOVEMENTS: " << keysPressedCounter << endl;
 }
 
 void printLogo()
@@ -72,34 +75,6 @@ void printLogo()
 	cout << "/ /_/ / /|  / / / _/ /  / / / /___/ /___/ /_/ / " << endl;
 	outputPosition(22, 11);
 	cout << "\\____/_/ |_/ /_/ /___/ /_/ /_____/_____/_____/  " << endl;
-}
-
-void printGame()
-{
-	outputPosition(21, 8);
-	color(15);
-	cout << "  __  __   _    _______    ___   _   __  __ ___ " << endl;
-	outputPosition(13, 9);
-	color(7);
-	cout << char(254) << char(254) << char(254) << char(254) << char(254) << char(254) << char(254) << char(254);
-	color(15);
-	cout << " |  \\/  | /_\\  |_  / __|  / __| /_\\ |  \\/  | __| ";
-	color(7);
-	cout << char(254) << char(254) << char(254) << char(254) << char(254) << char(254) << char(254) << char(254) << endl;
-	outputPosition(13, 10);
-	color(6);
-	cout << char(254) << char(254) << char(254) << char(254) << char(254) << char(254) << char(254) << char(254);
-	color(15);
-	cout << " | |\\/| |/ _ \\  / /| _|  | (_ |/ _ \\| |\\/| | _|  ";
-	color(6);
-	cout << char(254) << char(254) << char(254) << char(254) << char(254) << char(254) << char(254) << char(254) << endl;
-	outputPosition(13, 11);
-	color(3);
-	cout << char(254) << char(254) << char(254) << char(254) << char(254) << char(254) << char(254) << char(254);
-	color(15);
-	cout << " |_|  |_/_/ \\_\\/___|___|  \\___/_/ \\_\\_|  |_|___| ";
-	color(3);
-	cout << char(254) << char(254) << char(254) << char(254) << char(254) << char(254) << char(254) << char(254) << endl;
 }
 
 void printBackground()
@@ -342,41 +317,85 @@ void choosingModes()
 		if (alredayPlayed == false)
 		{
 			printGameMachine();
-			outputPosition(1, 2);
-			color(7);
 			printLogo();
 		}
 		else
 		{
 			printGameMachine();
-			outputPosition(1, 2);
-			color(7);
 			printWinMessage();
 		}
 
-		outputPosition(37, 15);
+		if (alredayPlayed == true) 
+		{
+			outputPosition(37, 16);
+		}
+		else
+		{
+			outputPosition(37, 15);
+		}
+		
 		color(14);
 		cout << "G A M E   M O D E" << endl;
 
-		outputPosition(37, 22);
+		if (alredayPlayed == true)
+		{
+			outputPosition(37, 23);
+		}
+		else
+		{
+			outputPosition(37, 22);
+		}
+
 		color(14);
 		cout << "TEAM  UNTITLED";
 
 		printGround();
 
-		outputPosition(37, 17);
+		if (alredayPlayed == true)
+		{
+			outputPosition(37, 18);
+		}
+		else
+		{
+			outputPosition(37, 17);
+		}
+
 		color(colorNumber1[0]);
 		cout << "EASY MODE";
 
-		outputPosition(37, 18);
+		if (alredayPlayed == true)
+		{
+			outputPosition(37, 19);
+		}
+		else
+		{
+			outputPosition(37, 18);
+		}
+
 		color(colorNumber1[1]);
 		cout << "MEDIUM MODE";
 
-		outputPosition(37, 19);
+		if (alredayPlayed == true)
+		{
+			outputPosition(37, 20);
+		}
+		else
+		{
+			outputPosition(37, 19);
+		}
+
 		color(colorNumber1[2]);
 		cout << "HARD MODE";
 
-		outputPosition(37, 20);
+		if (alredayPlayed == true)
+		{
+			outputPosition(37, 21);
+		}
+		else
+		{
+			outputPosition(37, 20);
+		}
+
 		color(colorNumber1[3]);
 		cout << "BACK TO MAIN MENU";
 
@@ -392,6 +411,7 @@ void choosingModes()
 			counter1++;
 		}
 		if (key1 == '\r') {
+			keysPressedCounter = 0;
 
 			if (counter1 == 1)
 			{
@@ -403,11 +423,13 @@ void choosingModes()
 			{
 				system("CLS");
 				gameMode(mediumMode);
+				alredayPlayed = true;
 			}
 			if (counter1 == 3)
 			{
 				system("CLS");
 				gameMode(hardMode);
+				alredayPlayed = true;
 			}
 			if (counter1 == 4)
 			{
@@ -440,9 +462,7 @@ void choosingModes()
 		{
 			colorNumber1[3] = 12;
 		}
-
 	} while (exitStatement != false);
-
 }
 
 
@@ -469,14 +489,19 @@ void printOutRules()
 	color(7);
 	outputPosition(11, 15);
 	cout << "Hello, this is a C++ console maze game!" << endl;
+
 	outputPosition(11, 17);
 	cout << " - The game functions with the WSAD keys" << endl;
+
 	outputPosition(11, 18);
 	cout << " - There are 3 difficulties of the maze" << endl;
+
 	outputPosition(11, 19);
 	cout << " - To win you have to move the 'o' through the maze to the final(F)" << endl;
+
 	outputPosition(11, 20);
 	cout << " - You can go back by pressing ENTER" << endl;
+
 	outputPosition(11, 21);
 	cout << " - Enjoy the game!" << endl;
 
@@ -485,7 +510,6 @@ void printOutRules()
 void rules()
 {
 	char key;
-	int colorNumber[] = { 14 };
 	bool exitStatement = true;
 
 	do
@@ -493,26 +517,28 @@ void rules()
 		printOutRules();
 
 		outputPosition(60, 23);
-		color(colorNumber[0]);
+		color(14);
 		cout << "BACK TO MAIN MENU";
+
 		key = _getch();
+
 		if (key == '\r')
 		{
 			exitStatement = false;
+
 			system("CLS");
-			color(14);
+
 			printGameMachine();
 			printBackground();
 			printLogo();
-			printMainMenu();
+			mainMenuTexts();
 		}
-		else {}
 
 	} while (exitStatement != false);
 
 }
 
-void printMainMenu()
+void mainMenuTexts()
 {
 	outputPosition(38, 15);
 	color(14);
@@ -531,7 +557,6 @@ void printMainMenu()
 
 void mainMenu()
 {
-
 	int colorNumber[] = { 7, 7, 7, 7 };
 	int counter = 1;
 	char key;
@@ -539,15 +564,12 @@ void mainMenu()
 
 	printGameMachine();
 	printBackground();
-
-	outputPosition(1, 2);
-	color(7);
 	printLogo();
+	mainMenuTexts();
 
-	printMainMenu();
-
-	do
+	while (exitProgram != false)
 	{
+		// Menu options
 		outputPosition(38, 17);
 		color(colorNumber[0]);
 		cout << "P L A Y";
@@ -562,6 +584,7 @@ void mainMenu()
 
 		key = _getch();
 
+		// Moving system
 		if (key == 'w' && (counter >= 2 && counter <= 5))
 		{
 			counter--;
@@ -572,30 +595,36 @@ void mainMenu()
 		}
 		if (key == '\r')
 		{
+			// Choosing mode option
 			if (counter == 1)
 			{
 				system("CLS");
 				choosingModes();
 			}
+
+			// Rules option
 			if (counter == 2)
 			{
 				system("CLS");
 				rules();
-
 			}
+
+			// Exit iption
 			if (counter == 3)
 			{
 				exitProgram = false;
 				system("CLS");
-				system("color 7");
+				color(7);
+				break;
 			}
-
 		}
 
+		// Clears the color of unchoosed menu option 
 		colorNumber[0] = 7;
 		colorNumber[1] = 7;
 		colorNumber[2] = 7;
 
+		// Changes the color of selected menu option
 		if (counter == 1)
 		{
 			colorNumber[0] = 12;
@@ -609,8 +638,5 @@ void mainMenu()
 		{
 			colorNumber[2] = 12;
 		}
-
-	} while (exitProgram != false);
-
-	system("cls");
+	}
 }
