@@ -319,11 +319,16 @@ void choosingModes()
 	int colorNumber1[] = { 7,7,7,7 };
 	bool exitStatement = true;
 
-	bool alredayPlayed = false;
+	bool alreadyPlayed = false;
 
 	do {
+<<<<<<< HEAD
 		// Check weather the player has already played the game
 		if (alredayPlayed == false)
+=======
+
+		if (alreadyPlayed == false)
+>>>>>>> fe6da9ca8973c02d501a18043bf4217ef40afca9
 		{
 			printGameMachine();
 			// Print team logo
@@ -338,8 +343,12 @@ void choosingModes()
 			printGround();
 		}
 
+<<<<<<< HEAD
 		// Set different output coordinates depending on the displayed message
 		if (alredayPlayed == true) 
+=======
+		if (alreadyPlayed == true) 
+>>>>>>> fe6da9ca8973c02d501a18043bf4217ef40afca9
 		{
 			outputPosition(38, 16);
 		}
@@ -351,8 +360,12 @@ void choosingModes()
 		color(14);
 		cout << "G A M E   M O D E" << endl;
 
+<<<<<<< HEAD
 		// Set different output coordinates depending on the displayed message
 		if (alredayPlayed == true)
+=======
+		if (alreadyPlayed == true)
+>>>>>>> fe6da9ca8973c02d501a18043bf4217ef40afca9
 		{
 			outputPosition(38, 23);
 		}
@@ -364,8 +377,14 @@ void choosingModes()
 		color(14);
 		cout << "TEAM  UNTITLED";
 
+<<<<<<< HEAD
 		// Set different output coordinates depending on the displayed message
 		if (alredayPlayed == true)
+=======
+		printGround();
+
+		if (alreadyPlayed == true)
+>>>>>>> fe6da9ca8973c02d501a18043bf4217ef40afca9
 		{
 			outputPosition(38, 18);
 		}
@@ -377,8 +396,12 @@ void choosingModes()
 		color(colorNumber1[0]);
 		cout << "EASY MODE";
 
+<<<<<<< HEAD
 		// Set different output coordinates depending on the displayed message
 		if (alredayPlayed == true)
+=======
+		if (alreadyPlayed == true)
+>>>>>>> fe6da9ca8973c02d501a18043bf4217ef40afca9
 		{
 			outputPosition(38, 19);
 		}
@@ -390,8 +413,12 @@ void choosingModes()
 		color(colorNumber1[1]);
 		cout << "MEDIUM MODE";
 
+<<<<<<< HEAD
 		// Set different output coordinates depending on the displayed message
 		if (alredayPlayed == true)
+=======
+		if (alreadyPlayed == true)
+>>>>>>> fe6da9ca8973c02d501a18043bf4217ef40afca9
 		{
 			outputPosition(38, 20);
 		}
@@ -403,8 +430,12 @@ void choosingModes()
 		color(colorNumber1[2]);
 		cout << "HARD MODE";
 
+<<<<<<< HEAD
 		// Set different output coordinates depending on the displayed message
 		if (alredayPlayed == true)
+=======
+		if (alreadyPlayed == true)
+>>>>>>> fe6da9ca8973c02d501a18043bf4217ef40afca9
 		{
 			outputPosition(38, 21);
 		}
@@ -437,21 +468,21 @@ void choosingModes()
 			{
 				system("CLS");
 				gameMode(easyMode);
-				alredayPlayed = true;
+				alreadyPlayed = true;
 			}
 			// Medium mode
 			if (counter1 == 2)
 			{
 				system("CLS");
 				gameMode(mediumMode);
-				alredayPlayed = true;
+				alreadyPlayed = true;
 			}
 			// Hard mode
 			if (counter1 == 3)
 			{
 				system("CLS");
 				gameMode(hardMode);
-				alredayPlayed = true;
+				alreadyPlayed = true;
 			}
 			// Go back to main menu
 			if (counter1 == 4)
@@ -643,10 +674,9 @@ void mainMenu()
 			// Exit option
 			if (counter == 3)
 			{
-				exitProgram = false;
 				system("CLS");
 				color(7);
-				break;
+				exit(-1);
 			}
 		}
 
