@@ -322,13 +322,9 @@ void choosingModes()
 	bool alreadyPlayed = false;
 
 	do {
-<<<<<<< HEAD
-		// Check weather the player has already played the game
-		if (alredayPlayed == false)
-=======
 
+		// Check weather the player has already played the game
 		if (alreadyPlayed == false)
->>>>>>> fe6da9ca8973c02d501a18043bf4217ef40afca9
 		{
 			printGameMachine();
 			// Print team logo
@@ -343,12 +339,9 @@ void choosingModes()
 			printGround();
 		}
 
-<<<<<<< HEAD
+
 		// Set different output coordinates depending on the displayed message
-		if (alredayPlayed == true) 
-=======
 		if (alreadyPlayed == true) 
->>>>>>> fe6da9ca8973c02d501a18043bf4217ef40afca9
 		{
 			outputPosition(38, 16);
 		}
@@ -360,12 +353,9 @@ void choosingModes()
 		color(14);
 		cout << "G A M E   M O D E" << endl;
 
-<<<<<<< HEAD
+
 		// Set different output coordinates depending on the displayed message
-		if (alredayPlayed == true)
-=======
 		if (alreadyPlayed == true)
->>>>>>> fe6da9ca8973c02d501a18043bf4217ef40afca9
 		{
 			outputPosition(38, 23);
 		}
@@ -377,14 +367,12 @@ void choosingModes()
 		color(14);
 		cout << "TEAM  UNTITLED";
 
-<<<<<<< HEAD
+
 		// Set different output coordinates depending on the displayed message
-		if (alredayPlayed == true)
-=======
+
 		printGround();
 
 		if (alreadyPlayed == true)
->>>>>>> fe6da9ca8973c02d501a18043bf4217ef40afca9
 		{
 			outputPosition(38, 18);
 		}
@@ -396,12 +384,10 @@ void choosingModes()
 		color(colorNumber1[0]);
 		cout << "EASY MODE";
 
-<<<<<<< HEAD
+
 		// Set different output coordinates depending on the displayed message
-		if (alredayPlayed == true)
-=======
+
 		if (alreadyPlayed == true)
->>>>>>> fe6da9ca8973c02d501a18043bf4217ef40afca9
 		{
 			outputPosition(38, 19);
 		}
@@ -413,12 +399,9 @@ void choosingModes()
 		color(colorNumber1[1]);
 		cout << "MEDIUM MODE";
 
-<<<<<<< HEAD
+
 		// Set different output coordinates depending on the displayed message
-		if (alredayPlayed == true)
-=======
 		if (alreadyPlayed == true)
->>>>>>> fe6da9ca8973c02d501a18043bf4217ef40afca9
 		{
 			outputPosition(38, 20);
 		}
@@ -430,12 +413,9 @@ void choosingModes()
 		color(colorNumber1[2]);
 		cout << "HARD MODE";
 
-<<<<<<< HEAD
+
 		// Set different output coordinates depending on the displayed message
-		if (alredayPlayed == true)
-=======
 		if (alreadyPlayed == true)
->>>>>>> fe6da9ca8973c02d501a18043bf4217ef40afca9
 		{
 			outputPosition(38, 21);
 		}
