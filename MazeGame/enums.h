@@ -1,4 +1,5 @@
 #pragma once
+// Declaring and initializing WASD keys
 enum class KEY : char
 {
 	LEFT = 'a',
@@ -7,6 +8,7 @@ enum class KEY : char
 	DOWN = 's'
 };
 
+// Declaring and initializing the directions in which the maze cleaning function will try to clean tunnels
 enum DIRECTIONS
 {
 	NORTH = 0,

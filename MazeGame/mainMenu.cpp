@@ -8,12 +8,14 @@
 
 using namespace std;
 
+// Initializing mazes' sizes for the different difficulties
 SIZES easyMode = { 11,11 };
 SIZES mediumMode = { 21,21 };
 SIZES hardMode = { 21,31 };
 
 void color(int color)
 {
+	// Change output's colors
 	if (SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color))
 	{
 		return;
@@ -23,6 +25,7 @@ void color(int color)
 
 void outputPosition(int x, int y)
 {
+	// Set player's fixed position
 	COORD position;
 	position.X = x;
 	position.Y = y;
@@ -35,6 +38,7 @@ void outputPosition(int x, int y)
 
 void printWinMessage()
 {
+	// Print winning message
 	color(14);
 	outputPosition(19, 3);
 	cout << "       ______                             __       __";
@@ -57,11 +61,13 @@ void printWinMessage()
 	outputPosition(19, 12);
 	cout << "       /_/\\____/\__,_/      |__/|__/_/_/ /_(_)        " << endl;
 
+	// Print the movements used to get out of the maze
 	outputPosition(37, 14);
 	color(7);
 	cout << "USED MOVEMENTS: " << keysPressedCounter << endl;
 }
 
+// Print team logo
 void printLogo()
 {
 	color(14);
@@ -77,6 +83,7 @@ void printLogo()
 	cout << "\\____/_/ |_/ /_/ /___/ /_/ /_____/_____/_____/  " << endl;
 }
 
+// Print starry background
 void printBackground()
 {
 	color(3);
@@ -134,6 +141,7 @@ void printBackground()
 	cout << "         +         *             .         '         *         '        *  " << endl;
 }
 
+// Print ground
 void printGround()
 {
 	color(11);
@@ -147,6 +155,7 @@ void printGround()
 	cout << "   ____                __       --         -__-           -_             __-";
 }
 
+// Print game machine
 void printGameMachine()
 {
 	outputPosition(0, 1);
@@ -313,18 +322,23 @@ void choosingModes()
 	bool alredayPlayed = false;
 
 	do {
-
+		// Check weather the player has already played the game
 		if (alredayPlayed == false)
 		{
 			printGameMachine();
+			// Print team logo
 			printLogo();
+			printGround();
 		}
 		else
 		{
 			printGameMachine();
+			// Print winning message
 			printWinMessage();
+			printGround();
 		}
 
+		// Set different output coordinates depending on the displayed message
 		if (alredayPlayed == true) 
 		{
 			outputPosition(38, 16);
@@ -337,6 +351,7 @@ void choosingModes()
 		color(14);
 		cout << "G A M E   M O D E" << endl;
 
+		// Set different output coordinates depending on the displayed message
 		if (alredayPlayed == true)
 		{
 			outputPosition(38, 23);
@@ -349,8 +364,7 @@ void choosingModes()
 		color(14);
 		cout << "TEAM  UNTITLED";
 
-		printGround();
-
+		// Set different output coordinates depending on the displayed message
 		if (alredayPlayed == true)
 		{
 			outputPosition(38, 18);
@@ -363,6 +377,7 @@ void choosingModes()
 		color(colorNumber1[0]);
 		cout << "EASY MODE";
 
+		// Set different output coordinates depending on the displayed message
 		if (alredayPlayed == true)
 		{
 			outputPosition(38, 19);
@@ -375,6 +390,7 @@ void choosingModes()
 		color(colorNumber1[1]);
 		cout << "MEDIUM MODE";
 
+		// Set different output coordinates depending on the displayed message
 		if (alredayPlayed == true)
 		{
 			outputPosition(38, 20);
@@ -387,6 +403,7 @@ void choosingModes()
 		color(colorNumber1[2]);
 		cout << "HARD MODE";
 
+		// Set different output coordinates depending on the displayed message
 		if (alredayPlayed == true)
 		{
 			outputPosition(38, 21);
@@ -401,36 +418,42 @@ void choosingModes()
 
 		key1 = _getch();
 
+		// Move up through the menu
 		if (key1 == 'w' && (counter1 >= 2 && counter1 <= 5))
 		{
 			counter1--;
 		}
-
+		// Move down through the menu
 		if (key1 == 's' && (counter1 >= 1 && counter1 <= 3))
 		{
 			counter1++;
 		}
 		if (key1 == '\r') {
+			// Resset movements' counter
 			keysPressedCounter = 0;
 
+			// Easy mode
 			if (counter1 == 1)
 			{
 				system("CLS");
 				gameMode(easyMode);
 				alredayPlayed = true;
 			}
+			// Medium mode
 			if (counter1 == 2)
 			{
 				system("CLS");
 				gameMode(mediumMode);
 				alredayPlayed = true;
 			}
+			// Hard mode
 			if (counter1 == 3)
 			{
 				system("CLS");
 				gameMode(hardMode);
 				alredayPlayed = true;
 			}
+			// Go back to main menu
 			if (counter1 == 4)
 			{
 				system("CLS");
@@ -441,11 +464,13 @@ void choosingModes()
 			}
 		}
 
+		// Resset options' color
 		colorNumber1[0] = 7;
 		colorNumber1[1] = 7;
 		colorNumber1[2] = 7;
 		colorNumber1[3] = 7;
 
+		// Change option's color if it is selected
 		if (counter1 == 1)
 		{
 			colorNumber1[0] = 12;
@@ -468,8 +493,10 @@ void choosingModes()
 
 void printOutRules()
 {
+	// Print game machine
 	printGameMachine();
 
+	// Print rules
 	color(14);
 	outputPosition(30, 6);
 	cout << "    ____        __              ";
@@ -505,6 +532,7 @@ void printOutRules()
 	outputPosition(11, 21);
 	cout << " - Enjoy the game!" << endl;
 
+	// Print ground
 	printGround();
 }
 void rules()
@@ -522,6 +550,7 @@ void rules()
 
 		key = _getch();
 
+		// Go back to main menu 
 		if (key == '\r')
 		{
 			exitStatement = false;
@@ -538,6 +567,7 @@ void rules()
 
 }
 
+// Print main menu basics
 void mainMenuTexts()
 {
 	outputPosition(38, 15);
@@ -552,7 +582,6 @@ void mainMenuTexts()
 
 	outputPosition(59, 25);
 	cout << "Move using the WASD";
-
 }
 
 void mainMenu()
@@ -569,7 +598,7 @@ void mainMenu()
 
 	while (exitProgram != false)
 	{
-		// Menu options
+		// Main menu options
 		outputPosition(38, 17);
 		color(colorNumber[0]);
 		cout << "P L A Y";
@@ -584,15 +613,17 @@ void mainMenu()
 
 		key = _getch();
 
-		// Moving system
+		// Move up through the menu
 		if (key == 'w' && (counter >= 2 && counter <= 5))
 		{
 			counter--;
 		}
+		// Move down through the menu
 		if (key == 's' && (counter >= 1 && counter <= 2))
 		{
 			counter++;
 		}
+		// Select option
 		if (key == '\r')
 		{
 			// Choosing mode option
@@ -609,7 +640,7 @@ void mainMenu()
 				rules();
 			}
 
-			// Exit iption
+			// Exit option
 			if (counter == 3)
 			{
 				exitProgram = false;
@@ -619,16 +650,15 @@ void mainMenu()
 			}
 		}
 
-		// Clears the color of unchoosed menu option 
+		// Resset options' color 
 		colorNumber[0] = 7;
 		colorNumber[1] = 7;
 		colorNumber[2] = 7;
 
-		// Changes the color of selected menu option
+		// Change option's color if it is selected
 		if (counter == 1)
 		{
 			colorNumber[0] = 12;
-
 		}
 		if (counter == 2)
 		{
