@@ -56,7 +56,7 @@ void printWinMessage()
 	cout << "        / / /_/ / /_/ /    | |/ |/ / / / / /_/       " << endl;
 	outputPosition(19, 11);
 	cout << "       /_/\\____/\__,_/     |__/|__/_/_/ /_(_)        " << endl;
-	
+
 }
 
 void printLogo()
@@ -104,7 +104,7 @@ void printGame()
 
 void printBackground()
 {
-	color(11);
+	color(3);
 	outputPosition(8, 4);
 	cout << "   *            *          .                                +            *  " << endl;
 	outputPosition(8, 5);
@@ -115,7 +115,7 @@ void printBackground()
 	cout << "           +                                                    +           " << endl;
 	outputPosition(8, 8);
 	cout << "                         *        '                     *                   " << endl;
-	outputPosition(8, 9); 
+	outputPosition(8, 9);
 	cout << "    *                                    *                            *     " << endl;
 	outputPosition(8, 10);
 	cout << "         +         *             .                  *        +              " << endl;
@@ -131,7 +131,7 @@ void printBackground()
 	cout << "           +    '                                                      .    " << endl;
 	outputPosition(8, 16);
 	cout << "                         *        '                '     *                  " << endl;
-	outputPosition(8, 17); 
+	outputPosition(8, 17);
 	cout << "    *                                    *                                 " << endl;
 	outputPosition(8, 18);
 	cout << "      .          +                                                         " << endl;
@@ -161,11 +161,15 @@ void printBackground()
 
 void printGround()
 {
-	outputPosition(1, 18);
 	color(11);
-	cout << "_____--^-__/\\----___________-^--__^--/\\--_________--^--^-/\\-__________--^---_______--/\\^-______--^--_____" << endl;
-	cout << " --^--        /\\---  __-^-___/\\__                      ---^--/\\^___  --^--__               --^-   __/\\__ " << endl;
-	cout << "       ---_     __-                   __-       --__                _-          ---_____        -_--     ";
+	outputPosition(8, 26);
+	cout << "_____--^-__/\\----___________-^--__^--/\\--_________--^--^-/\\-__________--^---" << endl;
+	outputPosition(8, 27);
+	cout << " --^--        /\\---  __-^-___/\\__                      ---^--/\\^___  --^--__" << endl;
+	outputPosition(8, 28);
+	cout << "       ---_     __-                   __-       --__                _-      " << endl;
+	outputPosition(8, 29);
+	cout << "   ____                __       --         -__-           -_             __-";
 }
 
 void printGameMachine()
@@ -260,7 +264,7 @@ void printGameMachine()
 	color(3);
 	cout << " o ";
 	color(12);
-    cout <<"o          ";
+	cout << "o          ";
 	color(7);
 	cout << "_|_";
 	color(5);
@@ -442,34 +446,37 @@ void choosingModes()
 
 void printOutRules()
 {
+	printGameMachine();
+
 	color(14);
-	outputPosition(34, 1);
+	outputPosition(30, 6);
 	cout << "    ____        __              ";
-	outputPosition(34, 2);
+	outputPosition(30, 7);
 	cout << "   / __ \\__  __/ /__  _____   _ " << endl;
-	outputPosition(34, 3);
+	outputPosition(30, 8);
 	cout << "  / /_/ / / / / / _ \\/ ___/  (_)" << endl;
-	outputPosition(34, 4);
+	outputPosition(30, 9);
 	cout << " / _, _/ /_/ / /  __(__  )  _   " << endl;
-	outputPosition(34, 5);
+	outputPosition(30, 10);
 	cout << "/_/ |_|\\__,_/_/\\___/____/  (_)  " << endl;
 
-	outputPosition(39, 7);
+	outputPosition(37, 13);
 	color(14);
 	cout << "G A M E   R U L E S" << endl;
 
-	outputPosition(33, 9);
 	color(7);
-	cout << "The game functions with WSAD keys" << endl;
-	outputPosition(17, 10);
-	color(7);
-	cout << "There are 3 difficulties - Easy(10x10), Medium(20x20) and Hard(30x30)" << endl;
-	outputPosition(4, 11);
-	color(7);
-	cout << "Guide the 'S' towards the 'F' to exit the maze, or go to the 'o' to unlock a secret finish" << endl;
-	outputPosition(41, 12);
-	color(7);
-	cout << "Enjoy the game!" << endl;
+	outputPosition(11, 15);
+	cout << "Hello, this is a C++ console maze game!" << endl;
+	outputPosition(11, 17);
+	cout << " - The game functions with the WSAD keys" << endl;
+	outputPosition(11, 18);
+	cout << " - There are 3 difficulties of the maze" << endl;
+	outputPosition(11, 19);
+	cout << " - To win you have to move the 'o' through the maze to the final(F)" << endl;
+	outputPosition(11, 20);
+	cout << " - You can go back by pressing ENTER" << endl;
+	outputPosition(11, 21);
+	cout << " - Enjoy the game!" << endl;
 
 	printGround();
 }
@@ -483,15 +490,16 @@ void rules()
 	{
 		printOutRules();
 
-		outputPosition(40, 14);
+		outputPosition(60, 23);
 		color(colorNumber[0]);
-		cout << "Back To Main Menu";
+		cout << "BACK TO MAIN MENU";
 		key = _getch();
 		if (key == '\r')
 		{
 			exitStatement = false;
 			system("CLS");
 			color(14);
+			printGameMachine();
 			printBackground();
 			printLogo();
 			printMainMenu();
@@ -505,7 +513,7 @@ void rules()
 void printMainMenu()
 {
 	outputPosition(38, 15);
-	color(6);
+	color(14);
 	cout << "G A M E   M E N U" << endl;
 
 	outputPosition(38, 21);
