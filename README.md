@@ -11,6 +11,7 @@
 - [Presentation and Documentation](#documentation)
 
 ## 📖 Description <a name="description"></a>
+This is a game of C++, made for the school project - "Maze Sprint". The aim of the game is to get out of a maze with 3 levels of difficulty - easy, medium, and hard. Each time, the program generates a new maze for the user using Recursive Backtracking Algorithm.
 
 ## 💻 Built Using <a name="built_using"></a>
 - [Visual Studio](https://visualstudio.microsoft.com/) - Application
@@ -27,3 +28,6 @@
 - [Vanina Teneva](https://github.com/Vnteneva19) - QA Engineer
 
 ## 📋 Presentation and Documentation <a name="documentation"></a>
++ [Documentation](https://github.com/MMMechkov19/Untitled/blob/main/Documents/Documentation/Untitled-Documentation.docx)
++ [Presentation](https://github.com/MMMechkov19/Untitled/tree/main/Documents/Presentation)
++ [Table with functions](https://github.com/MMMechkov19/Untitled/tree/main/Documents/Documentation/html)
