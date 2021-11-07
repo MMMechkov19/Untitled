@@ -1,13 +1,20 @@
 #include <iostream>
 #include <conio.h>
 #include <stdlib.h>
+#include <Windows.h>
+#define NOMINMAX
+#define WIN32_LEAN_AND_MEAN
 #include "mainMenu.h"
 #include "enums.h"
 #include "structs.h"
 
 using namespace std;
 
-// Print player's current position
+/// \file
+
+/// \brief  Print player's current position
+/// \param  char** arr, int width, int height
+/// \return void 
 void currentPosition(char** arr, int width, int height)
 {
 	outputPosition(10, 3);
@@ -24,7 +31,11 @@ void currentPosition(char** arr, int width, int height)
 
 }
 
-// Prevent getting out of the maze
+/// \file
+
+/// \brief  Prevent getting out of the maze
+/// \param  PLAYER& player
+/// \return void 
 void checkInitialMove(PLAYER& player)
 {
 	if (player.x < 0)
@@ -35,7 +46,11 @@ void checkInitialMove(PLAYER& player)
 	}
 }
 
-// Print final's position
+/// \file
+
+/// \brief  Print final's position
+/// \param  char** arr, int width, int height
+/// \return void 
 void finalPosition(char** arr, int width, int height)
 {
 	outputPosition(10, 4);
@@ -51,6 +66,11 @@ void finalPosition(char** arr, int width, int height)
 	}
 }
 
+/// \file
+
+/// \brief  This function prints the maze
+/// \param  char** arr, int width, int height
+/// \return void 
 void printMaze(char** arr, int width, int height)
 {
 	// Print ground if the maze is small enough
@@ -182,7 +202,11 @@ void printMaze(char** arr, int width, int height)
 	}
 }
 
-// System for moving player's character
+/// \file
+
+/// \brief  System for moving player's character
+/// \param  bool doesNotWin, char** arr, int width, int height
+/// \return void  
 void movementSystem(bool doesNotWin, char** arr, int width, int height)
 {
 	char pressedKey;
@@ -258,6 +282,11 @@ void movementSystem(bool doesNotWin, char** arr, int width, int height)
 	}
 }
 
+/// \file
+
+/// \brief  This function fills the array with "walls"
+/// \param  char** arr, int width, int height
+/// \return void  
 void resetArray(char** arr, int width, int height)
 {
 	// Fill array with walls
@@ -269,6 +298,11 @@ void resetArray(char** arr, int width, int height)
 	}
 }
 
+/// \file
+
+/// \brief  This functions checks if the coordinates are in-bounds
+/// \param  int x, int y, int width, int height
+/// \return void 
 int isInBounds(int x, int y, int width, int height)
 {
 	// Check if coordinates are in-bounds
@@ -283,6 +317,11 @@ int isInBounds(int x, int y, int width, int height)
 	return true;
 }
 
+/// \file
+
+/// \brief  This functions cleans tunnels through the maze
+/// \param  int x, int y, char** arr, int width, int height
+/// \return void 
 void cleanTunnels(int x, int y, char** arr, int width, int height)
 {
 	arr[x][y] = ' ';
@@ -332,6 +371,11 @@ void cleanTunnels(int x, int y, char** arr, int width, int height)
 	}
 }
 
+/// \file
+
+/// \brief  This functions switches between different modes based on given sizes
+/// \param  SIZES size
+/// \return void 
 void gameMode(SIZES size)
 {
 	bool doesNotWin = true;

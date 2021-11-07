@@ -13,9 +13,13 @@ SIZES easyMode = { 11,11 };
 SIZES mediumMode = { 21,21 };
 SIZES hardMode = { 21,31 };
 
+/// \file
+
+/// \brief  Change output's colors
+/// \param  Color
+/// \return void
 void color(int color)
 {
-	// Change output's colors
 	if (SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color))
 	{
 		return;
@@ -23,9 +27,13 @@ void color(int color)
 	else {}
 }
 
+/// \file
+
+/// \brief  Set player's fixed position
+/// \param  int x, int y
+/// \return void
 void outputPosition(int x, int y)
 {
-	// Set player's fixed position
 	COORD position;
 	position.X = x;
 	position.Y = y;
@@ -36,9 +44,13 @@ void outputPosition(int x, int y)
 	else {}
 }
 
+/// \file
+
+/// \brief  Print winning message
+/// \param  none
+/// \return void
 void printWinMessage()
 {
-	// Print winning message
 	color(14);
 	outputPosition(19, 3);
 	cout << "       ______                             __       __";
@@ -67,7 +79,11 @@ void printWinMessage()
 	cout << "USED MOVEMENTS: " << keysPressedCounter << endl;
 }
 
-// Print team logo
+/// \file
+
+/// \brief  Print team logo
+/// \param  none
+/// \return void
 void printLogo()
 {
 	color(14);
@@ -83,7 +99,11 @@ void printLogo()
 	cout << "\\____/_/ |_/ /_/ /___/ /_/ /_____/_____/_____/  " << endl;
 }
 
-// Print starry background
+/// \file
+
+/// \brief  Print starry background
+/// \param  none
+/// \return void
 void printBackground()
 {
 	color(3);
@@ -141,7 +161,11 @@ void printBackground()
 	cout << "         +         *             .         '         *         '        *  " << endl;
 }
 
-// Print ground
+/// \file
+
+/// \brief  Print ground
+/// \param  none
+/// \return void 
 void printGround()
 {
 	color(11);
@@ -155,7 +179,12 @@ void printGround()
 	cout << "   ____                __       --         -__-           -_             __-";
 }
 
-// Print game machine
+
+/// \file
+
+/// \brief  Print game machine
+/// \param  none
+/// \return void 
 void printGameMachine()
 {
 	outputPosition(0, 1);
@@ -312,6 +341,11 @@ void printGameMachine()
 	cout << " /________________________________________________________________________________________\\" << endl;
 }
 
+/// \file
+
+/// \brief  This function lets you choose a game mode
+/// \param  none
+/// \return void 
 void choosingModes()
 {
 	char key1;
@@ -501,7 +535,11 @@ void choosingModes()
 	} while (exitStatement != false);
 }
 
+/// \file
 
+/// \brief  This function prints the game rules
+/// \param  none
+/// \return void 
 void printOutRules()
 {
 	// Print game machine
@@ -546,6 +584,12 @@ void printOutRules()
 	// Print ground
 	printGround();
 }
+
+/// \file
+
+/// \brief  This function prints the game rules
+/// \param  none
+/// \return void 
 void rules()
 {
 	char key;
@@ -578,7 +622,11 @@ void rules()
 
 }
 
-// Print main menu basics
+/// \file
+
+/// \brief  Print main menu basics
+/// \param  none
+/// \return void 
 void mainMenuTexts()
 {
 	outputPosition(38, 15);
@@ -595,6 +643,11 @@ void mainMenuTexts()
 	cout << "Move using the WASD";
 }
 
+/// \file
+
+/// \brief  Print main menu
+/// \param  none
+/// \return void 
 void mainMenu()
 {
 	int colorNumber[] = { 7, 7, 7, 7 };
