@@ -10,7 +10,7 @@ namespace UnitTesting
 	{
 	public:
 		BEGIN_TEST_METHOD_ATTRIBUTE(expectToReturnTrueWhenCoordinatesAreValidEasyMode)
-		TEST_OWNER(L"VNTeneve19")
+		TEST_OWNER(L"VNTeneva19")
 		TEST_PRIORITY("Low")
 		END_TEST_METHOD_ATTRIBUTE()
 		TEST_METHOD(expectToReturnTrueWhenCoordinatesAreValidEasyMode)
@@ -25,7 +25,7 @@ namespace UnitTesting
 			Assert::AreEqual(true, result);
 		}
 		BEGIN_TEST_METHOD_ATTRIBUTE(expectToReturnFalseWhenCoordinatesAreEqualEasyMode)
-		TEST_OWNER(L"VNTeneve19")
+		TEST_OWNER(L"VNTeneva19")
 		TEST_PRIORITY("Low")
 		END_TEST_METHOD_ATTRIBUTE()
 		TEST_METHOD(expectToReturnFalseWhenCoordinatesAreEqualEasyMode)
@@ -40,7 +40,7 @@ namespace UnitTesting
 			Assert::AreEqual(false, result);
 		}
 		BEGIN_TEST_METHOD_ATTRIBUTE(expectToReturnFalseWhenCoordinatesAreNotInRangeEasyMode)
-		TEST_OWNER(L"VNTeneve19")
+		TEST_OWNER(L"VNTeneva19")
 		TEST_PRIORITY("Low")
 		END_TEST_METHOD_ATTRIBUTE()
 		TEST_METHOD(expectToReturnFalseWhenCoordinatesAreNotInRangeEasyMode)
@@ -55,7 +55,7 @@ namespace UnitTesting
 			Assert::AreEqual(false, result);
 		}
 		BEGIN_TEST_METHOD_ATTRIBUTE(expectToReturnTrueWhenCoordinatesAreValidMediumMode)
-		TEST_OWNER(L"VNTeneve19")
+		TEST_OWNER(L"VNTeneva19")
 		TEST_PRIORITY("Low")
 		END_TEST_METHOD_ATTRIBUTE()
 		TEST_METHOD(expectToReturnTrueWhenCoordinatesAreValidMediumMode)
@@ -70,7 +70,7 @@ namespace UnitTesting
 			Assert::AreEqual(true, result);
 		}
 		BEGIN_TEST_METHOD_ATTRIBUTE(expectToReturnFalseWhenCoordinatesAreEqualMediumMode)
-		TEST_OWNER(L"VNTeneve19")
+		TEST_OWNER(L"VNTeneva19")
 		TEST_PRIORITY("Low")
 		END_TEST_METHOD_ATTRIBUTE()
 		TEST_METHOD(expectToReturnFalseWhenCoordinatesAreEqualMediumMode)
@@ -85,7 +85,7 @@ namespace UnitTesting
 			Assert::AreEqual(false, result);
 		}
 		BEGIN_TEST_METHOD_ATTRIBUTE(expectToReturnFalseWhenCoordinatesAreNotInRangeMediumMode)
-		TEST_OWNER(L"VNTeneve19")
+		TEST_OWNER(L"VNTeneva19")
 		TEST_PRIORITY("Low")
 		END_TEST_METHOD_ATTRIBUTE()
 		TEST_METHOD(expectToReturnFalseWhenCoordinatesAreNotInRangeMediumMode)
@@ -100,7 +100,7 @@ namespace UnitTesting
 			Assert::AreEqual(false, result);
 		}
 		BEGIN_TEST_METHOD_ATTRIBUTE(expectToReturnTrueWhenCoordinatesAreValidHardMode)
-		TEST_OWNER(L"VNTeneve19")
+		TEST_OWNER(L"VNTeneva19")
 		TEST_PRIORITY("Low")
 		END_TEST_METHOD_ATTRIBUTE()
 		TEST_METHOD(expectToReturnTrueWhenCoordinatesAreValidHardMode)
@@ -115,7 +115,7 @@ namespace UnitTesting
 			Assert::AreEqual(true, result);
 		}
 		BEGIN_TEST_METHOD_ATTRIBUTE(expectToReturnFalseWhenCoordinatesAreEqualHardMode)
-		TEST_OWNER(L"VNTeneve19")
+		TEST_OWNER(L"VNTeneva19")
 		TEST_PRIORITY("Low")
 		END_TEST_METHOD_ATTRIBUTE()
 		TEST_METHOD(expectToReturnFalseWhenCoordinatesAreEqualHardMode)
@@ -130,7 +130,7 @@ namespace UnitTesting
 			Assert::AreEqual(false, result);
 		}
 		BEGIN_TEST_METHOD_ATTRIBUTE(expectToReturnFalseWhenCoordinatesAreNotInRangeHardMode)
-		TEST_OWNER(L"VNTeneve19")
+		TEST_OWNER(L"VNTeneva19")
 		TEST_PRIORITY("Low")
 		END_TEST_METHOD_ATTRIBUTE()
 		TEST_METHOD(expectToReturnFalseWhenCoordinatesAreNotInRangeHardMode)
